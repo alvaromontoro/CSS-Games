@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Montoro" />
+    <meta
+      name="description"
+      content="Simon game (repeat the pattern) developed in CSS+HTML (no JS)."
+    />
+    <title>CSS Simon</title>
+    <link rel="stylesheet" href="./simon.css" />
+  </head>
+
+  <body>
+    <!-- checkbox to turn CSSimon on or off-->
+    <input type="checkbox" id="cb-onoff" hidden />
+    <!-- radio buttons to indicate the id of the sequence (one only for now)-->
+    <input type="radio" id="sequence-0" class="sequence" name="sequence" checked hidden />
+    <!-- radio buttons that indicate current round within the sequence-->
+    <input class="round" type="radio" id="round-0" name="round" checked="checked" value="0" hidden="hidden" />
+    <input class="round" type="radio" id="round-1" name="round" value="1" hidden="hidden" />
+    <input class="round" type="radio" id="round-2" name="round" value="2" hidden="hidden" />
+    <input class="round" type="radio" id="round-3" name="round" value="3" hidden="hidden" />
+    <input class="round" type="radio" id="round-4" name="round" value="4" hidden="hidden" />
+    <input class="round" type="radio" id="round-5" name="round" value="5" hidden="hidden" />
+    <input class="round" type="radio" id="round-6" name="round" value="6" hidden="hidden" />
+    <input class="round" type="radio" id="round-7" name="round" value="7" hidden="hidden" />
+    <input class="round" type="radio" id="round-8" name="round" value="8" hidden="hidden" />
+    <input class="round" type="radio" id="round-9" name="round" value="9" hidden="hidden" />
+    <input class="round" type="radio" id="round-10" name="round" value="10" hidden="hidden" />
+    <input class="round" type="radio" id="round-11" name="round" value="11" hidden="hidden" />
+    <input class="round" type="radio" id="round-12" name="round" value="12" hidden="hidden" />
+    <input class="round" type="radio" id="round-13" name="round" value="13" hidden="hidden" />
+    <input class="round" type="radio" id="round-14" name="round" value="14" hidden="hidden" />
+    <input class="round" type="radio" id="round-15" name="round" value="15" hidden="hidden" />
+    <input class="round" type="radio" id="round-16" name="round" value="16" hidden="hidden" />
+    <input class="round" type="radio" id="round-17" name="round" value="17" hidden="hidden" />
+    <input class="round" type="radio" id="round-18" name="round" value="18" hidden="hidden" />
+    <input class="round" type="radio" id="round-19" name="round" value="19" hidden="hidden" />
+    <input class="round" type="radio" id="round-20" name="round" value="20" hidden="hidden" />
+    <input class="round" type="radio" id="round-21" name="round" value="21" hidden="hidden" />
+    <input class="round" type="radio" id="round-22" name="round" value="22" hidden="hidden" />
+    <input class="round" type="radio" id="round-23" name="round" value="23" hidden="hidden" />
+    <input class="round" type="radio" id="round-24" name="round" value="24" hidden="hidden" />
+    <input class="round" type="radio" id="round-25" name="round" value="25" hidden="hidden" />
+    <input class="round" type="radio" id="round-26" name="round" value="26" hidden="hidden" />
+    <input class="round" type="radio" id="round-27" name="round" value="27" hidden="hidden" />
+    <input class="round" type="radio" id="round-28" name="round" value="28" hidden="hidden" />
+    <input class="round" type="radio" id="round-29" name="round" value="29" hidden="hidden" />
+    <input class="round" type="radio" id="round-30" name="round" value="30" hidden="hidden" />
+    <!-- radio buttons to keep track of the current step within the round-->
+    <input type="radio" id="round-0-step-0" name="round-0" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-1-step-0" name="round-1" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-1-step-1" name="round-1" value="1" hidden="hidden" />
+    <input type="radio" id="round-2-step-0" name="round-2" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-2-step-1" name="round-2" value="1" hidden="hidden" />
+    <input type="radio" id="round-2-step-2" name="round-2" value="2" hidden="hidden" />
+    <input type="radio" id="round-3-step-0" name="round-3" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-3-step-1" name="round-3" value="1" hidden="hidden" />
+    <input type="radio" id="round-3-step-2" name="round-3" value="2" hidden="hidden" />
+    <input type="radio" id="round-3-step-3" name="round-3" value="3" hidden="hidden" />
+    <input type="radio" id="round-4-step-0" name="round-4" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-4-step-1" name="round-4" value="1" hidden="hidden" />
+    <input type="radio" id="round-4-step-2" name="round-4" value="2" hidden="hidden" />
+    <input type="radio" id="round-4-step-3" name="round-4" value="3" hidden="hidden" />
+    <input type="radio" id="round-4-step-4" name="round-4" value="4" hidden="hidden" />
+    <input type="radio" id="round-5-step-0" name="round-5" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-5-step-1" name="round-5" value="1" hidden="hidden" />
+    <input type="radio" id="round-5-step-2" name="round-5" value="2" hidden="hidden" />
+    <input type="radio" id="round-5-step-3" name="round-5" value="3" hidden="hidden" />
+    <input type="radio" id="round-5-step-4" name="round-5" value="4" hidden="hidden" />
+    <input type="radio" id="round-5-step-5" name="round-5" value="5" hidden="hidden" />
+    <input type="radio" id="round-6-step-0" name="round-6" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-6-step-1" name="round-6" value="1" hidden="hidden" />
+    <input type="radio" id="round-6-step-2" name="round-6" value="2" hidden="hidden" />
+    <input type="radio" id="round-6-step-3" name="round-6" value="3" hidden="hidden" />
+    <input type="radio" id="round-6-step-4" name="round-6" value="4" hidden="hidden" />
+    <input type="radio" id="round-6-step-5" name="round-6" value="5" hidden="hidden" />
+    <input type="radio" id="round-6-step-6" name="round-6" value="6" hidden="hidden" />
+    <input type="radio" id="round-7-step-0" name="round-7" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-7-step-1" name="round-7" value="1" hidden="hidden" />
+    <input type="radio" id="round-7-step-2" name="round-7" value="2" hidden="hidden" />
+    <input type="radio" id="round-7-step-3" name="round-7" value="3" hidden="hidden" />
+    <input type="radio" id="round-7-step-4" name="round-7" value="4" hidden="hidden" />
+    <input type="radio" id="round-7-step-5" name="round-7" value="5" hidden="hidden" />
+    <input type="radio" id="round-7-step-6" name="round-7" value="6" hidden="hidden" />
+    <input type="radio" id="round-7-step-7" name="round-7" value="7" hidden="hidden" />
+    <input type="radio" id="round-8-step-0" name="round-8" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-8-step-1" name="round-8" value="1" hidden="hidden" />
+    <input type="radio" id="round-8-step-2" name="round-8" value="2" hidden="hidden" />
+    <input type="radio" id="round-8-step-3" name="round-8" value="3" hidden="hidden" />
+    <input type="radio" id="round-8-step-4" name="round-8" value="4" hidden="hidden" />
+    <input type="radio" id="round-8-step-5" name="round-8" value="5" hidden="hidden" />
+    <input type="radio" id="round-8-step-6" name="round-8" value="6" hidden="hidden" />
+    <input type="radio" id="round-8-step-7" name="round-8" value="7" hidden="hidden" />
+    <input type="radio" id="round-8-step-8" name="round-8" value="8" hidden="hidden" />
+    <input type="radio" id="round-9-step-0" name="round-9" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-9-step-1" name="round-9" value="1" hidden="hidden" />
+    <input type="radio" id="round-9-step-2" name="round-9" value="2" hidden="hidden" />
+    <input type="radio" id="round-9-step-3" name="round-9" value="3" hidden="hidden" />
+    <input type="radio" id="round-9-step-4" name="round-9" value="4" hidden="hidden" />
+    <input type="radio" id="round-9-step-5" name="round-9" value="5" hidden="hidden" />
+    <input type="radio" id="round-9-step-6" name="round-9" value="6" hidden="hidden" />
+    <input type="radio" id="round-9-step-7" name="round-9" value="7" hidden="hidden" />
+    <input type="radio" id="round-9-step-8" name="round-9" value="8" hidden="hidden" />
+    <input type="radio" id="round-9-step-9" name="round-9" value="9" hidden="hidden" />
+    <input type="radio" id="round-10-step-0" name="round-10" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-10-step-1" name="round-10" value="1" hidden="hidden" />
+    <input type="radio" id="round-10-step-2" name="round-10" value="2" hidden="hidden" />
+    <input type="radio" id="round-10-step-3" name="round-10" value="3" hidden="hidden" />
+    <input type="radio" id="round-10-step-4" name="round-10" value="4" hidden="hidden" />
+    <input type="radio" id="round-10-step-5" name="round-10" value="5" hidden="hidden" />
+    <input type="radio" id="round-10-step-6" name="round-10" value="6" hidden="hidden" />
+    <input type="radio" id="round-10-step-7" name="round-10" value="7" hidden="hidden" />
+    <input type="radio" id="round-10-step-8" name="round-10" value="8" hidden="hidden" />
+    <input type="radio" id="round-10-step-9" name="round-10" value="9" hidden="hidden" />
+    <input type="radio" id="round-10-step-10" name="round-10" value="10" hidden="hidden" />
+    <input type="radio" id="round-11-step-0" name="round-11" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-11-step-1" name="round-11" value="1" hidden="hidden" />
+    <input type="radio" id="round-11-step-2" name="round-11" value="2" hidden="hidden" />
+    <input type="radio" id="round-11-step-3" name="round-11" value="3" hidden="hidden" />
+    <input type="radio" id="round-11-step-4" name="round-11" value="4" hidden="hidden" />
+    <input type="radio" id="round-11-step-5" name="round-11" value="5" hidden="hidden" />
+    <input type="radio" id="round-11-step-6" name="round-11" value="6" hidden="hidden" />
+    <input type="radio" id="round-11-step-7" name="round-11" value="7" hidden="hidden" />
+    <input type="radio" id="round-11-step-8" name="round-11" value="8" hidden="hidden" />
+    <input type="radio" id="round-11-step-9" name="round-11" value="9" hidden="hidden" />
+    <input type="radio" id="round-11-step-10" name="round-11" value="10" hidden="hidden" />
+    <input type="radio" id="round-11-step-11" name="round-11" value="11" hidden="hidden" />
+    <input type="radio" id="round-12-step-0" name="round-12" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-12-step-1" name="round-12" value="1" hidden="hidden" />
+    <input type="radio" id="round-12-step-2" name="round-12" value="2" hidden="hidden" />
+    <input type="radio" id="round-12-step-3" name="round-12" value="3" hidden="hidden" />
+    <input type="radio" id="round-12-step-4" name="round-12" value="4" hidden="hidden" />
+    <input type="radio" id="round-12-step-5" name="round-12" value="5" hidden="hidden" />
+    <input type="radio" id="round-12-step-6" name="round-12" value="6" hidden="hidden" />
+    <input type="radio" id="round-12-step-7" name="round-12" value="7" hidden="hidden" />
+    <input type="radio" id="round-12-step-8" name="round-12" value="8" hidden="hidden" />
+    <input type="radio" id="round-12-step-9" name="round-12" value="9" hidden="hidden" />
+    <input type="radio" id="round-12-step-10" name="round-12" value="10" hidden="hidden" />
+    <input type="radio" id="round-12-step-11" name="round-12" value="11" hidden="hidden" />
+    <input type="radio" id="round-12-step-12" name="round-12" value="12" hidden="hidden" />
+    <input type="radio" id="round-13-step-0" name="round-13" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-13-step-1" name="round-13" value="1" hidden="hidden" />
+    <input type="radio" id="round-13-step-2" name="round-13" value="2" hidden="hidden" />
+    <input type="radio" id="round-13-step-3" name="round-13" value="3" hidden="hidden" />
+    <input type="radio" id="round-13-step-4" name="round-13" value="4" hidden="hidden" />
+    <input type="radio" id="round-13-step-5" name="round-13" value="5" hidden="hidden" />
+    <input type="radio" id="round-13-step-6" name="round-13" value="6" hidden="hidden" />
+    <input type="radio" id="round-13-step-7" name="round-13" value="7" hidden="hidden" />
+    <input type="radio" id="round-13-step-8" name="round-13" value="8" hidden="hidden" />
+    <input type="radio" id="round-13-step-9" name="round-13" value="9" hidden="hidden" />
+    <input type="radio" id="round-13-step-10" name="round-13" value="10" hidden="hidden" />
+    <input type="radio" id="round-13-step-11" name="round-13" value="11" hidden="hidden" />
+    <input type="radio" id="round-13-step-12" name="round-13" value="12" hidden="hidden" />
+    <input type="radio" id="round-13-step-13" name="round-13" value="13" hidden="hidden" />
+    <input type="radio" id="round-14-step-0" name="round-14" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-14-step-1" name="round-14" value="1" hidden="hidden" />
+    <input type="radio" id="round-14-step-2" name="round-14" value="2" hidden="hidden" />
+    <input type="radio" id="round-14-step-3" name="round-14" value="3" hidden="hidden" />
+    <input type="radio" id="round-14-step-4" name="round-14" value="4" hidden="hidden" />
+    <input type="radio" id="round-14-step-5" name="round-14" value="5" hidden="hidden" />
+    <input type="radio" id="round-14-step-6" name="round-14" value="6" hidden="hidden" />
+    <input type="radio" id="round-14-step-7" name="round-14" value="7" hidden="hidden" />
+    <input type="radio" id="round-14-step-8" name="round-14" value="8" hidden="hidden" />
+    <input type="radio" id="round-14-step-9" name="round-14" value="9" hidden="hidden" />
+    <input type="radio" id="round-14-step-10" name="round-14" value="10" hidden="hidden" />
+    <input type="radio" id="round-14-step-11" name="round-14" value="11" hidden="hidden" />
+    <input type="radio" id="round-14-step-12" name="round-14" value="12" hidden="hidden" />
+    <input type="radio" id="round-14-step-13" name="round-14" value="13" hidden="hidden" />
+    <input type="radio" id="round-14-step-14" name="round-14" value="14" hidden="hidden" />
+    <input type="radio" id="round-15-step-0" name="round-15" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-15-step-1" name="round-15" value="1" hidden="hidden" />
+    <input type="radio" id="round-15-step-2" name="round-15" value="2" hidden="hidden" />
+    <input type="radio" id="round-15-step-3" name="round-15" value="3" hidden="hidden" />
+    <input type="radio" id="round-15-step-4" name="round-15" value="4" hidden="hidden" />
+    <input type="radio" id="round-15-step-5" name="round-15" value="5" hidden="hidden" />
+    <input type="radio" id="round-15-step-6" name="round-15" value="6" hidden="hidden" />
+    <input type="radio" id="round-15-step-7" name="round-15" value="7" hidden="hidden" />
+    <input type="radio" id="round-15-step-8" name="round-15" value="8" hidden="hidden" />
+    <input type="radio" id="round-15-step-9" name="round-15" value="9" hidden="hidden" />
+    <input type="radio" id="round-15-step-10" name="round-15" value="10" hidden="hidden" />
+    <input type="radio" id="round-15-step-11" name="round-15" value="11" hidden="hidden" />
+    <input type="radio" id="round-15-step-12" name="round-15" value="12" hidden="hidden" />
+    <input type="radio" id="round-15-step-13" name="round-15" value="13" hidden="hidden" />
+    <input type="radio" id="round-15-step-14" name="round-15" value="14" hidden="hidden" />
+    <input type="radio" id="round-15-step-15" name="round-15" value="15" hidden="hidden" />
+    <input type="radio" id="round-16-step-0" name="round-16" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-16-step-1" name="round-16" value="1" hidden="hidden" />
+    <input type="radio" id="round-16-step-2" name="round-16" value="2" hidden="hidden" />
+    <input type="radio" id="round-16-step-3" name="round-16" value="3" hidden="hidden" />
+    <input type="radio" id="round-16-step-4" name="round-16" value="4" hidden="hidden" />
+    <input type="radio" id="round-16-step-5" name="round-16" value="5" hidden="hidden" />
+    <input type="radio" id="round-16-step-6" name="round-16" value="6" hidden="hidden" />
+    <input type="radio" id="round-16-step-7" name="round-16" value="7" hidden="hidden" />
+    <input type="radio" id="round-16-step-8" name="round-16" value="8" hidden="hidden" />
+    <input type="radio" id="round-16-step-9" name="round-16" value="9" hidden="hidden" />
+    <input type="radio" id="round-16-step-10" name="round-16" value="10" hidden="hidden" />
+    <input type="radio" id="round-16-step-11" name="round-16" value="11" hidden="hidden" />
+    <input type="radio" id="round-16-step-12" name="round-16" value="12" hidden="hidden" />
+    <input type="radio" id="round-16-step-13" name="round-16" value="13" hidden="hidden" />
+    <input type="radio" id="round-16-step-14" name="round-16" value="14" hidden="hidden" />
+    <input type="radio" id="round-16-step-15" name="round-16" value="15" hidden="hidden" />
+    <input type="radio" id="round-16-step-16" name="round-16" value="16" hidden="hidden" />
+    <input type="radio" id="round-17-step-0" name="round-17" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-17-step-1" name="round-17" value="1" hidden="hidden" />
+    <input type="radio" id="round-17-step-2" name="round-17" value="2" hidden="hidden" />
+    <input type="radio" id="round-17-step-3" name="round-17" value="3" hidden="hidden" />
+    <input type="radio" id="round-17-step-4" name="round-17" value="4" hidden="hidden" />
+    <input type="radio" id="round-17-step-5" name="round-17" value="5" hidden="hidden" />
+    <input type="radio" id="round-17-step-6" name="round-17" value="6" hidden="hidden" />
+    <input type="radio" id="round-17-step-7" name="round-17" value="7" hidden="hidden" />
+    <input type="radio" id="round-17-step-8" name="round-17" value="8" hidden="hidden" />
+    <input type="radio" id="round-17-step-9" name="round-17" value="9" hidden="hidden" />
+    <input type="radio" id="round-17-step-10" name="round-17" value="10" hidden="hidden" />
+    <input type="radio" id="round-17-step-11" name="round-17" value="11" hidden="hidden" />
+    <input type="radio" id="round-17-step-12" name="round-17" value="12" hidden="hidden" />
+    <input type="radio" id="round-17-step-13" name="round-17" value="13" hidden="hidden" />
+    <input type="radio" id="round-17-step-14" name="round-17" value="14" hidden="hidden" />
+    <input type="radio" id="round-17-step-15" name="round-17" value="15" hidden="hidden" />
+    <input type="radio" id="round-17-step-16" name="round-17" value="16" hidden="hidden" />
+    <input type="radio" id="round-17-step-17" name="round-17" value="17" hidden="hidden" />
+    <input type="radio" id="round-18-step-0" name="round-18" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-18-step-1" name="round-18" value="1" hidden="hidden" />
+    <input type="radio" id="round-18-step-2" name="round-18" value="2" hidden="hidden" />
+    <input type="radio" id="round-18-step-3" name="round-18" value="3" hidden="hidden" />
+    <input type="radio" id="round-18-step-4" name="round-18" value="4" hidden="hidden" />
+    <input type="radio" id="round-18-step-5" name="round-18" value="5" hidden="hidden" />
+    <input type="radio" id="round-18-step-6" name="round-18" value="6" hidden="hidden" />
+    <input type="radio" id="round-18-step-7" name="round-18" value="7" hidden="hidden" />
+    <input type="radio" id="round-18-step-8" name="round-18" value="8" hidden="hidden" />
+    <input type="radio" id="round-18-step-9" name="round-18" value="9" hidden="hidden" />
+    <input type="radio" id="round-18-step-10" name="round-18" value="10" hidden="hidden" />
+    <input type="radio" id="round-18-step-11" name="round-18" value="11" hidden="hidden" />
+    <input type="radio" id="round-18-step-12" name="round-18" value="12" hidden="hidden" />
+    <input type="radio" id="round-18-step-13" name="round-18" value="13" hidden="hidden" />
+    <input type="radio" id="round-18-step-14" name="round-18" value="14" hidden="hidden" />
+    <input type="radio" id="round-18-step-15" name="round-18" value="15" hidden="hidden" />
+    <input type="radio" id="round-18-step-16" name="round-18" value="16" hidden="hidden" />
+    <input type="radio" id="round-18-step-17" name="round-18" value="17" hidden="hidden" />
+    <input type="radio" id="round-18-step-18" name="round-18" value="18" hidden="hidden" />
+    <input type="radio" id="round-19-step-0" name="round-19" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-19-step-1" name="round-19" value="1" hidden="hidden" />
+    <input type="radio" id="round-19-step-2" name="round-19" value="2" hidden="hidden" />
+    <input type="radio" id="round-19-step-3" name="round-19" value="3" hidden="hidden" />
+    <input type="radio" id="round-19-step-4" name="round-19" value="4" hidden="hidden" />
+    <input type="radio" id="round-19-step-5" name="round-19" value="5" hidden="hidden" />
+    <input type="radio" id="round-19-step-6" name="round-19" value="6" hidden="hidden" />
+    <input type="radio" id="round-19-step-7" name="round-19" value="7" hidden="hidden" />
+    <input type="radio" id="round-19-step-8" name="round-19" value="8" hidden="hidden" />
+    <input type="radio" id="round-19-step-9" name="round-19" value="9" hidden="hidden" />
+    <input type="radio" id="round-19-step-10" name="round-19" value="10" hidden="hidden" />
+    <input type="radio" id="round-19-step-11" name="round-19" value="11" hidden="hidden" />
+    <input type="radio" id="round-19-step-12" name="round-19" value="12" hidden="hidden" />
+    <input type="radio" id="round-19-step-13" name="round-19" value="13" hidden="hidden" />
+    <input type="radio" id="round-19-step-14" name="round-19" value="14" hidden="hidden" />
+    <input type="radio" id="round-19-step-15" name="round-19" value="15" hidden="hidden" />
+    <input type="radio" id="round-19-step-16" name="round-19" value="16" hidden="hidden" />
+    <input type="radio" id="round-19-step-17" name="round-19" value="17" hidden="hidden" />
+    <input type="radio" id="round-19-step-18" name="round-19" value="18" hidden="hidden" />
+    <input type="radio" id="round-19-step-19" name="round-19" value="19" hidden="hidden" />
+    <input type="radio" id="round-20-step-0" name="round-20" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-20-step-1" name="round-20" value="1" hidden="hidden" />
+    <input type="radio" id="round-20-step-2" name="round-20" value="2" hidden="hidden" />
+    <input type="radio" id="round-20-step-3" name="round-20" value="3" hidden="hidden" />
+    <input type="radio" id="round-20-step-4" name="round-20" value="4" hidden="hidden" />
+    <input type="radio" id="round-20-step-5" name="round-20" value="5" hidden="hidden" />
+    <input type="radio" id="round-20-step-6" name="round-20" value="6" hidden="hidden" />
+    <input type="radio" id="round-20-step-7" name="round-20" value="7" hidden="hidden" />
+    <input type="radio" id="round-20-step-8" name="round-20" value="8" hidden="hidden" />
+    <input type="radio" id="round-20-step-9" name="round-20" value="9" hidden="hidden" />
+    <input type="radio" id="round-20-step-10" name="round-20" value="10" hidden="hidden" />
+    <input type="radio" id="round-20-step-11" name="round-20" value="11" hidden="hidden" />
+    <input type="radio" id="round-20-step-12" name="round-20" value="12" hidden="hidden" />
+    <input type="radio" id="round-20-step-13" name="round-20" value="13" hidden="hidden" />
+    <input type="radio" id="round-20-step-14" name="round-20" value="14" hidden="hidden" />
+    <input type="radio" id="round-20-step-15" name="round-20" value="15" hidden="hidden" />
+    <input type="radio" id="round-20-step-16" name="round-20" value="16" hidden="hidden" />
+    <input type="radio" id="round-20-step-17" name="round-20" value="17" hidden="hidden" />
+    <input type="radio" id="round-20-step-18" name="round-20" value="18" hidden="hidden" />
+    <input type="radio" id="round-20-step-19" name="round-20" value="19" hidden="hidden" />
+    <input type="radio" id="round-20-step-20" name="round-20" value="20" hidden="hidden" />
+    <input type="radio" id="round-21-step-0" name="round-21" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-21-step-1" name="round-21" value="1" hidden="hidden" />
+    <input type="radio" id="round-21-step-2" name="round-21" value="2" hidden="hidden" />
+    <input type="radio" id="round-21-step-3" name="round-21" value="3" hidden="hidden" />
+    <input type="radio" id="round-21-step-4" name="round-21" value="4" hidden="hidden" />
+    <input type="radio" id="round-21-step-5" name="round-21" value="5" hidden="hidden" />
+    <input type="radio" id="round-21-step-6" name="round-21" value="6" hidden="hidden" />
+    <input type="radio" id="round-21-step-7" name="round-21" value="7" hidden="hidden" />
+    <input type="radio" id="round-21-step-8" name="round-21" value="8" hidden="hidden" />
+    <input type="radio" id="round-21-step-9" name="round-21" value="9" hidden="hidden" />
+    <input type="radio" id="round-21-step-10" name="round-21" value="10" hidden="hidden" />
+    <input type="radio" id="round-21-step-11" name="round-21" value="11" hidden="hidden" />
+    <input type="radio" id="round-21-step-12" name="round-21" value="12" hidden="hidden" />
+    <input type="radio" id="round-21-step-13" name="round-21" value="13" hidden="hidden" />
+    <input type="radio" id="round-21-step-14" name="round-21" value="14" hidden="hidden" />
+    <input type="radio" id="round-21-step-15" name="round-21" value="15" hidden="hidden" />
+    <input type="radio" id="round-21-step-16" name="round-21" value="16" hidden="hidden" />
+    <input type="radio" id="round-21-step-17" name="round-21" value="17" hidden="hidden" />
+    <input type="radio" id="round-21-step-18" name="round-21" value="18" hidden="hidden" />
+    <input type="radio" id="round-21-step-19" name="round-21" value="19" hidden="hidden" />
+    <input type="radio" id="round-21-step-20" name="round-21" value="20" hidden="hidden" />
+    <input type="radio" id="round-21-step-21" name="round-21" value="21" hidden="hidden" />
+    <input type="radio" id="round-22-step-0" name="round-22" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-22-step-1" name="round-22" value="1" hidden="hidden" />
+    <input type="radio" id="round-22-step-2" name="round-22" value="2" hidden="hidden" />
+    <input type="radio" id="round-22-step-3" name="round-22" value="3" hidden="hidden" />
+    <input type="radio" id="round-22-step-4" name="round-22" value="4" hidden="hidden" />
+    <input type="radio" id="round-22-step-5" name="round-22" value="5" hidden="hidden" />
+    <input type="radio" id="round-22-step-6" name="round-22" value="6" hidden="hidden" />
+    <input type="radio" id="round-22-step-7" name="round-22" value="7" hidden="hidden" />
+    <input type="radio" id="round-22-step-8" name="round-22" value="8" hidden="hidden" />
+    <input type="radio" id="round-22-step-9" name="round-22" value="9" hidden="hidden" />
+    <input type="radio" id="round-22-step-10" name="round-22" value="10" hidden="hidden" />
+    <input type="radio" id="round-22-step-11" name="round-22" value="11" hidden="hidden" />
+    <input type="radio" id="round-22-step-12" name="round-22" value="12" hidden="hidden" />
+    <input type="radio" id="round-22-step-13" name="round-22" value="13" hidden="hidden" />
+    <input type="radio" id="round-22-step-14" name="round-22" value="14" hidden="hidden" />
+    <input type="radio" id="round-22-step-15" name="round-22" value="15" hidden="hidden" />
+    <input type="radio" id="round-22-step-16" name="round-22" value="16" hidden="hidden" />
+    <input type="radio" id="round-22-step-17" name="round-22" value="17" hidden="hidden" />
+    <input type="radio" id="round-22-step-18" name="round-22" value="18" hidden="hidden" />
+    <input type="radio" id="round-22-step-19" name="round-22" value="19" hidden="hidden" />
+    <input type="radio" id="round-22-step-20" name="round-22" value="20" hidden="hidden" />
+    <input type="radio" id="round-22-step-21" name="round-22" value="21" hidden="hidden" />
+    <input type="radio" id="round-22-step-22" name="round-22" value="22" hidden="hidden" />
+    <input type="radio" id="round-23-step-0" name="round-23" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-23-step-1" name="round-23" value="1" hidden="hidden" />
+    <input type="radio" id="round-23-step-2" name="round-23" value="2" hidden="hidden" />
+    <input type="radio" id="round-23-step-3" name="round-23" value="3" hidden="hidden" />
+    <input type="radio" id="round-23-step-4" name="round-23" value="4" hidden="hidden" />
+    <input type="radio" id="round-23-step-5" name="round-23" value="5" hidden="hidden" />
+    <input type="radio" id="round-23-step-6" name="round-23" value="6" hidden="hidden" />
+    <input type="radio" id="round-23-step-7" name="round-23" value="7" hidden="hidden" />
+    <input type="radio" id="round-23-step-8" name="round-23" value="8" hidden="hidden" />
+    <input type="radio" id="round-23-step-9" name="round-23" value="9" hidden="hidden" />
+    <input type="radio" id="round-23-step-10" name="round-23" value="10" hidden="hidden" />
+    <input type="radio" id="round-23-step-11" name="round-23" value="11" hidden="hidden" />
+    <input type="radio" id="round-23-step-12" name="round-23" value="12" hidden="hidden" />
+    <input type="radio" id="round-23-step-13" name="round-23" value="13" hidden="hidden" />
+    <input type="radio" id="round-23-step-14" name="round-23" value="14" hidden="hidden" />
+    <input type="radio" id="round-23-step-15" name="round-23" value="15" hidden="hidden" />
+    <input type="radio" id="round-23-step-16" name="round-23" value="16" hidden="hidden" />
+    <input type="radio" id="round-23-step-17" name="round-23" value="17" hidden="hidden" />
+    <input type="radio" id="round-23-step-18" name="round-23" value="18" hidden="hidden" />
+    <input type="radio" id="round-23-step-19" name="round-23" value="19" hidden="hidden" />
+    <input type="radio" id="round-23-step-20" name="round-23" value="20" hidden="hidden" />
+    <input type="radio" id="round-23-step-21" name="round-23" value="21" hidden="hidden" />
+    <input type="radio" id="round-23-step-22" name="round-23" value="22" hidden="hidden" />
+    <input type="radio" id="round-23-step-23" name="round-23" value="23" hidden="hidden" />
+    <input type="radio" id="round-24-step-0" name="round-24" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-24-step-1" name="round-24" value="1" hidden="hidden" />
+    <input type="radio" id="round-24-step-2" name="round-24" value="2" hidden="hidden" />
+    <input type="radio" id="round-24-step-3" name="round-24" value="3" hidden="hidden" />
+    <input type="radio" id="round-24-step-4" name="round-24" value="4" hidden="hidden" />
+    <input type="radio" id="round-24-step-5" name="round-24" value="5" hidden="hidden" />
+    <input type="radio" id="round-24-step-6" name="round-24" value="6" hidden="hidden" />
+    <input type="radio" id="round-24-step-7" name="round-24" value="7" hidden="hidden" />
+    <input type="radio" id="round-24-step-8" name="round-24" value="8" hidden="hidden" />
+    <input type="radio" id="round-24-step-9" name="round-24" value="9" hidden="hidden" />
+    <input type="radio" id="round-24-step-10" name="round-24" value="10" hidden="hidden" />
+    <input type="radio" id="round-24-step-11" name="round-24" value="11" hidden="hidden" />
+    <input type="radio" id="round-24-step-12" name="round-24" value="12" hidden="hidden" />
+    <input type="radio" id="round-24-step-13" name="round-24" value="13" hidden="hidden" />
+    <input type="radio" id="round-24-step-14" name="round-24" value="14" hidden="hidden" />
+    <input type="radio" id="round-24-step-15" name="round-24" value="15" hidden="hidden" />
+    <input type="radio" id="round-24-step-16" name="round-24" value="16" hidden="hidden" />
+    <input type="radio" id="round-24-step-17" name="round-24" value="17" hidden="hidden" />
+    <input type="radio" id="round-24-step-18" name="round-24" value="18" hidden="hidden" />
+    <input type="radio" id="round-24-step-19" name="round-24" value="19" hidden="hidden" />
+    <input type="radio" id="round-24-step-20" name="round-24" value="20" hidden="hidden" />
+    <input type="radio" id="round-24-step-21" name="round-24" value="21" hidden="hidden" />
+    <input type="radio" id="round-24-step-22" name="round-24" value="22" hidden="hidden" />
+    <input type="radio" id="round-24-step-23" name="round-24" value="23" hidden="hidden" />
+    <input type="radio" id="round-24-step-24" name="round-24" value="24" hidden="hidden" />
+    <input type="radio" id="round-25-step-0" name="round-25" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-25-step-1" name="round-25" value="1" hidden="hidden" />
+    <input type="radio" id="round-25-step-2" name="round-25" value="2" hidden="hidden" />
+    <input type="radio" id="round-25-step-3" name="round-25" value="3" hidden="hidden" />
+    <input type="radio" id="round-25-step-4" name="round-25" value="4" hidden="hidden" />
+    <input type="radio" id="round-25-step-5" name="round-25" value="5" hidden="hidden" />
+    <input type="radio" id="round-25-step-6" name="round-25" value="6" hidden="hidden" />
+    <input type="radio" id="round-25-step-7" name="round-25" value="7" hidden="hidden" />
+    <input type="radio" id="round-25-step-8" name="round-25" value="8" hidden="hidden" />
+    <input type="radio" id="round-25-step-9" name="round-25" value="9" hidden="hidden" />
+    <input type="radio" id="round-25-step-10" name="round-25" value="10" hidden="hidden" />
+    <input type="radio" id="round-25-step-11" name="round-25" value="11" hidden="hidden" />
+    <input type="radio" id="round-25-step-12" name="round-25" value="12" hidden="hidden" />
+    <input type="radio" id="round-25-step-13" name="round-25" value="13" hidden="hidden" />
+    <input type="radio" id="round-25-step-14" name="round-25" value="14" hidden="hidden" />
+    <input type="radio" id="round-25-step-15" name="round-25" value="15" hidden="hidden" />
+    <input type="radio" id="round-25-step-16" name="round-25" value="16" hidden="hidden" />
+    <input type="radio" id="round-25-step-17" name="round-25" value="17" hidden="hidden" />
+    <input type="radio" id="round-25-step-18" name="round-25" value="18" hidden="hidden" />
+    <input type="radio" id="round-25-step-19" name="round-25" value="19" hidden="hidden" />
+    <input type="radio" id="round-25-step-20" name="round-25" value="20" hidden="hidden" />
+    <input type="radio" id="round-25-step-21" name="round-25" value="21" hidden="hidden" />
+    <input type="radio" id="round-25-step-22" name="round-25" value="22" hidden="hidden" />
+    <input type="radio" id="round-25-step-23" name="round-25" value="23" hidden="hidden" />
+    <input type="radio" id="round-25-step-24" name="round-25" value="24" hidden="hidden" />
+    <input type="radio" id="round-25-step-25" name="round-25" value="25" hidden="hidden" />
+    <input type="radio" id="round-26-step-0" name="round-26" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-26-step-1" name="round-26" value="1" hidden="hidden" />
+    <input type="radio" id="round-26-step-2" name="round-26" value="2" hidden="hidden" />
+    <input type="radio" id="round-26-step-3" name="round-26" value="3" hidden="hidden" />
+    <input type="radio" id="round-26-step-4" name="round-26" value="4" hidden="hidden" />
+    <input type="radio" id="round-26-step-5" name="round-26" value="5" hidden="hidden" />
+    <input type="radio" id="round-26-step-6" name="round-26" value="6" hidden="hidden" />
+    <input type="radio" id="round-26-step-7" name="round-26" value="7" hidden="hidden" />
+    <input type="radio" id="round-26-step-8" name="round-26" value="8" hidden="hidden" />
+    <input type="radio" id="round-26-step-9" name="round-26" value="9" hidden="hidden" />
+    <input type="radio" id="round-26-step-10" name="round-26" value="10" hidden="hidden" />
+    <input type="radio" id="round-26-step-11" name="round-26" value="11" hidden="hidden" />
+    <input type="radio" id="round-26-step-12" name="round-26" value="12" hidden="hidden" />
+    <input type="radio" id="round-26-step-13" name="round-26" value="13" hidden="hidden" />
+    <input type="radio" id="round-26-step-14" name="round-26" value="14" hidden="hidden" />
+    <input type="radio" id="round-26-step-15" name="round-26" value="15" hidden="hidden" />
+    <input type="radio" id="round-26-step-16" name="round-26" value="16" hidden="hidden" />
+    <input type="radio" id="round-26-step-17" name="round-26" value="17" hidden="hidden" />
+    <input type="radio" id="round-26-step-18" name="round-26" value="18" hidden="hidden" />
+    <input type="radio" id="round-26-step-19" name="round-26" value="19" hidden="hidden" />
+    <input type="radio" id="round-26-step-20" name="round-26" value="20" hidden="hidden" />
+    <input type="radio" id="round-26-step-21" name="round-26" value="21" hidden="hidden" />
+    <input type="radio" id="round-26-step-22" name="round-26" value="22" hidden="hidden" />
+    <input type="radio" id="round-26-step-23" name="round-26" value="23" hidden="hidden" />
+    <input type="radio" id="round-26-step-24" name="round-26" value="24" hidden="hidden" />
+    <input type="radio" id="round-26-step-25" name="round-26" value="25" hidden="hidden" />
+    <input type="radio" id="round-26-step-26" name="round-26" value="26" hidden="hidden" />
+    <input type="radio" id="round-27-step-0" name="round-27" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-27-step-1" name="round-27" value="1" hidden="hidden" />
+    <input type="radio" id="round-27-step-2" name="round-27" value="2" hidden="hidden" />
+    <input type="radio" id="round-27-step-3" name="round-27" value="3" hidden="hidden" />
+    <input type="radio" id="round-27-step-4" name="round-27" value="4" hidden="hidden" />
+    <input type="radio" id="round-27-step-5" name="round-27" value="5" hidden="hidden" />
+    <input type="radio" id="round-27-step-6" name="round-27" value="6" hidden="hidden" />
+    <input type="radio" id="round-27-step-7" name="round-27" value="7" hidden="hidden" />
+    <input type="radio" id="round-27-step-8" name="round-27" value="8" hidden="hidden" />
+    <input type="radio" id="round-27-step-9" name="round-27" value="9" hidden="hidden" />
+    <input type="radio" id="round-27-step-10" name="round-27" value="10" hidden="hidden" />
+    <input type="radio" id="round-27-step-11" name="round-27" value="11" hidden="hidden" />
+    <input type="radio" id="round-27-step-12" name="round-27" value="12" hidden="hidden" />
+    <input type="radio" id="round-27-step-13" name="round-27" value="13" hidden="hidden" />
+    <input type="radio" id="round-27-step-14" name="round-27" value="14" hidden="hidden" />
+    <input type="radio" id="round-27-step-15" name="round-27" value="15" hidden="hidden" />
+    <input type="radio" id="round-27-step-16" name="round-27" value="16" hidden="hidden" />
+    <input type="radio" id="round-27-step-17" name="round-27" value="17" hidden="hidden" />
+    <input type="radio" id="round-27-step-18" name="round-27" value="18" hidden="hidden" />
+    <input type="radio" id="round-27-step-19" name="round-27" value="19" hidden="hidden" />
+    <input type="radio" id="round-27-step-20" name="round-27" value="20" hidden="hidden" />
+    <input type="radio" id="round-27-step-21" name="round-27" value="21" hidden="hidden" />
+    <input type="radio" id="round-27-step-22" name="round-27" value="22" hidden="hidden" />
+    <input type="radio" id="round-27-step-23" name="round-27" value="23" hidden="hidden" />
+    <input type="radio" id="round-27-step-24" name="round-27" value="24" hidden="hidden" />
+    <input type="radio" id="round-27-step-25" name="round-27" value="25" hidden="hidden" />
+    <input type="radio" id="round-27-step-26" name="round-27" value="26" hidden="hidden" />
+    <input type="radio" id="round-27-step-27" name="round-27" value="27" hidden="hidden" />
+    <input type="radio" id="round-28-step-0" name="round-28" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-28-step-1" name="round-28" value="1" hidden="hidden" />
+    <input type="radio" id="round-28-step-2" name="round-28" value="2" hidden="hidden" />
+    <input type="radio" id="round-28-step-3" name="round-28" value="3" hidden="hidden" />
+    <input type="radio" id="round-28-step-4" name="round-28" value="4" hidden="hidden" />
+    <input type="radio" id="round-28-step-5" name="round-28" value="5" hidden="hidden" />
+    <input type="radio" id="round-28-step-6" name="round-28" value="6" hidden="hidden" />
+    <input type="radio" id="round-28-step-7" name="round-28" value="7" hidden="hidden" />
+    <input type="radio" id="round-28-step-8" name="round-28" value="8" hidden="hidden" />
+    <input type="radio" id="round-28-step-9" name="round-28" value="9" hidden="hidden" />
+    <input type="radio" id="round-28-step-10" name="round-28" value="10" hidden="hidden" />
+    <input type="radio" id="round-28-step-11" name="round-28" value="11" hidden="hidden" />
+    <input type="radio" id="round-28-step-12" name="round-28" value="12" hidden="hidden" />
+    <input type="radio" id="round-28-step-13" name="round-28" value="13" hidden="hidden" />
+    <input type="radio" id="round-28-step-14" name="round-28" value="14" hidden="hidden" />
+    <input type="radio" id="round-28-step-15" name="round-28" value="15" hidden="hidden" />
+    <input type="radio" id="round-28-step-16" name="round-28" value="16" hidden="hidden" />
+    <input type="radio" id="round-28-step-17" name="round-28" value="17" hidden="hidden" />
+    <input type="radio" id="round-28-step-18" name="round-28" value="18" hidden="hidden" />
+    <input type="radio" id="round-28-step-19" name="round-28" value="19" hidden="hidden" />
+    <input type="radio" id="round-28-step-20" name="round-28" value="20" hidden="hidden" />
+    <input type="radio" id="round-28-step-21" name="round-28" value="21" hidden="hidden" />
+    <input type="radio" id="round-28-step-22" name="round-28" value="22" hidden="hidden" />
+    <input type="radio" id="round-28-step-23" name="round-28" value="23" hidden="hidden" />
+    <input type="radio" id="round-28-step-24" name="round-28" value="24" hidden="hidden" />
+    <input type="radio" id="round-28-step-25" name="round-28" value="25" hidden="hidden" />
+    <input type="radio" id="round-28-step-26" name="round-28" value="26" hidden="hidden" />
+    <input type="radio" id="round-28-step-27" name="round-28" value="27" hidden="hidden" />
+    <input type="radio" id="round-28-step-28" name="round-28" value="28" hidden="hidden" />
+    <input type="radio" id="round-29-step-0" name="round-29" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-29-step-1" name="round-29" value="1" hidden="hidden" />
+    <input type="radio" id="round-29-step-2" name="round-29" value="2" hidden="hidden" />
+    <input type="radio" id="round-29-step-3" name="round-29" value="3" hidden="hidden" />
+    <input type="radio" id="round-29-step-4" name="round-29" value="4" hidden="hidden" />
+    <input type="radio" id="round-29-step-5" name="round-29" value="5" hidden="hidden" />
+    <input type="radio" id="round-29-step-6" name="round-29" value="6" hidden="hidden" />
+    <input type="radio" id="round-29-step-7" name="round-29" value="7" hidden="hidden" />
+    <input type="radio" id="round-29-step-8" name="round-29" value="8" hidden="hidden" />
+    <input type="radio" id="round-29-step-9" name="round-29" value="9" hidden="hidden" />
+    <input type="radio" id="round-29-step-10" name="round-29" value="10" hidden="hidden" />
+    <input type="radio" id="round-29-step-11" name="round-29" value="11" hidden="hidden" />
+    <input type="radio" id="round-29-step-12" name="round-29" value="12" hidden="hidden" />
+    <input type="radio" id="round-29-step-13" name="round-29" value="13" hidden="hidden" />
+    <input type="radio" id="round-29-step-14" name="round-29" value="14" hidden="hidden" />
+    <input type="radio" id="round-29-step-15" name="round-29" value="15" hidden="hidden" />
+    <input type="radio" id="round-29-step-16" name="round-29" value="16" hidden="hidden" />
+    <input type="radio" id="round-29-step-17" name="round-29" value="17" hidden="hidden" />
+    <input type="radio" id="round-29-step-18" name="round-29" value="18" hidden="hidden" />
+    <input type="radio" id="round-29-step-19" name="round-29" value="19" hidden="hidden" />
+    <input type="radio" id="round-29-step-20" name="round-29" value="20" hidden="hidden" />
+    <input type="radio" id="round-29-step-21" name="round-29" value="21" hidden="hidden" />
+    <input type="radio" id="round-29-step-22" name="round-29" value="22" hidden="hidden" />
+    <input type="radio" id="round-29-step-23" name="round-29" value="23" hidden="hidden" />
+    <input type="radio" id="round-29-step-24" name="round-29" value="24" hidden="hidden" />
+    <input type="radio" id="round-29-step-25" name="round-29" value="25" hidden="hidden" />
+    <input type="radio" id="round-29-step-26" name="round-29" value="26" hidden="hidden" />
+    <input type="radio" id="round-29-step-27" name="round-29" value="27" hidden="hidden" />
+    <input type="radio" id="round-29-step-28" name="round-29" value="28" hidden="hidden" />
+    <input type="radio" id="round-29-step-29" name="round-29" value="29" hidden="hidden" />
+    <input type="radio" id="round-30-step-0" name="round-30" checked="checked" value="0" hidden="hidden" />
+    <input type="radio" id="round-30-step-1" name="round-30" value="1" hidden="hidden" />
+    <input type="radio" id="round-30-step-2" name="round-30" value="2" hidden="hidden" />
+    <input type="radio" id="round-30-step-3" name="round-30" value="3" hidden="hidden" />
+    <input type="radio" id="round-30-step-4" name="round-30" value="4" hidden="hidden" />
+    <input type="radio" id="round-30-step-5" name="round-30" value="5" hidden="hidden" />
+    <input type="radio" id="round-30-step-6" name="round-30" value="6" hidden="hidden" />
+    <input type="radio" id="round-30-step-7" name="round-30" value="7" hidden="hidden" />
+    <input type="radio" id="round-30-step-8" name="round-30" value="8" hidden="hidden" />
+    <input type="radio" id="round-30-step-9" name="round-30" value="9" hidden="hidden" />
+    <input type="radio" id="round-30-step-10" name="round-30" value="10" hidden="hidden" />
+    <input type="radio" id="round-30-step-11" name="round-30" value="11" hidden="hidden" />
+    <input type="radio" id="round-30-step-12" name="round-30" value="12" hidden="hidden" />
+    <input type="radio" id="round-30-step-13" name="round-30" value="13" hidden="hidden" />
+    <input type="radio" id="round-30-step-14" name="round-30" value="14" hidden="hidden" />
+    <input type="radio" id="round-30-step-15" name="round-30" value="15" hidden="hidden" />
+    <input type="radio" id="round-30-step-16" name="round-30" value="16" hidden="hidden" />
+    <input type="radio" id="round-30-step-17" name="round-30" value="17" hidden="hidden" />
+    <input type="radio" id="round-30-step-18" name="round-30" value="18" hidden="hidden" />
+    <input type="radio" id="round-30-step-19" name="round-30" value="19" hidden="hidden" />
+    <input type="radio" id="round-30-step-20" name="round-30" value="20" hidden="hidden" />
+    <input type="radio" id="round-30-step-21" name="round-30" value="21" hidden="hidden" />
+    <input type="radio" id="round-30-step-22" name="round-30" value="22" hidden="hidden" />
+    <input type="radio" id="round-30-step-23" name="round-30" value="23" hidden="hidden" />
+    <input type="radio" id="round-30-step-24" name="round-30" value="24" hidden="hidden" />
+    <input type="radio" id="round-30-step-25" name="round-30" value="25" hidden="hidden" />
+    <input type="radio" id="round-30-step-26" name="round-30" value="26" hidden="hidden" />
+    <input type="radio" id="round-30-step-27" name="round-30" value="27" hidden="hidden" />
+    <input type="radio" id="round-30-step-28" name="round-30" value="28" hidden="hidden" />
+    <input type="radio" id="round-30-step-29" name="round-30" value="29" hidden="hidden" />
+    <input type="radio" id="round-30-step-30" name="round-30" value="30" hidden="hidden" />
+    <!-- radio buttons to detect if a mistake was made by the player--><input type="radio" id="correct"
+      name="correct-incorrect" checked hidden />
+    <input type="radio" id="incorrect" name="correct-incorrect" hidden />
+    <!-- CSSimon board-->
+    <div id="simon">
+      <!-- four incorrect buttons--><label class="button button-1 incorrect" for="incorrect"></label>
+      <label class="button button-2 incorrect" for="incorrect"></label>
+      <label class="button button-3 incorrect" for="incorrect"></label>
+      <label class="button button-4 incorrect" for="incorrect"></label>
+      <!-- sequence of labels for right steps for each round-->
+      <label class="button button-1 correct round-0 step-0" for="round-1"></label>
+      <label class="button button-1 correct round-1 step-0" for="round-1-step-1"></label>
+      <label class="button button-2 correct round-1 step-1" for="round-2"></label>
+      <label class="button button-1 correct round-2 step-0" for="round-2-step-1"></label>
+      <label class="button button-2 correct round-2 step-1" for="round-2-step-2"></label>
+      <label class="button button-3 correct round-2 step-2" for="round-3"></label>
+      <label class="button button-1 correct round-3 step-0" for="round-3-step-1"></label>
+      <label class="button button-2 correct round-3 step-1" for="round-3-step-2"></label>
+      <label class="button button-3 correct round-3 step-2" for="round-3-step-3"></label>
+      <label class="button button-4 correct round-3 step-3" for="round-4"></label>
+      <label class="button button-1 correct round-4 step-0" for="round-4-step-1"></label>
+      <label class="button button-2 correct round-4 step-1" for="round-4-step-2"></label>
+      <label class="button button-3 correct round-4 step-2" for="round-4-step-3"></label>
+      <label class="button button-4 correct round-4 step-3" for="round-4-step-4"></label>
+      <label class="button button-1 correct round-4 step-4" for="round-5"></label>
+      <label class="button button-1 correct round-5 step-0" for="round-5-step-1"></label>
+      <label class="button button-2 correct round-5 step-1" for="round-5-step-2"></label>
+      <label class="button button-3 correct round-5 step-2" for="round-5-step-3"></label>
+      <label class="button button-4 correct round-5 step-3" for="round-5-step-4"></label>
+      <label class="button button-1 correct round-5 step-4" for="round-5-step-5"></label>
+      <label class="button button-1 correct round-5 step-5" for="round-6"></label>
+      <label class="button button-1 correct round-6 step-0" for="round-6-step-1"></label>
+      <label class="button button-2 correct round-6 step-1" for="round-6-step-2"></label>
+      <label class="button button-3 correct round-6 step-2" for="round-6-step-3"></label>
+      <label class="button button-4 correct round-6 step-3" for="round-6-step-4"></label>
+      <label class="button button-1 correct round-6 step-4" for="round-6-step-5"></label>
+      <label class="button button-1 correct round-6 step-5" for="round-6-step-6"></label>
+      <label class="button button-3 correct round-6 step-6" for="round-7"></label>
+      <label class="button button-1 correct round-7 step-0" for="round-7-step-1"></label>
+      <label class="button button-2 correct round-7 step-1" for="round-7-step-2"></label>
+      <label class="button button-3 correct round-7 step-2" for="round-7-step-3"></label>
+      <label class="button button-4 correct round-7 step-3" for="round-7-step-4"></label>
+      <label class="button button-1 correct round-7 step-4" for="round-7-step-5"></label>
+      <label class="button button-1 correct round-7 step-5" for="round-7-step-6"></label>
+      <label class="button button-3 correct round-7 step-6" for="round-7-step-7"></label>
+      <label class="button button-4 correct round-7 step-7" for="round-8"></label>
+      <label class="button button-1 correct round-8 step-0" for="round-8-step-1"></label>
+      <label class="button button-2 correct round-8 step-1" for="round-8-step-2"></label>
+      <label class="button button-3 correct round-8 step-2" for="round-8-step-3"></label>
+      <label class="button button-4 correct round-8 step-3" for="round-8-step-4"></label>
+      <label class="button button-1 correct round-8 step-4" for="round-8-step-5"></label>
+      <label class="button button-1 correct round-8 step-5" for="round-8-step-6"></label>
+      <label class="button button-3 correct round-8 step-6" for="round-8-step-7"></label>
+      <label class="button button-4 correct round-8 step-7" for="round-8-step-8"></label>
+      <label class="button button-2 correct round-8 step-8" for="round-9"></label>
+      <label class="button button-1 correct round-9 step-0" for="round-9-step-1"></label>
+      <label class="button button-2 correct round-9 step-1" for="round-9-step-2"></label>
+      <label class="button button-3 correct round-9 step-2" for="round-9-step-3"></label>
+      <label class="button button-4 correct round-9 step-3" for="round-9-step-4"></label>
+      <label class="button button-1 correct round-9 step-4" for="round-9-step-5"></label>
+      <label class="button button-1 correct round-9 step-5" for="round-9-step-6"></label>
+      <label class="button button-3 correct round-9 step-6" for="round-9-step-7"></label>
+      <label class="button button-4 correct round-9 step-7" for="round-9-step-8"></label>
+      <label class="button button-2 correct round-9 step-8" for="round-9-step-9"></label>
+      <label class="button button-3 correct round-9 step-9" for="round-10"></label>
+      <label class="button button-1 correct round-10 step-0" for="round-10-step-1"></label>
+      <label class="button button-2 correct round-10 step-1" for="round-10-step-2"></label>
+      <label class="button button-3 correct round-10 step-2" for="round-10-step-3"></label>
+      <label class="button button-4 correct round-10 step-3" for="round-10-step-4"></label>
+      <label class="button button-1 correct round-10 step-4" for="round-10-step-5"></label>
+      <label class="button button-1 correct round-10 step-5" for="round-10-step-6"></label>
+      <label class="button button-3 correct round-10 step-6" for="round-10-step-7"></label>
+      <label class="button button-4 correct round-10 step-7" for="round-10-step-8"></label>
+      <label class="button button-2 correct round-10 step-8" for="round-10-step-9"></label>
+      <label class="button button-3 correct round-10 step-9" for="round-10-step-10"></label>
+      <label class="button button-1 correct round-10 step-10" for="round-11"></label>
+      <label class="button button-1 correct round-11 step-0" for="round-11-step-1"></label>
+      <label class="button button-2 correct round-11 step-1" for="round-11-step-2"></label>
+      <label class="button button-3 correct round-11 step-2" for="round-11-step-3"></label>
+      <label class="button button-4 correct round-11 step-3" for="round-11-step-4"></label>
+      <label class="button button-1 correct round-11 step-4" for="round-11-step-5"></label>
+      <label class="button button-1 correct round-11 step-5" for="round-11-step-6"></label>
+      <label class="button button-3 correct round-11 step-6" for="round-11-step-7"></label>
+      <label class="button button-4 correct round-11 step-7" for="round-11-step-8"></label>
+      <label class="button button-2 correct round-11 step-8" for="round-11-step-9"></label>
+      <label class="button button-3 correct round-11 step-9" for="round-11-step-10"></label>
+      <label class="button button-1 correct round-11 step-10" for="round-11-step-11"></label>
+      <label class="button button-2 correct round-11 step-11" for="round-12"></label>
+      <label class="button button-1 correct round-12 step-0" for="round-12-step-1"></label>
+      <label class="button button-2 correct round-12 step-1" for="round-12-step-2"></label>
+      <label class="button button-3 correct round-12 step-2" for="round-12-step-3"></label>
+      <label class="button button-4 correct round-12 step-3" for="round-12-step-4"></label>
+      <label class="button button-1 correct round-12 step-4" for="round-12-step-5"></label>
+      <label class="button button-1 correct round-12 step-5" for="round-12-step-6"></label>
+      <label class="button button-3 correct round-12 step-6" for="round-12-step-7"></label>
+      <label class="button button-4 correct round-12 step-7" for="round-12-step-8"></label>
+      <label class="button button-2 correct round-12 step-8" for="round-12-step-9"></label>
+      <label class="button button-3 correct round-12 step-9" for="round-12-step-10"></label>
+      <label class="button button-1 correct round-12 step-10" for="round-12-step-11"></label>
+      <label class="button button-2 correct round-12 step-11" for="round-12-step-12"></label>
+      <label class="button button-4 correct round-12 step-12" for="round-13"></label>
+      <label class="button button-1 correct round-13 step-0" for="round-13-step-1"></label>
+      <label class="button button-2 correct round-13 step-1" for="round-13-step-2"></label>
+      <label class="button button-3 correct round-13 step-2" for="round-13-step-3"></label>
+      <label class="button button-4 correct round-13 step-3" for="round-13-step-4"></label>
+      <label class="button button-1 correct round-13 step-4" for="round-13-step-5"></label>
+      <label class="button button-1 correct round-13 step-5" for="round-13-step-6"></label>
+      <label class="button button-3 correct round-13 step-6" for="round-13-step-7"></label>
+      <label class="button button-4 correct round-13 step-7" for="round-13-step-8"></label>
+      <label class="button button-2 correct round-13 step-8" for="round-13-step-9"></label>
+      <label class="button button-3 correct round-13 step-9" for="round-13-step-10"></label>
+      <label class="button button-1 correct round-13 step-10" for="round-13-step-11"></label>
+      <label class="button button-2 correct round-13 step-11" for="round-13-step-12"></label>
+      <label class="button button-4 correct round-13 step-12" for="round-13-step-13"></label>
+      <label class="button button-3 correct round-13 step-13" for="round-14"></label>
+      <label class="button button-1 correct round-14 step-0" for="round-14-step-1"></label>
+      <label class="button button-2 correct round-14 step-1" for="round-14-step-2"></label>
+      <label class="button button-3 correct round-14 step-2" for="round-14-step-3"></label>
+      <label class="button button-4 correct round-14 step-3" for="round-14-step-4"></label>
+      <label class="button button-1 correct round-14 step-4" for="round-14-step-5"></label>
+      <label class="button button-1 correct round-14 step-5" for="round-14-step-6"></label>
+      <label class="button button-3 correct round-14 step-6" for="round-14-step-7"></label>
+      <label class="button button-4 correct round-14 step-7" for="round-14-step-8"></label>
+      <label class="button button-2 correct round-14 step-8" for="round-14-step-9"></label>
+      <label class="button button-3 correct round-14 step-9" for="round-14-step-10"></label>
+      <label class="button button-1 correct round-14 step-10" for="round-14-step-11"></label>
+      <label class="button button-2 correct round-14 step-11" for="round-14-step-12"></label>
+      <label class="button button-4 correct round-14 step-12" for="round-14-step-13"></label>
+      <label class="button button-3 correct round-14 step-13" for="round-14-step-14"></label>
+      <label class="button button-3 correct round-14 step-14" for="round-15"></label>
+      <label class="button button-1 correct round-15 step-0" for="round-15-step-1"></label>
+      <label class="button button-2 correct round-15 step-1" for="round-15-step-2"></label>
+      <label class="button button-3 correct round-15 step-2" for="round-15-step-3"></label>
+      <label class="button button-4 correct round-15 step-3" for="round-15-step-4"></label>
+      <label class="button button-1 correct round-15 step-4" for="round-15-step-5"></label>
+      <label class="button button-1 correct round-15 step-5" for="round-15-step-6"></label>
+      <label class="button button-3 correct round-15 step-6" for="round-15-step-7"></label>
+      <label class="button button-4 correct round-15 step-7" for="round-15-step-8"></label>
+      <label class="button button-2 correct round-15 step-8" for="round-15-step-9"></label>
+      <label class="button button-3 correct round-15 step-9" for="round-15-step-10"></label>
+      <label class="button button-1 correct round-15 step-10" for="round-15-step-11"></label>
+      <label class="button button-2 correct round-15 step-11" for="round-15-step-12"></label>
+      <label class="button button-4 correct round-15 step-12" for="round-15-step-13"></label>
+      <label class="button button-3 correct round-15 step-13" for="round-15-step-14"></label>
+      <label class="button button-3 correct round-15 step-14" for="round-15-step-15"></label>
+      <label class="button button-2 correct round-15 step-15" for="round-16"></label>
+      <label class="button button-1 correct round-16 step-0" for="round-16-step-1"></label>
+      <label class="button button-2 correct round-16 step-1" for="round-16-step-2"></label>
+      <label class="button button-3 correct round-16 step-2" for="round-16-step-3"></label>
+      <label class="button button-4 correct round-16 step-3" for="round-16-step-4"></label>
+      <label class="button button-1 correct round-16 step-4" for="round-16-step-5"></label>
+      <label class="button button-1 correct round-16 step-5" for="round-16-step-6"></label>
+      <label class="button button-3 correct round-16 step-6" for="round-16-step-7"></label>
+      <label class="button button-4 correct round-16 step-7" for="round-16-step-8"></label>
+      <label class="button button-2 correct round-16 step-8" for="round-16-step-9"></label>
+      <label class="button button-3 correct round-16 step-9" for="round-16-step-10"></label>
+      <label class="button button-1 correct round-16 step-10" for="round-16-step-11"></label>
+      <label class="button button-2 correct round-16 step-11" for="round-16-step-12"></label>
+      <label class="button button-4 correct round-16 step-12" for="round-16-step-13"></label>
+      <label class="button button-3 correct round-16 step-13" for="round-16-step-14"></label>
+      <label class="button button-3 correct round-16 step-14" for="round-16-step-15"></label>
+      <label class="button button-2 correct round-16 step-15" for="round-16-step-16"></label>
+      <label class="button button-4 correct round-16 step-16" for="round-17"></label>
+      <label class="button button-1 correct round-17 step-0" for="round-17-step-1"></label>
+      <label class="button button-2 correct round-17 step-1" for="round-17-step-2"></label>
+      <label class="button button-3 correct round-17 step-2" for="round-17-step-3"></label>
+      <label class="button button-4 correct round-17 step-3" for="round-17-step-4"></label>
+      <label class="button button-1 correct round-17 step-4" for="round-17-step-5"></label>
+      <label class="button button-1 correct round-17 step-5" for="round-17-step-6"></label>
+      <label class="button button-3 correct round-17 step-6" for="round-17-step-7"></label>
+      <label class="button button-4 correct round-17 step-7" for="round-17-step-8"></label>
+      <label class="button button-2 correct round-17 step-8" for="round-17-step-9"></label>
+      <label class="button button-3 correct round-17 step-9" for="round-17-step-10"></label>
+      <label class="button button-1 correct round-17 step-10" for="round-17-step-11"></label>
+      <label class="button button-2 correct round-17 step-11" for="round-17-step-12"></label>
+      <label class="button button-4 correct round-17 step-12" for="round-17-step-13"></label>
+      <label class="button button-3 correct round-17 step-13" for="round-17-step-14"></label>
+      <label class="button button-3 correct round-17 step-14" for="round-17-step-15"></label>
+      <label class="button button-2 correct round-17 step-15" for="round-17-step-16"></label>
+      <label class="button button-4 correct round-17 step-16" for="round-17-step-17"></label>
+      <label class="button button-1 correct round-17 step-17" for="round-18"></label>
+      <label class="button button-1 correct round-18 step-0" for="round-18-step-1"></label>
+      <label class="button button-2 correct round-18 step-1" for="round-18-step-2"></label>
+      <label class="button button-3 correct round-18 step-2" for="round-18-step-3"></label>
+      <label class="button button-4 correct round-18 step-3" for="round-18-step-4"></label>
+      <label class="button button-1 correct round-18 step-4" for="round-18-step-5"></label>
+      <label class="button button-1 correct round-18 step-5" for="round-18-step-6"></label>
+      <label class="button button-3 correct round-18 step-6" for="round-18-step-7"></label>
+      <label class="button button-4 correct round-18 step-7" for="round-18-step-8"></label>
+      <label class="button button-2 correct round-18 step-8" for="round-18-step-9"></label>
+      <label class="button button-3 correct round-18 step-9" for="round-18-step-10"></label>
+      <label class="button button-1 correct round-18 step-10" for="round-18-step-11"></label>
+      <label class="button button-2 correct round-18 step-11" for="round-18-step-12"></label>
+      <label class="button button-4 correct round-18 step-12" for="round-18-step-13"></label>
+      <label class="button button-3 correct round-18 step-13" for="round-18-step-14"></label>
+      <label class="button button-3 correct round-18 step-14" for="round-18-step-15"></label>
+      <label class="button button-2 correct round-18 step-15" for="round-18-step-16"></label>
+      <label class="button button-4 correct round-18 step-16" for="round-18-step-17"></label>
+      <label class="button button-1 correct round-18 step-17" for="round-18-step-18"></label>
+      <label class="button button-1 correct round-18 step-18" for="round-19"></label>
+      <label class="button button-1 correct round-19 step-0" for="round-19-step-1"></label>
+      <label class="button button-2 correct round-19 step-1" for="round-19-step-2"></label>
+      <label class="button button-3 correct round-19 step-2" for="round-19-step-3"></label>
+      <label class="button button-4 correct round-19 step-3" for="round-19-step-4"></label>
+      <label class="button button-1 correct round-19 step-4" for="round-19-step-5"></label>
+      <label class="button button-1 correct round-19 step-5" for="round-19-step-6"></label>
+      <label class="button button-3 correct round-19 step-6" for="round-19-step-7"></label>
+      <label class="button button-4 correct round-19 step-7" for="round-19-step-8"></label>
+      <label class="button button-2 correct round-19 step-8" for="round-19-step-9"></label>
+      <label class="button button-3 correct round-19 step-9" for="round-19-step-10"></label>
+      <label class="button button-1 correct round-19 step-10" for="round-19-step-11"></label>
+      <label class="button button-2 correct round-19 step-11" for="round-19-step-12"></label>
+      <label class="button button-4 correct round-19 step-12" for="round-19-step-13"></label>
+      <label class="button button-3 correct round-19 step-13" for="round-19-step-14"></label>
+      <label class="button button-3 correct round-19 step-14" for="round-19-step-15"></label>
+      <label class="button button-2 correct round-19 step-15" for="round-19-step-16"></label>
+      <label class="button button-4 correct round-19 step-16" for="round-19-step-17"></label>
+      <label class="button button-1 correct round-19 step-17" for="round-19-step-18"></label>
+      <label class="button button-1 correct round-19 step-18" for="round-19-step-19"></label>
+      <label class="button button-4 correct round-19 step-19" for="round-20"></label>
+      <label class="button button-1 correct round-20 step-0" for="round-20-step-1"></label>
+      <label class="button button-2 correct round-20 step-1" for="round-20-step-2"></label>
+      <label class="button button-3 correct round-20 step-2" for="round-20-step-3"></label>
+      <label class="button button-4 correct round-20 step-3" for="round-20-step-4"></label>
+      <label class="button button-1 correct round-20 step-4" for="round-20-step-5"></label>
+      <label class="button button-1 correct round-20 step-5" for="round-20-step-6"></label>
+      <label class="button button-3 correct round-20 step-6" for="round-20-step-7"></label>
+      <label class="button button-4 correct round-20 step-7" for="round-20-step-8"></label>
+      <label class="button button-2 correct round-20 step-8" for="round-20-step-9"></label>
+      <label class="button button-3 correct round-20 step-9" for="round-20-step-10"></label>
+      <label class="button button-1 correct round-20 step-10" for="round-20-step-11"></label>
+      <label class="button button-2 correct round-20 step-11" for="round-20-step-12"></label>
+      <label class="button button-4 correct round-20 step-12" for="round-20-step-13"></label>
+      <label class="button button-3 correct round-20 step-13" for="round-20-step-14"></label>
+      <label class="button button-3 correct round-20 step-14" for="round-20-step-15"></label>
+      <label class="button button-2 correct round-20 step-15" for="round-20-step-16"></label>
+      <label class="button button-4 correct round-20 step-16" for="round-20-step-17"></label>
+      <label class="button button-1 correct round-20 step-17" for="round-20-step-18"></label>
+      <label class="button button-1 correct round-20 step-18" for="round-20-step-19"></label>
+      <label class="button button-4 correct round-20 step-19" for="round-20-step-20"></label>
+      <label class="button button-4 correct round-20 step-20" for="round-21"></label>
+      <label class="button button-1 correct round-21 step-0" for="round-21-step-1"></label>
+      <label class="button button-2 correct round-21 step-1" for="round-21-step-2"></label>
+      <label class="button button-3 correct round-21 step-2" for="round-21-step-3"></label>
+      <label class="button button-4 correct round-21 step-3" for="round-21-step-4"></label>
+      <label class="button button-1 correct round-21 step-4" for="round-21-step-5"></label>
+      <label class="button button-1 correct round-21 step-5" for="round-21-step-6"></label>
+      <label class="button button-3 correct round-21 step-6" for="round-21-step-7"></label>
+      <label class="button button-4 correct round-21 step-7" for="round-21-step-8"></label>
+      <label class="button button-2 correct round-21 step-8" for="round-21-step-9"></label>
+      <label class="button button-3 correct round-21 step-9" for="round-21-step-10"></label>
+      <label class="button button-1 correct round-21 step-10" for="round-21-step-11"></label>
+      <label class="button button-2 correct round-21 step-11" for="round-21-step-12"></label>
+      <label class="button button-4 correct round-21 step-12" for="round-21-step-13"></label>
+      <label class="button button-3 correct round-21 step-13" for="round-21-step-14"></label>
+      <label class="button button-3 correct round-21 step-14" for="round-21-step-15"></label>
+      <label class="button button-2 correct round-21 step-15" for="round-21-step-16"></label>
+      <label class="button button-4 correct round-21 step-16" for="round-21-step-17"></label>
+      <label class="button button-1 correct round-21 step-17" for="round-21-step-18"></label>
+      <label class="button button-1 correct round-21 step-18" for="round-21-step-19"></label>
+      <label class="button button-4 correct round-21 step-19" for="round-21-step-20"></label>
+      <label class="button button-4 correct round-21 step-20" for="round-21-step-21"></label>
+      <label class="button button-4 correct round-21 step-21" for="round-22"></label>
+      <label class="button button-1 correct round-22 step-0" for="round-22-step-1"></label>
+      <label class="button button-2 correct round-22 step-1" for="round-22-step-2"></label>
+      <label class="button button-3 correct round-22 step-2" for="round-22-step-3"></label>
+      <label class="button button-4 correct round-22 step-3" for="round-22-step-4"></label>
+      <label class="button button-1 correct round-22 step-4" for="round-22-step-5"></label>
+      <label class="button button-1 correct round-22 step-5" for="round-22-step-6"></label>
+      <label class="button button-3 correct round-22 step-6" for="round-22-step-7"></label>
+      <label class="button button-4 correct round-22 step-7" for="round-22-step-8"></label>
+      <label class="button button-2 correct round-22 step-8" for="round-22-step-9"></label>
+      <label class="button button-3 correct round-22 step-9" for="round-22-step-10"></label>
+      <label class="button button-1 correct round-22 step-10" for="round-22-step-11"></label>
+      <label class="button button-2 correct round-22 step-11" for="round-22-step-12"></label>
+      <label class="button button-4 correct round-22 step-12" for="round-22-step-13"></label>
+      <label class="button button-3 correct round-22 step-13" for="round-22-step-14"></label>
+      <label class="button button-3 correct round-22 step-14" for="round-22-step-15"></label>
+      <label class="button button-2 correct round-22 step-15" for="round-22-step-16"></label>
+      <label class="button button-4 correct round-22 step-16" for="round-22-step-17"></label>
+      <label class="button button-1 correct round-22 step-17" for="round-22-step-18"></label>
+      <label class="button button-1 correct round-22 step-18" for="round-22-step-19"></label>
+      <label class="button button-4 correct round-22 step-19" for="round-22-step-20"></label>
+      <label class="button button-4 correct round-22 step-20" for="round-22-step-21"></label>
+      <label class="button button-4 correct round-22 step-21" for="round-22-step-22"></label>
+      <label class="button button-2 correct round-22 step-22" for="round-23"></label>
+      <label class="button button-1 correct round-23 step-0" for="round-23-step-1"></label>
+      <label class="button button-2 correct round-23 step-1" for="round-23-step-2"></label>
+      <label class="button button-3 correct round-23 step-2" for="round-23-step-3"></label>
+      <label class="button button-4 correct round-23 step-3" for="round-23-step-4"></label>
+      <label class="button button-1 correct round-23 step-4" for="round-23-step-5"></label>
+      <label class="button button-1 correct round-23 step-5" for="round-23-step-6"></label>
+      <label class="button button-3 correct round-23 step-6" for="round-23-step-7"></label>
+      <label class="button button-4 correct round-23 step-7" for="round-23-step-8"></label>
+      <label class="button button-2 correct round-23 step-8" for="round-23-step-9"></label>
+      <label class="button button-3 correct round-23 step-9" for="round-23-step-10"></label>
+      <label class="button button-1 correct round-23 step-10" for="round-23-step-11"></label>
+      <label class="button button-2 correct round-23 step-11" for="round-23-step-12"></label>
+      <label class="button button-4 correct round-23 step-12" for="round-23-step-13"></label>
+      <label class="button button-3 correct round-23 step-13" for="round-23-step-14"></label>
+      <label class="button button-3 correct round-23 step-14" for="round-23-step-15"></label>
+      <label class="button button-2 correct round-23 step-15" for="round-23-step-16"></label>
+      <label class="button button-4 correct round-23 step-16" for="round-23-step-17"></label>
+      <label class="button button-1 correct round-23 step-17" for="round-23-step-18"></label>
+      <label class="button button-1 correct round-23 step-18" for="round-23-step-19"></label>
+      <label class="button button-4 correct round-23 step-19" for="round-23-step-20"></label>
+      <label class="button button-4 correct round-23 step-20" for="round-23-step-21"></label>
+      <label class="button button-4 correct round-23 step-21" for="round-23-step-22"></label>
+      <label class="button button-2 correct round-23 step-22" for="round-23-step-23"></label>
+      <label class="button button-3 correct round-23 step-23" for="round-24"></label>
+      <label class="button button-1 correct round-24 step-0" for="round-24-step-1"></label>
+      <label class="button button-2 correct round-24 step-1" for="round-24-step-2"></label>
+      <label class="button button-3 correct round-24 step-2" for="round-24-step-3"></label>
+      <label class="button button-4 correct round-24 step-3" for="round-24-step-4"></label>
+      <label class="button button-1 correct round-24 step-4" for="round-24-step-5"></label>
+      <label class="button button-1 correct round-24 step-5" for="round-24-step-6"></label>
+      <label class="button button-3 correct round-24 step-6" for="round-24-step-7"></label>
+      <label class="button button-4 correct round-24 step-7" for="round-24-step-8"></label>
+      <label class="button button-2 correct round-24 step-8" for="round-24-step-9"></label>
+      <label class="button button-3 correct round-24 step-9" for="round-24-step-10"></label>
+      <label class="button button-1 correct round-24 step-10" for="round-24-step-11"></label>
+      <label class="button button-2 correct round-24 step-11" for="round-24-step-12"></label>
+      <label class="button button-4 correct round-24 step-12" for="round-24-step-13"></label>
+      <label class="button button-3 correct round-24 step-13" for="round-24-step-14"></label>
+      <label class="button button-3 correct round-24 step-14" for="round-24-step-15"></label>
+      <label class="button button-2 correct round-24 step-15" for="round-24-step-16"></label>
+      <label class="button button-4 correct round-24 step-16" for="round-24-step-17"></label>
+      <label class="button button-1 correct round-24 step-17" for="round-24-step-18"></label>
+      <label class="button button-1 correct round-24 step-18" for="round-24-step-19"></label>
+      <label class="button button-4 correct round-24 step-19" for="round-24-step-20"></label>
+      <label class="button button-4 correct round-24 step-20" for="round-24-step-21"></label>
+      <label class="button button-4 correct round-24 step-21" for="round-24-step-22"></label>
+      <label class="button button-2 correct round-24 step-22" for="round-24-step-23"></label>
+      <label class="button button-3 correct round-24 step-23" for="round-24-step-24"></label>
+      <label class="button button-2 correct round-24 step-24" for="round-25"></label>
+      <label class="button button-1 correct round-25 step-0" for="round-25-step-1"></label>
+      <label class="button button-2 correct round-25 step-1" for="round-25-step-2"></label>
+      <label class="button button-3 correct round-25 step-2" for="round-25-step-3"></label>
+      <label class="button button-4 correct round-25 step-3" for="round-25-step-4"></label>
+      <label class="button button-1 correct round-25 step-4" for="round-25-step-5"></label>
+      <label class="button button-1 correct round-25 step-5" for="round-25-step-6"></label>
+      <label class="button button-3 correct round-25 step-6" for="round-25-step-7"></label>
+      <label class="button button-4 correct round-25 step-7" for="round-25-step-8"></label>
+      <label class="button button-2 correct round-25 step-8" for="round-25-step-9"></label>
+      <label class="button button-3 correct round-25 step-9" for="round-25-step-10"></label>
+      <label class="button button-1 correct round-25 step-10" for="round-25-step-11"></label>
+      <label class="button button-2 correct round-25 step-11" for="round-25-step-12"></label>
+      <label class="button button-4 correct round-25 step-12" for="round-25-step-13"></label>
+      <label class="button button-3 correct round-25 step-13" for="round-25-step-14"></label>
+      <label class="button button-3 correct round-25 step-14" for="round-25-step-15"></label>
+      <label class="button button-2 correct round-25 step-15" for="round-25-step-16"></label>
+      <label class="button button-4 correct round-25 step-16" for="round-25-step-17"></label>
+      <label class="button button-1 correct round-25 step-17" for="round-25-step-18"></label>
+      <label class="button button-1 correct round-25 step-18" for="round-25-step-19"></label>
+      <label class="button button-4 correct round-25 step-19" for="round-25-step-20"></label>
+      <label class="button button-4 correct round-25 step-20" for="round-25-step-21"></label>
+      <label class="button button-4 correct round-25 step-21" for="round-25-step-22"></label>
+      <label class="button button-2 correct round-25 step-22" for="round-25-step-23"></label>
+      <label class="button button-3 correct round-25 step-23" for="round-25-step-24"></label>
+      <label class="button button-2 correct round-25 step-24" for="round-25-step-25"></label>
+      <label class="button button-1 correct round-25 step-25" for="round-26"></label>
+      <label class="button button-1 correct round-26 step-0" for="round-26-step-1"></label>
+      <label class="button button-2 correct round-26 step-1" for="round-26-step-2"></label>
+      <label class="button button-3 correct round-26 step-2" for="round-26-step-3"></label>
+      <label class="button button-4 correct round-26 step-3" for="round-26-step-4"></label>
+      <label class="button button-1 correct round-26 step-4" for="round-26-step-5"></label>
+      <label class="button button-1 correct round-26 step-5" for="round-26-step-6"></label>
+      <label class="button button-3 correct round-26 step-6" for="round-26-step-7"></label>
+      <label class="button button-4 correct round-26 step-7" for="round-26-step-8"></label>
+      <label class="button button-2 correct round-26 step-8" for="round-26-step-9"></label>
+      <label class="button button-3 correct round-26 step-9" for="round-26-step-10"></label>
+      <label class="button button-1 correct round-26 step-10" for="round-26-step-11"></label>
+      <label class="button button-2 correct round-26 step-11" for="round-26-step-12"></label>
+      <label class="button button-4 correct round-26 step-12" for="round-26-step-13"></label>
+      <label class="button button-3 correct round-26 step-13" for="round-26-step-14"></label>
+      <label class="button button-3 correct round-26 step-14" for="round-26-step-15"></label>
+      <label class="button button-2 correct round-26 step-15" for="round-26-step-16"></label>
+      <label class="button button-4 correct round-26 step-16" for="round-26-step-17"></label>
+      <label class="button button-1 correct round-26 step-17" for="round-26-step-18"></label>
+      <label class="button button-1 correct round-26 step-18" for="round-26-step-19"></label>
+      <label class="button button-4 correct round-26 step-19" for="round-26-step-20"></label>
+      <label class="button button-4 correct round-26 step-20" for="round-26-step-21"></label>
+      <label class="button button-4 correct round-26 step-21" for="round-26-step-22"></label>
+      <label class="button button-2 correct round-26 step-22" for="round-26-step-23"></label>
+      <label class="button button-3 correct round-26 step-23" for="round-26-step-24"></label>
+      <label class="button button-2 correct round-26 step-24" for="round-26-step-25"></label>
+      <label class="button button-1 correct round-26 step-25" for="round-26-step-26"></label>
+      <label class="button button-4 correct round-26 step-26" for="round-27"></label>
+      <label class="button button-1 correct round-27 step-0" for="round-27-step-1"></label>
+      <label class="button button-2 correct round-27 step-1" for="round-27-step-2"></label>
+      <label class="button button-3 correct round-27 step-2" for="round-27-step-3"></label>
+      <label class="button button-4 correct round-27 step-3" for="round-27-step-4"></label>
+      <label class="button button-1 correct round-27 step-4" for="round-27-step-5"></label>
+      <label class="button button-1 correct round-27 step-5" for="round-27-step-6"></label>
+      <label class="button button-3 correct round-27 step-6" for="round-27-step-7"></label>
+      <label class="button button-4 correct round-27 step-7" for="round-27-step-8"></label>
+      <label class="button button-2 correct round-27 step-8" for="round-27-step-9"></label>
+      <label class="button button-3 correct round-27 step-9" for="round-27-step-10"></label>
+      <label class="button button-1 correct round-27 step-10" for="round-27-step-11"></label>
+      <label class="button button-2 correct round-27 step-11" for="round-27-step-12"></label>
+      <label class="button button-4 correct round-27 step-12" for="round-27-step-13"></label>
+      <label class="button button-3 correct round-27 step-13" for="round-27-step-14"></label>
+      <label class="button button-3 correct round-27 step-14" for="round-27-step-15"></label>
+      <label class="button button-2 correct round-27 step-15" for="round-27-step-16"></label>
+      <label class="button button-4 correct round-27 step-16" for="round-27-step-17"></label>
+      <label class="button button-1 correct round-27 step-17" for="round-27-step-18"></label>
+      <label class="button button-1 correct round-27 step-18" for="round-27-step-19"></label>
+      <label class="button button-4 correct round-27 step-19" for="round-27-step-20"></label>
+      <label class="button button-4 correct round-27 step-20" for="round-27-step-21"></label>
+      <label class="button button-4 correct round-27 step-21" for="round-27-step-22"></label>
+      <label class="button button-2 correct round-27 step-22" for="round-27-step-23"></label>
+      <label class="button button-3 correct round-27 step-23" for="round-27-step-24"></label>
+      <label class="button button-2 correct round-27 step-24" for="round-27-step-25"></label>
+      <label class="button button-1 correct round-27 step-25" for="round-27-step-26"></label>
+      <label class="button button-4 correct round-27 step-26" for="round-27-step-27"></label>
+      <label class="button button-2 correct round-27 step-27" for="round-28"></label>
+      <label class="button button-1 correct round-28 step-0" for="round-28-step-1"></label>
+      <label class="button button-2 correct round-28 step-1" for="round-28-step-2"></label>
+      <label class="button button-3 correct round-28 step-2" for="round-28-step-3"></label>
+      <label class="button button-4 correct round-28 step-3" for="round-28-step-4"></label>
+      <label class="button button-1 correct round-28 step-4" for="round-28-step-5"></label>
+      <label class="button button-1 correct round-28 step-5" for="round-28-step-6"></label>
+      <label class="button button-3 correct round-28 step-6" for="round-28-step-7"></label>
+      <label class="button button-4 correct round-28 step-7" for="round-28-step-8"></label>
+      <label class="button button-2 correct round-28 step-8" for="round-28-step-9"></label>
+      <label class="button button-3 correct round-28 step-9" for="round-28-step-10"></label>
+      <label class="button button-1 correct round-28 step-10" for="round-28-step-11"></label>
+      <label class="button button-2 correct round-28 step-11" for="round-28-step-12"></label>
+      <label class="button button-4 correct round-28 step-12" for="round-28-step-13"></label>
+      <label class="button button-3 correct round-28 step-13" for="round-28-step-14"></label>
+      <label class="button button-3 correct round-28 step-14" for="round-28-step-15"></label>
+      <label class="button button-2 correct round-28 step-15" for="round-28-step-16"></label>
+      <label class="button button-4 correct round-28 step-16" for="round-28-step-17"></label>
+      <label class="button button-1 correct round-28 step-17" for="round-28-step-18"></label>
+      <label class="button button-1 correct round-28 step-18" for="round-28-step-19"></label>
+      <label class="button button-4 correct round-28 step-19" for="round-28-step-20"></label>
+      <label class="button button-4 correct round-28 step-20" for="round-28-step-21"></label>
+      <label class="button button-4 correct round-28 step-21" for="round-28-step-22"></label>
+      <label class="button button-2 correct round-28 step-22" for="round-28-step-23"></label>
+      <label class="button button-3 correct round-28 step-23" for="round-28-step-24"></label>
+      <label class="button button-2 correct round-28 step-24" for="round-28-step-25"></label>
+      <label class="button button-1 correct round-28 step-25" for="round-28-step-26"></label>
+      <label class="button button-4 correct round-28 step-26" for="round-28-step-27"></label>
+      <label class="button button-2 correct round-28 step-27" for="round-28-step-28"></label>
+      <label class="button button-3 correct round-28 step-28" for="round-29"></label>
+      <label class="button button-1 correct round-29 step-0" for="round-29-step-1"></label>
+      <label class="button button-2 correct round-29 step-1" for="round-29-step-2"></label>
+      <label class="button button-3 correct round-29 step-2" for="round-29-step-3"></label>
+      <label class="button button-4 correct round-29 step-3" for="round-29-step-4"></label>
+      <label class="button button-1 correct round-29 step-4" for="round-29-step-5"></label>
+      <label class="button button-1 correct round-29 step-5" for="round-29-step-6"></label>
+      <label class="button button-3 correct round-29 step-6" for="round-29-step-7"></label>
+      <label class="button button-4 correct round-29 step-7" for="round-29-step-8"></label>
+      <label class="button button-2 correct round-29 step-8" for="round-29-step-9"></label>
+      <label class="button button-3 correct round-29 step-9" for="round-29-step-10"></label>
+      <label class="button button-1 correct round-29 step-10" for="round-29-step-11"></label>
+      <label class="button button-2 correct round-29 step-11" for="round-29-step-12"></label>
+      <label class="button button-4 correct round-29 step-12" for="round-29-step-13"></label>
+      <label class="button button-3 correct round-29 step-13" for="round-29-step-14"></label>
+      <label class="button button-3 correct round-29 step-14" for="round-29-step-15"></label>
+      <label class="button button-2 correct round-29 step-15" for="round-29-step-16"></label>
+      <label class="button button-4 correct round-29 step-16" for="round-29-step-17"></label>
+      <label class="button button-1 correct round-29 step-17" for="round-29-step-18"></label>
+      <label class="button button-1 correct round-29 step-18" for="round-29-step-19"></label>
+      <label class="button button-4 correct round-29 step-19" for="round-29-step-20"></label>
+      <label class="button button-4 correct round-29 step-20" for="round-29-step-21"></label>
+      <label class="button button-4 correct round-29 step-21" for="round-29-step-22"></label>
+      <label class="button button-2 correct round-29 step-22" for="round-29-step-23"></label>
+      <label class="button button-3 correct round-29 step-23" for="round-29-step-24"></label>
+      <label class="button button-2 correct round-29 step-24" for="round-29-step-25"></label>
+      <label class="button button-1 correct round-29 step-25" for="round-29-step-26"></label>
+      <label class="button button-4 correct round-29 step-26" for="round-29-step-27"></label>
+      <label class="button button-2 correct round-29 step-27" for="round-29-step-28"></label>
+      <label class="button button-3 correct round-29 step-28" for="round-29-step-29"></label>
+      <label class="button button-1 correct round-29 step-29" for="round-30"></label>
+      <label class="button button-1 correct round-30 step-0" for="round-30-step-1"></label>
+      <label class="button button-2 correct round-30 step-1" for="round-30-step-2"></label>
+      <label class="button button-3 correct round-30 step-2" for="round-30-step-3"></label>
+      <label class="button button-4 correct round-30 step-3" for="round-30-step-4"></label>
+      <label class="button button-1 correct round-30 step-4" for="round-30-step-5"></label>
+      <label class="button button-1 correct round-30 step-5" for="round-30-step-6"></label>
+      <label class="button button-3 correct round-30 step-6" for="round-30-step-7"></label>
+      <label class="button button-4 correct round-30 step-7" for="round-30-step-8"></label>
+      <label class="button button-2 correct round-30 step-8" for="round-30-step-9"></label>
+      <label class="button button-3 correct round-30 step-9" for="round-30-step-10"></label>
+      <label class="button button-1 correct round-30 step-10" for="round-30-step-11"></label>
+      <label class="button button-2 correct round-30 step-11" for="round-30-step-12"></label>
+      <label class="button button-4 correct round-30 step-12" for="round-30-step-13"></label>
+      <label class="button button-3 correct round-30 step-13" for="round-30-step-14"></label>
+      <label class="button button-3 correct round-30 step-14" for="round-30-step-15"></label>
+      <label class="button button-2 correct round-30 step-15" for="round-30-step-16"></label>
+      <label class="button button-4 correct round-30 step-16" for="round-30-step-17"></label>
+      <label class="button button-1 correct round-30 step-17" for="round-30-step-18"></label>
+      <label class="button button-1 correct round-30 step-18" for="round-30-step-19"></label>
+      <label class="button button-4 correct round-30 step-19" for="round-30-step-20"></label>
+      <label class="button button-4 correct round-30 step-20" for="round-30-step-21"></label>
+      <label class="button button-4 correct round-30 step-21" for="round-30-step-22"></label>
+      <label class="button button-2 correct round-30 step-22" for="round-30-step-23"></label>
+      <label class="button button-3 correct round-30 step-23" for="round-30-step-24"></label>
+      <label class="button button-2 correct round-30 step-24" for="round-30-step-25"></label>
+      <label class="button button-1 correct round-30 step-25" for="round-30-step-26"></label>
+      <label class="button button-4 correct round-30 step-26" for="round-30-step-27"></label>
+      <label class="button button-2 correct round-30 step-27" for="round-30-step-28"></label>
+      <label class="button button-3 correct round-30 step-28" for="round-30-step-29"></label>
+      <label class="button button-1 correct round-30 step-29" for="round-30-step-30"></label>
+      <label class="button button-undefined correct round-30 step-30" for="round-31"></label>
+      <!-- 1 2 3 4 1 1 3 4 2 3 1 2 4 3 3 2 4 1 1 4 4 4 2 3 2 1 4 2 3 1 -->
+      <!-- center of board-->
+      <div id="center">
+        <div id="card">
+          <h1>CSSimon</h1>
+          <h2>by Alvaro Montoro</h2>
+          <div id="onoff">
+            <label id="switch" for="cb-onoff"></label>
+          </div>
+        </div>
+      </div>
+      <div id="protector"></div>
+    </div>
+    <!-- game over message-->
+    <div id="gameover">
+      <div>Oh no! You Lost!</div>
+      <div>Reload the page to start again!</div>
+    </div>
+    <!-- game over message-->
+    <div id="youwon">
+      <div>Yes! You Won!</div>
+      <div>Reload the page to start again!</div>
+    </div>
+  </body>
+</html>

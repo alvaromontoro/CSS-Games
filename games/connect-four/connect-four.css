@@ -1,0 +1,2624 @@
+@charset "UTF-8";
+label.lb, input.rd {
+  display: none;
+}
+
+#board {
+  position: absolute;
+  display: inline-block;
+  bottom: 150px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+}
+#board .foot {
+  position: absolute;
+  bottom: -40px;
+  left: -11px;
+  height: 60px;
+  width: 14px;
+  background: linear-gradient(#002bff, #0024d6);
+  z-index: 2;
+  box-shadow: inset 0 -25px 10px -5px rgba(0, 0, 0, 0.2);
+}
+#board .foot#foot-right {
+  left: auto;
+  right: -11px;
+}
+#board .foot::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: -4px;
+  width: 22px;
+  height: 12px;
+  background: #0022cc;
+  border-radius: 4px 4px 0 0;
+}
+#board #tiles {
+  width: 350px;
+  height: 300px;
+  box-shadow: 0 3px 0 0 #002bff, 3px 3px 0 3px #002bff, -3px 3px 0 3px #002bff;
+  border-radius: 5px;
+}
+#board #tiles .tile {
+  /*width: calc(100% / 7);
+  height: 0;
+  padding-top: calc(100% / 7);*/
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#board #tiles .tile::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 30px #3355ff;
+}
+#board #tiles .labels {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+}
+#board #tiles .lb {
+  position: absolute;
+  display: none;
+  width: 50px;
+  height: 450px;
+  /* fallback value */
+  height: 100vmax;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+#board #tiles .lb:hover {
+  background: rgba(0, 0, 0, 0);
+}
+#board #tiles .lb:hover[for$='-1'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(0px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-2'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(50px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-3'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(100px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-4'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(150px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-5'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(200px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-6'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(250px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-7'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(300px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-8'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(0px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-9'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(50px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-10'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(100px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-11'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(150px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-12'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(200px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-13'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(250px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-14'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(300px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-15'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(0px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-16'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(50px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-17'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(100px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-18'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(150px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-19'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(200px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-20'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(250px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-21'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(300px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-22'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(0px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-23'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(50px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-24'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(100px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-25'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(150px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-26'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(200px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-27'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(250px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-28'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(300px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-29'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(0px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-30'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(50px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-31'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(100px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-32'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(150px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-33'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(200px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-34'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(250px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-35'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(300px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-36'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(0px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-37'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(50px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-38'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(100px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-39'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(150px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-40'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(200px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-41'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(250px, 0, 0);
+}
+#board #tiles .lb:hover[for$='-42'] ~ .hand {
+  bottom: 350px;
+  transform: translate3d(300px, 0, 0);
+}
+#board #tiles .lb:hover::before {
+  content: "▼";
+  position: absolute;
+  bottom: 320px;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  animation: moveArrow 0.75s infinite;
+  animation-timing-function: linear;
+}
+#board #tiles .lb[for$='-1'] {
+  left: 0px;
+  z-index: 45;
+}
+#board #tiles .lb[for$='-2'] {
+  left: 50px;
+  z-index: 44;
+}
+#board #tiles .lb[for$='-3'] {
+  left: 100px;
+  z-index: 43;
+}
+#board #tiles .lb[for$='-4'] {
+  left: 150px;
+  z-index: 42;
+}
+#board #tiles .lb[for$='-5'] {
+  left: 200px;
+  z-index: 41;
+}
+#board #tiles .lb[for$='-6'] {
+  left: 250px;
+  z-index: 40;
+}
+#board #tiles .lb[for$='-7'] {
+  left: 300px;
+  z-index: 39;
+}
+#board #tiles .lb[for$='-8'] {
+  left: 0px;
+  z-index: 38;
+}
+#board #tiles .lb[for$='-9'] {
+  left: 50px;
+  z-index: 37;
+}
+#board #tiles .lb[for$='-10'] {
+  left: 100px;
+  z-index: 36;
+}
+#board #tiles .lb[for$='-11'] {
+  left: 150px;
+  z-index: 35;
+}
+#board #tiles .lb[for$='-12'] {
+  left: 200px;
+  z-index: 34;
+}
+#board #tiles .lb[for$='-13'] {
+  left: 250px;
+  z-index: 33;
+}
+#board #tiles .lb[for$='-14'] {
+  left: 300px;
+  z-index: 32;
+}
+#board #tiles .lb[for$='-15'] {
+  left: 0px;
+  z-index: 31;
+}
+#board #tiles .lb[for$='-16'] {
+  left: 50px;
+  z-index: 30;
+}
+#board #tiles .lb[for$='-17'] {
+  left: 100px;
+  z-index: 29;
+}
+#board #tiles .lb[for$='-18'] {
+  left: 150px;
+  z-index: 28;
+}
+#board #tiles .lb[for$='-19'] {
+  left: 200px;
+  z-index: 27;
+}
+#board #tiles .lb[for$='-20'] {
+  left: 250px;
+  z-index: 26;
+}
+#board #tiles .lb[for$='-21'] {
+  left: 300px;
+  z-index: 25;
+}
+#board #tiles .lb[for$='-22'] {
+  left: 0px;
+  z-index: 24;
+}
+#board #tiles .lb[for$='-23'] {
+  left: 50px;
+  z-index: 23;
+}
+#board #tiles .lb[for$='-24'] {
+  left: 100px;
+  z-index: 22;
+}
+#board #tiles .lb[for$='-25'] {
+  left: 150px;
+  z-index: 21;
+}
+#board #tiles .lb[for$='-26'] {
+  left: 200px;
+  z-index: 20;
+}
+#board #tiles .lb[for$='-27'] {
+  left: 250px;
+  z-index: 19;
+}
+#board #tiles .lb[for$='-28'] {
+  left: 300px;
+  z-index: 18;
+}
+#board #tiles .lb[for$='-29'] {
+  left: 0px;
+  z-index: 17;
+}
+#board #tiles .lb[for$='-30'] {
+  left: 50px;
+  z-index: 16;
+}
+#board #tiles .lb[for$='-31'] {
+  left: 100px;
+  z-index: 15;
+}
+#board #tiles .lb[for$='-32'] {
+  left: 150px;
+  z-index: 14;
+}
+#board #tiles .lb[for$='-33'] {
+  left: 200px;
+  z-index: 13;
+}
+#board #tiles .lb[for$='-34'] {
+  left: 250px;
+  z-index: 12;
+}
+#board #tiles .lb[for$='-35'] {
+  left: 300px;
+  z-index: 11;
+}
+#board #tiles .lb[for$='-36'] {
+  left: 0px;
+  z-index: 10;
+}
+#board #tiles .lb[for$='-37'] {
+  left: 50px;
+  z-index: 9;
+}
+#board #tiles .lb[for$='-38'] {
+  left: 100px;
+  z-index: 8;
+}
+#board #tiles .lb[for$='-39'] {
+  left: 150px;
+  z-index: 7;
+}
+#board #tiles .lb[for$='-40'] {
+  left: 200px;
+  z-index: 6;
+}
+#board #tiles .lb[for$='-41'] {
+  left: 250px;
+  z-index: 5;
+}
+#board #tiles .lb[for$='-42'] {
+  left: 300px;
+  z-index: 4;
+}
+
+@keyframes moveArrow {
+  0% {
+    color: white;
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+  100% {
+    color: rgba(255, 255, 255, 0);
+    transform: translate3d(-50%, 20px, 0) scale(1.5);
+  }
+}
+#rd-1-1:checked ~ #board #tile1::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-2:checked ~ #board #tile2::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-3:checked ~ #board #tile3::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-4:checked ~ #board #tile4::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-5:checked ~ #board #tile5::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-6:checked ~ #board #tile6::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-7:checked ~ #board #tile7::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-8:checked ~ #board #tile8::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-9:checked ~ #board #tile9::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-10:checked ~ #board #tile10::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-11:checked ~ #board #tile11::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-12:checked ~ #board #tile12::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-13:checked ~ #board #tile13::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-14:checked ~ #board #tile14::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-15:checked ~ #board #tile15::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-16:checked ~ #board #tile16::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-17:checked ~ #board #tile17::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-18:checked ~ #board #tile18::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-19:checked ~ #board #tile19::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-20:checked ~ #board #tile20::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-21:checked ~ #board #tile21::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-22:checked ~ #board #tile22::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-23:checked ~ #board #tile23::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-24:checked ~ #board #tile24::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-25:checked ~ #board #tile25::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-26:checked ~ #board #tile26::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-27:checked ~ #board #tile27::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-28:checked ~ #board #tile28::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-29:checked ~ #board #tile29::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-30:checked ~ #board #tile30::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-31:checked ~ #board #tile31::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-32:checked ~ #board #tile32::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-33:checked ~ #board #tile33::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-34:checked ~ #board #tile34::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-35:checked ~ #board #tile35::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-36:checked ~ #board #tile36::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-37:checked ~ #board #tile37::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-38:checked ~ #board #tile38::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-39:checked ~ #board #tile39::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-40:checked ~ #board #tile40::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-41:checked ~ #board #tile41::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-1-42:checked ~ #board #tile42::before {
+  background: #D01F3C;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-1:checked ~ #board #tile1::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-2:checked ~ #board #tile2::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-3:checked ~ #board #tile3::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-4:checked ~ #board #tile4::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-5:checked ~ #board #tile5::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-6:checked ~ #board #tile6::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-7:checked ~ #board #tile7::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-8:checked ~ #board #tile8::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-9:checked ~ #board #tile9::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-10:checked ~ #board #tile10::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-11:checked ~ #board #tile11::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-12:checked ~ #board #tile12::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-13:checked ~ #board #tile13::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-14:checked ~ #board #tile14::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-15:checked ~ #board #tile15::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-16:checked ~ #board #tile16::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-17:checked ~ #board #tile17::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-18:checked ~ #board #tile18::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-19:checked ~ #board #tile19::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-20:checked ~ #board #tile20::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-21:checked ~ #board #tile21::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-22:checked ~ #board #tile22::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-23:checked ~ #board #tile23::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-24:checked ~ #board #tile24::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-25:checked ~ #board #tile25::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-26:checked ~ #board #tile26::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-27:checked ~ #board #tile27::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-28:checked ~ #board #tile28::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-29:checked ~ #board #tile29::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-30:checked ~ #board #tile30::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-31:checked ~ #board #tile31::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-32:checked ~ #board #tile32::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-33:checked ~ #board #tile33::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-34:checked ~ #board #tile34::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-35:checked ~ #board #tile35::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-36:checked ~ #board #tile36::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-37:checked ~ #board #tile37::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-38:checked ~ #board #tile38::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-39:checked ~ #board #tile39::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-40:checked ~ #board #tile40::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-41:checked ~ #board #tile41::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#rd-2-42:checked ~ #board #tile42::before {
+  background: #FFFF33;
+  box-shadow: inset 0 0 0 30px #3355ff, inset 0px 1px 3px 31px rgba(0, 0, 0, 0.4);
+}
+
+#board #tiles label[id$="-42"] {
+  display: block;
+}
+
+#board #tiles label[id$="-41"] {
+  display: block;
+}
+
+#board #tiles label[id$="-40"] {
+  display: block;
+}
+
+#board #tiles label[id$="-39"] {
+  display: block;
+}
+
+#board #tiles label[id$="-38"] {
+  display: block;
+}
+
+#board #tiles label[id$="-37"] {
+  display: block;
+}
+
+#board #tiles label[id$="-36"] {
+  display: block;
+}
+
+.rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 2 ";
+}
+
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels1 {
+  z-index: 100;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #board #labels2 {
+  z-index: -1;
+}
+.rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ .rd:checked ~ #congratulations h2::before {
+  content: "Player 1 ";
+}
+
+[name="rd42"]:checked ~ #board #tiles [for$="-35"] {
+  display: block;
+}
+
+[name="rd41"]:checked ~ #board #tiles [for$="-34"] {
+  display: block;
+}
+
+[name="rd40"]:checked ~ #board #tiles [for$="-33"] {
+  display: block;
+}
+
+[name="rd39"]:checked ~ #board #tiles [for$="-32"] {
+  display: block;
+}
+
+[name="rd38"]:checked ~ #board #tiles [for$="-31"] {
+  display: block;
+}
+
+[name="rd37"]:checked ~ #board #tiles [for$="-30"] {
+  display: block;
+}
+
+[name="rd36"]:checked ~ #board #tiles [for$="-29"] {
+  display: block;
+}
+
+[name="rd35"]:checked ~ #board #tiles [for$="-28"] {
+  display: block;
+}
+
+[name="rd34"]:checked ~ #board #tiles [for$="-27"] {
+  display: block;
+}
+
+[name="rd33"]:checked ~ #board #tiles [for$="-26"] {
+  display: block;
+}
+
+[name="rd32"]:checked ~ #board #tiles [for$="-25"] {
+  display: block;
+}
+
+[name="rd31"]:checked ~ #board #tiles [for$="-24"] {
+  display: block;
+}
+
+[name="rd30"]:checked ~ #board #tiles [for$="-23"] {
+  display: block;
+}
+
+[name="rd29"]:checked ~ #board #tiles [for$="-22"] {
+  display: block;
+}
+
+[name="rd28"]:checked ~ #board #tiles [for$="-21"] {
+  display: block;
+}
+
+[name="rd27"]:checked ~ #board #tiles [for$="-20"] {
+  display: block;
+}
+
+[name="rd26"]:checked ~ #board #tiles [for$="-19"] {
+  display: block;
+}
+
+[name="rd25"]:checked ~ #board #tiles [for$="-18"] {
+  display: block;
+}
+
+[name="rd24"]:checked ~ #board #tiles [for$="-17"] {
+  display: block;
+}
+
+[name="rd23"]:checked ~ #board #tiles [for$="-16"] {
+  display: block;
+}
+
+[name="rd22"]:checked ~ #board #tiles [for$="-15"] {
+  display: block;
+}
+
+[name="rd21"]:checked ~ #board #tiles [for$="-14"] {
+  display: block;
+}
+
+[name="rd20"]:checked ~ #board #tiles [for$="-13"] {
+  display: block;
+}
+
+[name="rd19"]:checked ~ #board #tiles [for$="-12"] {
+  display: block;
+}
+
+[name="rd18"]:checked ~ #board #tiles [for$="-11"] {
+  display: block;
+}
+
+[name="rd17"]:checked ~ #board #tiles [for$="-10"] {
+  display: block;
+}
+
+[name="rd16"]:checked ~ #board #tiles [for$="-9"] {
+  display: block;
+}
+
+[name="rd15"]:checked ~ #board #tiles [for$="-8"] {
+  display: block;
+}
+
+[name="rd14"]:checked ~ #board #tiles [for$="-7"] {
+  display: block;
+}
+
+[name="rd13"]:checked ~ #board #tiles [for$="-6"] {
+  display: block;
+}
+
+[name="rd12"]:checked ~ #board #tiles [for$="-5"] {
+  display: block;
+}
+
+[name="rd11"]:checked ~ #board #tiles [for$="-4"] {
+  display: block;
+}
+
+[name="rd10"]:checked ~ #board #tiles [for$="-3"] {
+  display: block;
+}
+
+[name="rd9"]:checked ~ #board #tiles [for$="-2"] {
+  display: block;
+}
+
+[name="rd8"]:checked ~ #board #tiles [for$="-1"] {
+  display: block;
+}
+
+[name="rd1"]:checked ~ #board #tiles .lb-col-1 {
+  display: none !important;
+}
+
+[name="rd2"]:checked ~ #board #tiles .lb-col-2 {
+  display: none !important;
+}
+
+[name="rd3"]:checked ~ #board #tiles .lb-col-3 {
+  display: none !important;
+}
+
+[name="rd4"]:checked ~ #board #tiles .lb-col-4 {
+  display: none !important;
+}
+
+[name="rd5"]:checked ~ #board #tiles .lb-col-5 {
+  display: none !important;
+}
+
+[name="rd6"]:checked ~ #board #tiles .lb-col-6 {
+  display: none !important;
+}
+
+[name="rd7"]:checked ~ #board #tiles .lb-col-0 {
+  display: none !important;
+}
+
+[name=rd7]:checked ~ [name=rd6]:checked ~ [name=rd5]:checked ~ [name=rd4]:checked ~ [name=rd3]:checked ~ [name=rd2]:checked ~ [name=rd1]:checked ~ #draw {
+  display: block;
+}
+
+#rd-1-42:checked ~ #rd-1-41:checked ~ #rd-1-40:checked ~ #rd-1-39:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-42:checked ~ #rd-1-41:checked ~ #rd-1-40:checked ~ #rd-1-39:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-41:checked ~ #rd-1-40:checked ~ #rd-1-39:checked ~ #rd-1-38:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-41:checked ~ #rd-1-40:checked ~ #rd-1-39:checked ~ #rd-1-38:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-40:checked ~ #rd-1-39:checked ~ #rd-1-38:checked ~ #rd-1-37:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-40:checked ~ #rd-1-39:checked ~ #rd-1-38:checked ~ #rd-1-37:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-39:checked ~ #rd-1-38:checked ~ #rd-1-37:checked ~ #rd-1-36:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-39:checked ~ #rd-1-38:checked ~ #rd-1-37:checked ~ #rd-1-36:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-35:checked ~ #rd-1-34:checked ~ #rd-1-33:checked ~ #rd-1-32:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-35:checked ~ #rd-1-34:checked ~ #rd-1-33:checked ~ #rd-1-32:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-34:checked ~ #rd-1-33:checked ~ #rd-1-32:checked ~ #rd-1-31:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-34:checked ~ #rd-1-33:checked ~ #rd-1-32:checked ~ #rd-1-31:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-33:checked ~ #rd-1-32:checked ~ #rd-1-31:checked ~ #rd-1-30:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-33:checked ~ #rd-1-32:checked ~ #rd-1-31:checked ~ #rd-1-30:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-32:checked ~ #rd-1-31:checked ~ #rd-1-30:checked ~ #rd-1-29:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-32:checked ~ #rd-1-31:checked ~ #rd-1-30:checked ~ #rd-1-29:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-28:checked ~ #rd-1-27:checked ~ #rd-1-26:checked ~ #rd-1-25:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-28:checked ~ #rd-1-27:checked ~ #rd-1-26:checked ~ #rd-1-25:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-27:checked ~ #rd-1-26:checked ~ #rd-1-25:checked ~ #rd-1-24:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-27:checked ~ #rd-1-26:checked ~ #rd-1-25:checked ~ #rd-1-24:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-26:checked ~ #rd-1-25:checked ~ #rd-1-24:checked ~ #rd-1-23:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-26:checked ~ #rd-1-25:checked ~ #rd-1-24:checked ~ #rd-1-23:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-25:checked ~ #rd-1-24:checked ~ #rd-1-23:checked ~ #rd-1-22:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-25:checked ~ #rd-1-24:checked ~ #rd-1-23:checked ~ #rd-1-22:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-21:checked ~ #rd-1-20:checked ~ #rd-1-19:checked ~ #rd-1-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-21:checked ~ #rd-1-20:checked ~ #rd-1-19:checked ~ #rd-1-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-20:checked ~ #rd-1-19:checked ~ #rd-1-18:checked ~ #rd-1-17:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-20:checked ~ #rd-1-19:checked ~ #rd-1-18:checked ~ #rd-1-17:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-19:checked ~ #rd-1-18:checked ~ #rd-1-17:checked ~ #rd-1-16:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-19:checked ~ #rd-1-18:checked ~ #rd-1-17:checked ~ #rd-1-16:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-18:checked ~ #rd-1-17:checked ~ #rd-1-16:checked ~ #rd-1-15:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-18:checked ~ #rd-1-17:checked ~ #rd-1-16:checked ~ #rd-1-15:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-14:checked ~ #rd-1-13:checked ~ #rd-1-12:checked ~ #rd-1-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-14:checked ~ #rd-1-13:checked ~ #rd-1-12:checked ~ #rd-1-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-13:checked ~ #rd-1-12:checked ~ #rd-1-11:checked ~ #rd-1-10:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-13:checked ~ #rd-1-12:checked ~ #rd-1-11:checked ~ #rd-1-10:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-12:checked ~ #rd-1-11:checked ~ #rd-1-10:checked ~ #rd-1-9:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-12:checked ~ #rd-1-11:checked ~ #rd-1-10:checked ~ #rd-1-9:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-11:checked ~ #rd-1-10:checked ~ #rd-1-9:checked ~ #rd-1-8:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-11:checked ~ #rd-1-10:checked ~ #rd-1-9:checked ~ #rd-1-8:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-7:checked ~ #rd-1-6:checked ~ #rd-1-5:checked ~ #rd-1-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-7:checked ~ #rd-1-6:checked ~ #rd-1-5:checked ~ #rd-1-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-6:checked ~ #rd-1-5:checked ~ #rd-1-4:checked ~ #rd-1-3:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-6:checked ~ #rd-1-5:checked ~ #rd-1-4:checked ~ #rd-1-3:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-5:checked ~ #rd-1-4:checked ~ #rd-1-3:checked ~ #rd-1-2:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-5:checked ~ #rd-1-4:checked ~ #rd-1-3:checked ~ #rd-1-2:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-4:checked ~ #rd-1-3:checked ~ #rd-1-2:checked ~ #rd-1-1:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-4:checked ~ #rd-1-3:checked ~ #rd-1-2:checked ~ #rd-1-1:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-42:checked ~ #rd-1-35:checked ~ #rd-1-28:checked ~ #rd-1-21:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-42:checked ~ #rd-1-35:checked ~ #rd-1-28:checked ~ #rd-1-21:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-35:checked ~ #rd-1-28:checked ~ #rd-1-21:checked ~ #rd-1-14:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-35:checked ~ #rd-1-28:checked ~ #rd-1-21:checked ~ #rd-1-14:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-28:checked ~ #rd-1-21:checked ~ #rd-1-14:checked ~ #rd-1-7:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-28:checked ~ #rd-1-21:checked ~ #rd-1-14:checked ~ #rd-1-7:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-41:checked ~ #rd-1-34:checked ~ #rd-1-27:checked ~ #rd-1-20:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-41:checked ~ #rd-1-34:checked ~ #rd-1-27:checked ~ #rd-1-20:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-34:checked ~ #rd-1-27:checked ~ #rd-1-20:checked ~ #rd-1-13:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-34:checked ~ #rd-1-27:checked ~ #rd-1-20:checked ~ #rd-1-13:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-27:checked ~ #rd-1-20:checked ~ #rd-1-13:checked ~ #rd-1-6:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-27:checked ~ #rd-1-20:checked ~ #rd-1-13:checked ~ #rd-1-6:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-40:checked ~ #rd-1-33:checked ~ #rd-1-26:checked ~ #rd-1-19:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-40:checked ~ #rd-1-33:checked ~ #rd-1-26:checked ~ #rd-1-19:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-33:checked ~ #rd-1-26:checked ~ #rd-1-19:checked ~ #rd-1-12:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-33:checked ~ #rd-1-26:checked ~ #rd-1-19:checked ~ #rd-1-12:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-26:checked ~ #rd-1-19:checked ~ #rd-1-12:checked ~ #rd-1-5:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-26:checked ~ #rd-1-19:checked ~ #rd-1-12:checked ~ #rd-1-5:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-39:checked ~ #rd-1-32:checked ~ #rd-1-25:checked ~ #rd-1-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-39:checked ~ #rd-1-32:checked ~ #rd-1-25:checked ~ #rd-1-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-32:checked ~ #rd-1-25:checked ~ #rd-1-18:checked ~ #rd-1-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-32:checked ~ #rd-1-25:checked ~ #rd-1-18:checked ~ #rd-1-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-25:checked ~ #rd-1-18:checked ~ #rd-1-11:checked ~ #rd-1-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-25:checked ~ #rd-1-18:checked ~ #rd-1-11:checked ~ #rd-1-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-38:checked ~ #rd-1-31:checked ~ #rd-1-24:checked ~ #rd-1-17:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-38:checked ~ #rd-1-31:checked ~ #rd-1-24:checked ~ #rd-1-17:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-31:checked ~ #rd-1-24:checked ~ #rd-1-17:checked ~ #rd-1-10:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-31:checked ~ #rd-1-24:checked ~ #rd-1-17:checked ~ #rd-1-10:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-24:checked ~ #rd-1-17:checked ~ #rd-1-10:checked ~ #rd-1-3:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-24:checked ~ #rd-1-17:checked ~ #rd-1-10:checked ~ #rd-1-3:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-37:checked ~ #rd-1-30:checked ~ #rd-1-23:checked ~ #rd-1-16:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-37:checked ~ #rd-1-30:checked ~ #rd-1-23:checked ~ #rd-1-16:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-30:checked ~ #rd-1-23:checked ~ #rd-1-16:checked ~ #rd-1-9:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-30:checked ~ #rd-1-23:checked ~ #rd-1-16:checked ~ #rd-1-9:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-23:checked ~ #rd-1-16:checked ~ #rd-1-9:checked ~ #rd-1-2:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-23:checked ~ #rd-1-16:checked ~ #rd-1-9:checked ~ #rd-1-2:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-36:checked ~ #rd-1-29:checked ~ #rd-1-22:checked ~ #rd-1-15:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-36:checked ~ #rd-1-29:checked ~ #rd-1-22:checked ~ #rd-1-15:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-29:checked ~ #rd-1-22:checked ~ #rd-1-15:checked ~ #rd-1-8:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-29:checked ~ #rd-1-22:checked ~ #rd-1-15:checked ~ #rd-1-8:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-22:checked ~ #rd-1-15:checked ~ #rd-1-8:checked ~ #rd-1-1:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-22:checked ~ #rd-1-15:checked ~ #rd-1-8:checked ~ #rd-1-1:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-39:checked ~ #rd-1-31:checked ~ #rd-1-23:checked ~ #rd-1-15:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-39:checked ~ #rd-1-31:checked ~ #rd-1-23:checked ~ #rd-1-15:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-40:checked ~ #rd-1-32:checked ~ #rd-1-24:checked ~ #rd-1-16:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-40:checked ~ #rd-1-32:checked ~ #rd-1-24:checked ~ #rd-1-16:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-32:checked ~ #rd-1-24:checked ~ #rd-1-16:checked ~ #rd-1-8:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-32:checked ~ #rd-1-24:checked ~ #rd-1-16:checked ~ #rd-1-8:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-41:checked ~ #rd-1-33:checked ~ #rd-1-25:checked ~ #rd-1-17:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-41:checked ~ #rd-1-33:checked ~ #rd-1-25:checked ~ #rd-1-17:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-33:checked ~ #rd-1-25:checked ~ #rd-1-17:checked ~ #rd-1-9:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-33:checked ~ #rd-1-25:checked ~ #rd-1-17:checked ~ #rd-1-9:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-25:checked ~ #rd-1-17:checked ~ #rd-1-9:checked ~ #rd-1-1:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-25:checked ~ #rd-1-17:checked ~ #rd-1-9:checked ~ #rd-1-1:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-42:checked ~ #rd-1-34:checked ~ #rd-1-26:checked ~ #rd-1-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-42:checked ~ #rd-1-34:checked ~ #rd-1-26:checked ~ #rd-1-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-34:checked ~ #rd-1-26:checked ~ #rd-1-18:checked ~ #rd-1-10:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-34:checked ~ #rd-1-26:checked ~ #rd-1-18:checked ~ #rd-1-10:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-26:checked ~ #rd-1-18:checked ~ #rd-1-10:checked ~ #rd-1-2:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-26:checked ~ #rd-1-18:checked ~ #rd-1-10:checked ~ #rd-1-2:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-35:checked ~ #rd-1-27:checked ~ #rd-1-19:checked ~ #rd-1-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-35:checked ~ #rd-1-27:checked ~ #rd-1-19:checked ~ #rd-1-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-27:checked ~ #rd-1-19:checked ~ #rd-1-11:checked ~ #rd-1-3:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-27:checked ~ #rd-1-19:checked ~ #rd-1-11:checked ~ #rd-1-3:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-28:checked ~ #rd-1-20:checked ~ #rd-1-12:checked ~ #rd-1-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-28:checked ~ #rd-1-20:checked ~ #rd-1-12:checked ~ #rd-1-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-22:checked ~ #rd-1-16:checked ~ #rd-1-10:checked ~ #rd-1-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-22:checked ~ #rd-1-16:checked ~ #rd-1-10:checked ~ #rd-1-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-29:checked ~ #rd-1-23:checked ~ #rd-1-17:checked ~ #rd-1-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-29:checked ~ #rd-1-23:checked ~ #rd-1-17:checked ~ #rd-1-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-23:checked ~ #rd-1-17:checked ~ #rd-1-11:checked ~ #rd-1-5:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-23:checked ~ #rd-1-17:checked ~ #rd-1-11:checked ~ #rd-1-5:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-36:checked ~ #rd-1-30:checked ~ #rd-1-24:checked ~ #rd-1-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-36:checked ~ #rd-1-30:checked ~ #rd-1-24:checked ~ #rd-1-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-30:checked ~ #rd-1-24:checked ~ #rd-1-18:checked ~ #rd-1-12:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-30:checked ~ #rd-1-24:checked ~ #rd-1-18:checked ~ #rd-1-12:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-24:checked ~ #rd-1-18:checked ~ #rd-1-12:checked ~ #rd-1-6:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-24:checked ~ #rd-1-18:checked ~ #rd-1-12:checked ~ #rd-1-6:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-37:checked ~ #rd-1-31:checked ~ #rd-1-25:checked ~ #rd-1-19:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-37:checked ~ #rd-1-31:checked ~ #rd-1-25:checked ~ #rd-1-19:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-31:checked ~ #rd-1-25:checked ~ #rd-1-19:checked ~ #rd-1-13:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-31:checked ~ #rd-1-25:checked ~ #rd-1-19:checked ~ #rd-1-13:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-25:checked ~ #rd-1-19:checked ~ #rd-1-13:checked ~ #rd-1-7:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-25:checked ~ #rd-1-19:checked ~ #rd-1-13:checked ~ #rd-1-7:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-38:checked ~ #rd-1-32:checked ~ #rd-1-26:checked ~ #rd-1-20:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-38:checked ~ #rd-1-32:checked ~ #rd-1-26:checked ~ #rd-1-20:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-32:checked ~ #rd-1-26:checked ~ #rd-1-20:checked ~ #rd-1-14:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-32:checked ~ #rd-1-26:checked ~ #rd-1-20:checked ~ #rd-1-14:checked ~ #draw {
+  display: none;
+}
+
+#rd-1-39:checked ~ #rd-1-33:checked ~ #rd-1-27:checked ~ #rd-1-21:checked ~ #congratulations {
+  display: block;
+}
+#rd-1-39:checked ~ #rd-1-33:checked ~ #rd-1-27:checked ~ #rd-1-21:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-42:checked ~ #rd-2-41:checked ~ #rd-2-40:checked ~ #rd-2-39:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-42:checked ~ #rd-2-41:checked ~ #rd-2-40:checked ~ #rd-2-39:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-41:checked ~ #rd-2-40:checked ~ #rd-2-39:checked ~ #rd-2-38:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-41:checked ~ #rd-2-40:checked ~ #rd-2-39:checked ~ #rd-2-38:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-40:checked ~ #rd-2-39:checked ~ #rd-2-38:checked ~ #rd-2-37:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-40:checked ~ #rd-2-39:checked ~ #rd-2-38:checked ~ #rd-2-37:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-39:checked ~ #rd-2-38:checked ~ #rd-2-37:checked ~ #rd-2-36:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-39:checked ~ #rd-2-38:checked ~ #rd-2-37:checked ~ #rd-2-36:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-35:checked ~ #rd-2-34:checked ~ #rd-2-33:checked ~ #rd-2-32:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-35:checked ~ #rd-2-34:checked ~ #rd-2-33:checked ~ #rd-2-32:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-34:checked ~ #rd-2-33:checked ~ #rd-2-32:checked ~ #rd-2-31:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-34:checked ~ #rd-2-33:checked ~ #rd-2-32:checked ~ #rd-2-31:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-33:checked ~ #rd-2-32:checked ~ #rd-2-31:checked ~ #rd-2-30:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-33:checked ~ #rd-2-32:checked ~ #rd-2-31:checked ~ #rd-2-30:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-32:checked ~ #rd-2-31:checked ~ #rd-2-30:checked ~ #rd-2-29:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-32:checked ~ #rd-2-31:checked ~ #rd-2-30:checked ~ #rd-2-29:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-28:checked ~ #rd-2-27:checked ~ #rd-2-26:checked ~ #rd-2-25:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-28:checked ~ #rd-2-27:checked ~ #rd-2-26:checked ~ #rd-2-25:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-27:checked ~ #rd-2-26:checked ~ #rd-2-25:checked ~ #rd-2-24:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-27:checked ~ #rd-2-26:checked ~ #rd-2-25:checked ~ #rd-2-24:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-26:checked ~ #rd-2-25:checked ~ #rd-2-24:checked ~ #rd-2-23:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-26:checked ~ #rd-2-25:checked ~ #rd-2-24:checked ~ #rd-2-23:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-25:checked ~ #rd-2-24:checked ~ #rd-2-23:checked ~ #rd-2-22:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-25:checked ~ #rd-2-24:checked ~ #rd-2-23:checked ~ #rd-2-22:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-21:checked ~ #rd-2-20:checked ~ #rd-2-19:checked ~ #rd-2-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-21:checked ~ #rd-2-20:checked ~ #rd-2-19:checked ~ #rd-2-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-20:checked ~ #rd-2-19:checked ~ #rd-2-18:checked ~ #rd-2-17:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-20:checked ~ #rd-2-19:checked ~ #rd-2-18:checked ~ #rd-2-17:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-19:checked ~ #rd-2-18:checked ~ #rd-2-17:checked ~ #rd-2-16:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-19:checked ~ #rd-2-18:checked ~ #rd-2-17:checked ~ #rd-2-16:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-18:checked ~ #rd-2-17:checked ~ #rd-2-16:checked ~ #rd-2-15:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-18:checked ~ #rd-2-17:checked ~ #rd-2-16:checked ~ #rd-2-15:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-14:checked ~ #rd-2-13:checked ~ #rd-2-12:checked ~ #rd-2-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-14:checked ~ #rd-2-13:checked ~ #rd-2-12:checked ~ #rd-2-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-13:checked ~ #rd-2-12:checked ~ #rd-2-11:checked ~ #rd-2-10:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-13:checked ~ #rd-2-12:checked ~ #rd-2-11:checked ~ #rd-2-10:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-12:checked ~ #rd-2-11:checked ~ #rd-2-10:checked ~ #rd-2-9:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-12:checked ~ #rd-2-11:checked ~ #rd-2-10:checked ~ #rd-2-9:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-11:checked ~ #rd-2-10:checked ~ #rd-2-9:checked ~ #rd-2-8:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-11:checked ~ #rd-2-10:checked ~ #rd-2-9:checked ~ #rd-2-8:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-7:checked ~ #rd-2-6:checked ~ #rd-2-5:checked ~ #rd-2-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-7:checked ~ #rd-2-6:checked ~ #rd-2-5:checked ~ #rd-2-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-6:checked ~ #rd-2-5:checked ~ #rd-2-4:checked ~ #rd-2-3:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-6:checked ~ #rd-2-5:checked ~ #rd-2-4:checked ~ #rd-2-3:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-5:checked ~ #rd-2-4:checked ~ #rd-2-3:checked ~ #rd-2-2:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-5:checked ~ #rd-2-4:checked ~ #rd-2-3:checked ~ #rd-2-2:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-4:checked ~ #rd-2-3:checked ~ #rd-2-2:checked ~ #rd-2-1:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-4:checked ~ #rd-2-3:checked ~ #rd-2-2:checked ~ #rd-2-1:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-42:checked ~ #rd-2-35:checked ~ #rd-2-28:checked ~ #rd-2-21:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-42:checked ~ #rd-2-35:checked ~ #rd-2-28:checked ~ #rd-2-21:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-35:checked ~ #rd-2-28:checked ~ #rd-2-21:checked ~ #rd-2-14:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-35:checked ~ #rd-2-28:checked ~ #rd-2-21:checked ~ #rd-2-14:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-28:checked ~ #rd-2-21:checked ~ #rd-2-14:checked ~ #rd-2-7:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-28:checked ~ #rd-2-21:checked ~ #rd-2-14:checked ~ #rd-2-7:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-41:checked ~ #rd-2-34:checked ~ #rd-2-27:checked ~ #rd-2-20:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-41:checked ~ #rd-2-34:checked ~ #rd-2-27:checked ~ #rd-2-20:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-34:checked ~ #rd-2-27:checked ~ #rd-2-20:checked ~ #rd-2-13:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-34:checked ~ #rd-2-27:checked ~ #rd-2-20:checked ~ #rd-2-13:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-27:checked ~ #rd-2-20:checked ~ #rd-2-13:checked ~ #rd-2-6:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-27:checked ~ #rd-2-20:checked ~ #rd-2-13:checked ~ #rd-2-6:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-40:checked ~ #rd-2-33:checked ~ #rd-2-26:checked ~ #rd-2-19:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-40:checked ~ #rd-2-33:checked ~ #rd-2-26:checked ~ #rd-2-19:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-33:checked ~ #rd-2-26:checked ~ #rd-2-19:checked ~ #rd-2-12:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-33:checked ~ #rd-2-26:checked ~ #rd-2-19:checked ~ #rd-2-12:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-26:checked ~ #rd-2-19:checked ~ #rd-2-12:checked ~ #rd-2-5:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-26:checked ~ #rd-2-19:checked ~ #rd-2-12:checked ~ #rd-2-5:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-39:checked ~ #rd-2-32:checked ~ #rd-2-25:checked ~ #rd-2-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-39:checked ~ #rd-2-32:checked ~ #rd-2-25:checked ~ #rd-2-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-32:checked ~ #rd-2-25:checked ~ #rd-2-18:checked ~ #rd-2-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-32:checked ~ #rd-2-25:checked ~ #rd-2-18:checked ~ #rd-2-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-25:checked ~ #rd-2-18:checked ~ #rd-2-11:checked ~ #rd-2-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-25:checked ~ #rd-2-18:checked ~ #rd-2-11:checked ~ #rd-2-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-38:checked ~ #rd-2-31:checked ~ #rd-2-24:checked ~ #rd-2-17:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-38:checked ~ #rd-2-31:checked ~ #rd-2-24:checked ~ #rd-2-17:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-31:checked ~ #rd-2-24:checked ~ #rd-2-17:checked ~ #rd-2-10:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-31:checked ~ #rd-2-24:checked ~ #rd-2-17:checked ~ #rd-2-10:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-24:checked ~ #rd-2-17:checked ~ #rd-2-10:checked ~ #rd-2-3:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-24:checked ~ #rd-2-17:checked ~ #rd-2-10:checked ~ #rd-2-3:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-37:checked ~ #rd-2-30:checked ~ #rd-2-23:checked ~ #rd-2-16:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-37:checked ~ #rd-2-30:checked ~ #rd-2-23:checked ~ #rd-2-16:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-30:checked ~ #rd-2-23:checked ~ #rd-2-16:checked ~ #rd-2-9:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-30:checked ~ #rd-2-23:checked ~ #rd-2-16:checked ~ #rd-2-9:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-23:checked ~ #rd-2-16:checked ~ #rd-2-9:checked ~ #rd-2-2:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-23:checked ~ #rd-2-16:checked ~ #rd-2-9:checked ~ #rd-2-2:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-36:checked ~ #rd-2-29:checked ~ #rd-2-22:checked ~ #rd-2-15:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-36:checked ~ #rd-2-29:checked ~ #rd-2-22:checked ~ #rd-2-15:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-29:checked ~ #rd-2-22:checked ~ #rd-2-15:checked ~ #rd-2-8:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-29:checked ~ #rd-2-22:checked ~ #rd-2-15:checked ~ #rd-2-8:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-22:checked ~ #rd-2-15:checked ~ #rd-2-8:checked ~ #rd-2-1:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-22:checked ~ #rd-2-15:checked ~ #rd-2-8:checked ~ #rd-2-1:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-39:checked ~ #rd-2-31:checked ~ #rd-2-23:checked ~ #rd-2-15:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-39:checked ~ #rd-2-31:checked ~ #rd-2-23:checked ~ #rd-2-15:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-40:checked ~ #rd-2-32:checked ~ #rd-2-24:checked ~ #rd-2-16:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-40:checked ~ #rd-2-32:checked ~ #rd-2-24:checked ~ #rd-2-16:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-32:checked ~ #rd-2-24:checked ~ #rd-2-16:checked ~ #rd-2-8:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-32:checked ~ #rd-2-24:checked ~ #rd-2-16:checked ~ #rd-2-8:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-41:checked ~ #rd-2-33:checked ~ #rd-2-25:checked ~ #rd-2-17:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-41:checked ~ #rd-2-33:checked ~ #rd-2-25:checked ~ #rd-2-17:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-33:checked ~ #rd-2-25:checked ~ #rd-2-17:checked ~ #rd-2-9:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-33:checked ~ #rd-2-25:checked ~ #rd-2-17:checked ~ #rd-2-9:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-25:checked ~ #rd-2-17:checked ~ #rd-2-9:checked ~ #rd-2-1:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-25:checked ~ #rd-2-17:checked ~ #rd-2-9:checked ~ #rd-2-1:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-42:checked ~ #rd-2-34:checked ~ #rd-2-26:checked ~ #rd-2-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-42:checked ~ #rd-2-34:checked ~ #rd-2-26:checked ~ #rd-2-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-34:checked ~ #rd-2-26:checked ~ #rd-2-18:checked ~ #rd-2-10:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-34:checked ~ #rd-2-26:checked ~ #rd-2-18:checked ~ #rd-2-10:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-26:checked ~ #rd-2-18:checked ~ #rd-2-10:checked ~ #rd-2-2:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-26:checked ~ #rd-2-18:checked ~ #rd-2-10:checked ~ #rd-2-2:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-35:checked ~ #rd-2-27:checked ~ #rd-2-19:checked ~ #rd-2-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-35:checked ~ #rd-2-27:checked ~ #rd-2-19:checked ~ #rd-2-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-27:checked ~ #rd-2-19:checked ~ #rd-2-11:checked ~ #rd-2-3:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-27:checked ~ #rd-2-19:checked ~ #rd-2-11:checked ~ #rd-2-3:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-28:checked ~ #rd-2-20:checked ~ #rd-2-12:checked ~ #rd-2-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-28:checked ~ #rd-2-20:checked ~ #rd-2-12:checked ~ #rd-2-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-22:checked ~ #rd-2-16:checked ~ #rd-2-10:checked ~ #rd-2-4:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-22:checked ~ #rd-2-16:checked ~ #rd-2-10:checked ~ #rd-2-4:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-29:checked ~ #rd-2-23:checked ~ #rd-2-17:checked ~ #rd-2-11:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-29:checked ~ #rd-2-23:checked ~ #rd-2-17:checked ~ #rd-2-11:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-23:checked ~ #rd-2-17:checked ~ #rd-2-11:checked ~ #rd-2-5:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-23:checked ~ #rd-2-17:checked ~ #rd-2-11:checked ~ #rd-2-5:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-36:checked ~ #rd-2-30:checked ~ #rd-2-24:checked ~ #rd-2-18:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-36:checked ~ #rd-2-30:checked ~ #rd-2-24:checked ~ #rd-2-18:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-30:checked ~ #rd-2-24:checked ~ #rd-2-18:checked ~ #rd-2-12:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-30:checked ~ #rd-2-24:checked ~ #rd-2-18:checked ~ #rd-2-12:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-24:checked ~ #rd-2-18:checked ~ #rd-2-12:checked ~ #rd-2-6:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-24:checked ~ #rd-2-18:checked ~ #rd-2-12:checked ~ #rd-2-6:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-37:checked ~ #rd-2-31:checked ~ #rd-2-25:checked ~ #rd-2-19:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-37:checked ~ #rd-2-31:checked ~ #rd-2-25:checked ~ #rd-2-19:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-31:checked ~ #rd-2-25:checked ~ #rd-2-19:checked ~ #rd-2-13:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-31:checked ~ #rd-2-25:checked ~ #rd-2-19:checked ~ #rd-2-13:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-25:checked ~ #rd-2-19:checked ~ #rd-2-13:checked ~ #rd-2-7:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-25:checked ~ #rd-2-19:checked ~ #rd-2-13:checked ~ #rd-2-7:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-38:checked ~ #rd-2-32:checked ~ #rd-2-26:checked ~ #rd-2-20:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-38:checked ~ #rd-2-32:checked ~ #rd-2-26:checked ~ #rd-2-20:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-32:checked ~ #rd-2-26:checked ~ #rd-2-20:checked ~ #rd-2-14:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-32:checked ~ #rd-2-26:checked ~ #rd-2-20:checked ~ #rd-2-14:checked ~ #draw {
+  display: none;
+}
+
+#rd-2-39:checked ~ #rd-2-33:checked ~ #rd-2-27:checked ~ #rd-2-21:checked ~ #congratulations {
+  display: block;
+}
+#rd-2-39:checked ~ #rd-2-33:checked ~ #rd-2-27:checked ~ #rd-2-21:checked ~ #draw {
+  display: none;
+}
+
+html, body {
+  background: #d5d5d5;
+  overflow: hidden;
+}
+
+#table {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #cc8844;
+  background-color: linear-gradient(#cc8844, #ae6f2f);
+  background-position: center center;
+}
+#table .leg {
+  position: absolute;
+  bottom: -50px;
+  left: 40px;
+  height: 50px;
+  width: 75px;
+  background: #c27b35;
+  box-shadow: inset 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+#table .leg#leg-right {
+  left: auto;
+  right: 40px;
+}
+#table .pieces {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translate(230px, 0);
+}
+#table .pieces .piece {
+  width: 50px;
+  height: 8px;
+  background: #D01F3C;
+  background: linear-gradient(#D01F3C, #c31d38);
+}
+#table .pieces .piece#piece-2 {
+  transform: translate(2px, 0);
+}
+#table .pieces .piece#piece-3 {
+  transform: translate(-1px, 0);
+}
+#table .pieces#pieces-2 {
+  transform: translate(-260px, 0);
+  top: -24px;
+}
+#table .pieces#pieces-2 .piece {
+  background: #FFFF33;
+  background: linear-gradient(#FFFF33, #f5f500);
+}
+#table .pieces#pieces-2 .piece#piece-2b {
+  transform: translate(1px, 0);
+}
+
+.hand {
+  position: absolute;
+  width: 150px;
+  bottom: 100vmax;
+  transition: all 0.5s;
+  pointer-events: none;
+  z-index: -1;
+  transform: translate3d(200px, 0, 0);
+}
+.hand .piece {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 46px;
+  width: 46px;
+  border-radius: 100%;
+  background: #D01F3C;
+}
+.hand .finger {
+  border-radius: 40px;
+  background-color: #eaac83;
+  width: 30px;
+  height: 100px;
+  position: absolute;
+  bottom: 35px;
+}
+.hand .finger.finger-1 {
+  width: 37px;
+  left: 5px;
+  height: 130px;
+  background-color: #eebb99;
+}
+.hand .finger.finger-2 {
+  left: -3px;
+  bottom: 25px;
+  height: 130px;
+}
+.hand .finger.finger-3 {
+  left: 29px;
+  bottom: 30px;
+}
+.hand .finger.finger-4 {
+  left: 60px;
+  height: 70px;
+  bottom: 40px;
+}
+.hand .finger.finger-5 {
+  left: 91px;
+  height: 100px;
+  bottom: 45px;
+}
+.hand .finger.fist {
+  width: 124px;
+  left: -3px;
+  background-color: #eebb99;
+  bottom: 90px;
+}
+.hand .finger.arm {
+  width: 70px;
+  left: 24px;
+  bottom: 150px;
+  background-color: #eebb99;
+}
+.hand .shirt {
+  position: absolute;
+  bottom: 200px;
+  background: white;
+  width: 100px;
+  left: 9px;
+  height: 100vmax;
+}
+.hand#hand2 .shirt {
+  background: #bef;
+}
+.hand#hand2 .piece {
+  background: #FFFF33;
+}
+
+#congratulations, #draw {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: white;
+  font-family: arial, verdana, sans-serif;
+}
+#congratulations input, #draw input {
+  background: #3355ff;
+  padding: 12px 32px;
+  color: white;
+  font-size: 18px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}

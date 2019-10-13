@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Montoro" />
+    <meta
+      name="description"
+      content="Trivia game developed in HTML+CSS (no JS)."
+    />
+    <title>CSS Trivia</title>
+    <link rel="stylesheet" href="./trivia.css" />
+  </head>
+
+  <body>
+    <div id="test">
+      <input
+        type="radio"
+        name="answer-0"
+        class="correct"
+        id="answer-0-correct"
+      /><input type="radio" name="answer-0" id="answer-0-incorrect" />
+      <input
+        type="radio"
+        name="answer-1"
+        class="correct"
+        id="answer-1-correct"
+      /><input type="radio" name="answer-1" id="answer-1-incorrect" />
+      <input
+        type="radio"
+        name="answer-2"
+        class="correct"
+        id="answer-2-correct"
+      /><input type="radio" name="answer-2" id="answer-2-incorrect" />
+      <input
+        type="radio"
+        name="answer-3"
+        class="correct"
+        id="answer-3-correct"
+      /><input type="radio" name="answer-3" id="answer-3-incorrect" />
+      <input
+        type="radio"
+        name="answer-4"
+        class="correct"
+        id="answer-4-correct"
+      /><input type="radio" name="answer-4" id="answer-4-incorrect" />
+
+      <div id="questions">
+        <div id="question"></div>
+
+        <div class="options" id="q-0-options">
+          <label for="answer-0-correct">Yes</label>
+          <label for="answer-0-incorrect">No</label>
+          <label for="answer-0-incorrect">Maybe</label>
+          <label for="answer-0-incorrect">Inconceivable</label>
+        </div>
+
+        <div class="options" id="q-1-options">
+          <label for="answer-1-incorrect"
+            >You keep using that word. I do not think it means what you think it
+            means</label
+          >
+          <label for="answer-1-correct">Yes</label>
+          <label for="answer-1-incorrect">No</label>
+          <label for="answer-1-incorrect">Maybe</label>
+        </div>
+
+        <div class="options" id="q-2-options">
+          <label for="answer-2-correct">0</label>
+          <label for="answer-2-incorrect">About 3.50</label>
+          <label for="answer-2-incorrect">42</label>
+          <label for="answer-2-incorrect">734</label>
+        </div>
+
+        <div class="options" id="q-3-options">
+          <label for="answer-3-incorrect">CSS Style Sheet</label>
+          <label for="answer-3-incorrect">Combined Style Sheet</label>
+          <label for="answer-3-incorrect">Classy Style Sheets</label>
+          <label for="answer-3-correct">Cascading Style Sheet</label>
+        </div>
+
+        <div class="options" id="q-4-options">
+          <label for="answer-4-incorrect">1988</label>
+          <label for="answer-4-incorrect">1992</label>
+          <label for="answer-4-correct">1996</label>
+          <label for="answer-4-incorrect">2000</label>
+        </div>
+      </div>
+      <div id="results">
+        <div><span id="result"></span> correct answers</div>
+        <div>CSS Trivia developed by Alvaro Montoro</div>
+      </div>
+    </div>
+  </body>
+</html>

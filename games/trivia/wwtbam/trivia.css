@@ -1,0 +1,132 @@
+/* game "functionality" + required visuals */
+#test {
+  counter-reset: correct;
+}
+#test input.correct:checked {
+  counter-increment: correct;
+}
+#test #results #result::before {
+  content: counter(correct);
+}
+#results,
+.options {
+  display: none;
+}
+input[type="radio"] {
+  height: 0;
+  width: 0;
+  overflow: ;
+  visibility: hidden;
+  position: absolute;
+  top: -1000px;
+}
+#question::before {
+  content: "Can a trivia game be developed using HTML and CSS without JS?";
+}
+[name="answer-0"]:checked ~ #questions #question::before {
+  content: "Inconceivable? Was that a Princess Bride reference?";
+}
+[name="answer-1"]:checked ~ #questions #question::before {
+  content: "So how many lines of JS code does this page have?";
+}
+[name="answer-2"]:checked ~ #questions #question::before {
+  content: "What does CSS stand for?";
+}
+[name="answer-3"]:checked ~ #questions #question::before {
+  content: "When was CSS initially released?";
+}
+[name="answer-0"]:not(:checked) ~ #questions #q-0-options,
+[name="answer-0"]:checked ~ #questions #q-1-options,
+[name="answer-1"]:checked ~ #questions #q-2-options,
+[name="answer-2"]:checked ~ #questions #q-3-options,
+[name="answer-3"]:checked ~ #questions #q-4-options,
+[name="answer-4"]:checked ~ #results {
+  display: block;
+}
+[name="answer-0"]:checked ~ #questions #q-0-options,
+[name="answer-1"]:checked ~ #questions #q-1-options,
+[name="answer-2"]:checked ~ #questions #q-2-options,
+[name="answer-3"]:checked ~ #questions #q-3-options,
+[name="answer-4"]:checked ~ #questions #q-4-options,
+[name="answer-4"]:checked ~ #questions #question {
+  display: none;
+}
+/* Actual styling */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(#99ccff, #6699cc);
+  font-family: Dosis, Roboto, sans-serif;
+}
+
+#test {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#test {
+  width: 80%;
+  max-width: 700px;
+  margin: auto auto;
+}
+
+#question {
+  font-size: 2em;
+  color: #003366;
+  text-shadow: -1px 1px 1px white;
+  margin-bottom: 2em;
+}
+label {
+  display: block;
+  color: white;
+  background: linear-gradient(#336699, #003366);
+  border: 1px solid #003366;
+  border-radius: 4em;
+  padding: 1em;
+  margin-bottom: 0.5em;
+}
+label::before {
+  content: "";
+  padding-right: 1em;
+  margin-right: 1em;
+  border-right: 1px solid #003366;
+}
+label:hover {
+  background: linear-gradient(#6699aa, #336699);
+  cursor: pointer;
+}
+label:active {
+  background: linear-gradient(#ff9933, #cc6600);
+  border: 1px solid #cc6600;
+}
+label:active::before {
+  border-right: 1px solid #cc6600;
+}
+
+label:nth-child(1)::before {
+  content: "A";
+}
+label:nth-child(2)::before {
+  content: "B";
+}
+label:nth-child(3)::before {
+  content: "C";
+}
+label:nth-child(4)::before {
+  content: "D";
+}
+
+#results {
+  background: white;
+  border-radius: 3px;
+  padding: 1em;
+  text-align: center;
+}
+
+#results > div:first-child {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+}

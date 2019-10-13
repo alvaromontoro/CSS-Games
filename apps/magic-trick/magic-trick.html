@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Montoro" />
+    <meta
+      name="description"
+      content="Magic trick developed in CSS+HTML (no JS)."
+    />
+    <title>CSS Magic Trick</title>
+    <link rel="stylesheet" href="./magic-trick.css" />
+  </head>
+
+  <body>
+    <form>
+      <input type="radio" id="step-1" name="step" checked />
+      <input type="radio" id="step-2" name="step" />
+      <input type="radio" id="step-3" name="step" />
+      <input type="radio" id="step-4" name="step" />
+
+      <div id="bubble-1" class="bubble">
+        <div>
+          Behold! <strong>The Great Al</strong> will amuse you with an amazing
+          <strong>magic trick</strong>!
+        </div>
+        <label for="step-2">Start the trick</label>
+      </div>
+
+      <div id="bubble-2" class="bubble right">
+        <div>
+          I will now show you <strong>6 cards</strong>.
+          <strong>Pick one</strong>, and focus on that one only. Do not click or
+          place the mouse over it...
+        </div>
+        <label for="step-3">Hide the cards</label>
+      </div>
+
+      <div id="bubble-3" class="bubble">
+        <div>
+          <strong>Focus and think about your card!</strong> With my great magic
+          powers I will guess it!
+        </div>
+        <label for="step-4">...I found it!</label>
+      </div>
+
+      <div id="bubble-4" class="bubble right">
+        <div>
+          It's done! I guessed your card and removed it from the pile!
+          <strong>Amazing!</strong>
+        </div>
+        <input type="reset" value="Try Again!" id="reset" />
+      </div>
+
+      <div id="magician">
+        <div id="head">
+          <div id="neck"></div>
+          <div id="face">
+            <div id="hair"></div>
+            <div id="mouth"></div>
+          </div>
+          <div id="eyes"></div>
+          <div id="hat">
+            <div id="cover"></div>
+            <div id="tophat"></div>
+          </div>
+        </div>
+        <div id="bowtie"></div>
+        <div id="body">
+          <div id="chest"></div>
+          <div id="arms"></div>
+        </div>
+        <div id="hands"></div>
+        <div id="wand"></div>
+        <div id="shirt"></div>
+        <div id="jacket">
+          <div id="tail"></div>
+        </div>
+        <div id="pants"></div>
+        <div id="shoes"></div>
+      </div>
+
+      <div class="cards" id="cards-1">
+        <div id="card-1" class="card red">
+          <div class="let" data-val="K"></div>
+          <div class="sym" data-val="♥"></div>
+          <div class="sym big" data-val="♥"></div>
+          <div class="figure hands"></div>
+          <div class="figure person king"></div>
+        </div>
+        <div id="card-2" class="card">
+          <div class="let" data-val="J"></div>
+          <div class="sym" data-val="♣"></div>
+          <div class="sym big" data-val="♣"></div>
+          <div class="figure hands"></div>
+          <div class="figure person jack"></div>
+        </div>
+        <div id="card-3" class="card">
+          <div class="let" data-val="K"></div>
+          <div class="sym" data-val="♠"></div>
+          <div class="sym big" data-val="♠"></div>
+          <div class="figure hands"></div>
+          <div class="figure person king"></div>
+        </div>
+        <div id="card-4" class="card red">
+          <div class="let" data-val="Q"></div>
+          <div class="sym" data-val="♦"></div>
+          <div class="sym big" data-val="♦"></div>
+          <div class="figure hands"></div>
+          <div class="figure person queen"></div>
+        </div>
+        <div id="card-5" class="card">
+          <div class="let" data-val="Q"></div>
+          <div class="sym" data-val="♣"></div>
+          <div class="sym big" data-val="♣"></div>
+          <div class="figure hands"></div>
+          <div class="figure person queen"></div>
+        </div>
+        <div id="card-6" class="card red">
+          <div class="let" data-val="J"></div>
+          <div class="sym" data-val="♦"></div>
+          <div class="sym big" data-val="♦"></div>
+          <div class="figure hands"></div>
+          <div class="figure person jack"></div>
+        </div>
+      </div>
+
+      <div class="cards" id="cards-2">
+        <div id="card-7" class="card red">
+          <div class="let" data-val="Q"></div>
+          <div class="sym" data-val="♥"></div>
+          <div class="sym big" data-val="♥"></div>
+          <div class="figure hands"></div>
+          <div class="figure person queen"></div>
+        </div>
+        <div id="card-8" class="card">
+          <div class="let" data-val="K"></div>
+          <div class="sym" data-val="♣"></div>
+          <div class="sym big" data-val="♣"></div>
+          <div class="figure hands"></div>
+          <div class="figure person king"></div>
+        </div>
+        <div id="card-9" class="card red">
+          <div class="let" data-val="J"></div>
+          <div class="sym" data-val="♥"></div>
+          <div class="sym big" data-val="♥"></div>
+          <div class="figure hands"></div>
+          <div class="figure person jack"></div>
+        </div>
+        <div id="card-10" class="card">
+          <div class="let" data-val="Q"></div>
+          <div class="sym" data-val="♠"></div>
+          <div class="sym big" data-val="♠"></div>
+          <div class="figure hands"></div>
+          <div class="figure person queen"></div>
+        </div>
+        <div id="card-11" class="card red">
+          <div class="let" data-val="K"></div>
+          <div class="sym" data-val="♦"></div>
+          <div class="sym big" data-val="♦"></div>
+          <div class="figure hands"></div>
+          <div class="figure person king"></div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

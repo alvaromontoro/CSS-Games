@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Montoro" />
+    <meta
+      name="description"
+      content="CSS Snakes and Ladders developed in CSS and HTML (no JS)."
+    />
+    <title>CSS Snakes and Ladders</title>
+    <link rel="stylesheet" href="./snakes-and-ladders.css" />
+  </head>
+
+  <body>
+    <!-- inputs that control the language-->
+    <input
+      class="lang"
+      type="radio"
+      id="en"
+      name="lang"
+      value="en"
+      checked="checked"
+    />
+    <input class="lang" type="radio" id="es" name="lang" value="es" />
+    <!-- inputs and labels that control the piece position-->
+    <input type="radio" name="cb" id="cb0" value="0" />
+    <label class="dice" for="cb0"></label>
+    <input type="radio" name="cb" id="cb1" value="1" />
+    <label class="dice" for="cb1"></label>
+    <input type="radio" name="cb" id="cb2" value="2" />
+    <label class="dice" for="cb38"></label>
+    <input type="radio" name="cb" id="cb3" value="3" />
+    <label class="dice" for="cb3"></label>
+    <input type="radio" name="cb" id="cb4" value="4" />
+    <label class="dice" for="cb4"></label>
+    <input type="radio" name="cb" id="cb5" value="5" />
+    <label class="dice" for="cb5"></label>
+    <input type="radio" name="cb" id="cb6" value="6" />
+    <label class="dice" for="cb6"></label>
+    <input type="radio" name="cb" id="cb7" value="7" />
+    <label class="dice" for="cb14"></label>
+    <input type="radio" name="cb" id="cb8" value="8" />
+    <label class="dice" for="cb31"></label>
+    <input type="radio" name="cb" id="cb9" value="9" />
+    <label class="dice" for="cb9"></label>
+    <input type="radio" name="cb" id="cb10" value="10" />
+    <label class="dice" for="cb10"></label>
+    <input type="radio" name="cb" id="cb11" value="11" />
+    <label class="dice" for="cb11"></label>
+    <input type="radio" name="cb" id="cb12" value="12" />
+    <label class="dice" for="cb12"></label>
+    <input type="radio" name="cb" id="cb13" value="13" />
+    <label class="dice" for="cb13"></label>
+    <input type="radio" name="cb" id="cb14" value="14" />
+    <label class="dice" for="cb14"></label>
+    <input type="radio" name="cb" id="cb15" value="15" />
+    <label class="dice" for="cb26"></label>
+    <input type="radio" name="cb" id="cb16" value="16" />
+    <label class="dice" for="cb6"></label>
+    <input type="radio" name="cb" id="cb17" value="17" />
+    <label class="dice" for="cb17"></label>
+    <input type="radio" name="cb" id="cb18" value="18" />
+    <label class="dice" for="cb18"></label>
+    <input type="radio" name="cb" id="cb19" value="19" />
+    <label class="dice" for="cb19"></label>
+    <input type="radio" name="cb" id="cb20" value="20" />
+    <label class="dice" for="cb20"></label>
+    <input type="radio" name="cb" id="cb21" value="21" />
+    <label class="dice" for="cb42"></label>
+    <input type="radio" name="cb" id="cb22" value="22" />
+    <label class="dice" for="cb22"></label>
+    <input type="radio" name="cb" id="cb23" value="23" />
+    <label class="dice" for="cb23"></label>
+    <input type="radio" name="cb" id="cb24" value="24" />
+    <label class="dice" for="cb24"></label>
+    <input type="radio" name="cb" id="cb25" value="25" />
+    <label class="dice" for="cb25"></label>
+    <input type="radio" name="cb" id="cb26" value="26" />
+    <label class="dice" for="cb26"></label>
+    <input type="radio" name="cb" id="cb27" value="27" />
+    <label class="dice" for="cb27"></label>
+    <input type="radio" name="cb" id="cb28" value="28" />
+    <label class="dice" for="cb84"></label>
+    <input type="radio" name="cb" id="cb29" value="29" />
+    <label class="dice" for="cb29"></label>
+    <input type="radio" name="cb" id="cb30" value="30" />
+    <label class="dice" for="cb30"></label>
+    <input type="radio" name="cb" id="cb31" value="31" />
+    <label class="dice" for="cb31"></label>
+    <input type="radio" name="cb" id="cb32" value="32" />
+    <label class="dice" for="cb32"></label>
+    <input type="radio" name="cb" id="cb33" value="33" />
+    <label class="dice" for="cb33"></label>
+    <input type="radio" name="cb" id="cb34" value="34" />
+    <label class="dice" for="cb34"></label>
+    <input type="radio" name="cb" id="cb35" value="35" />
+    <label class="dice" for="cb35"></label>
+    <input type="radio" name="cb" id="cb36" value="36" />
+    <label class="dice" for="cb44"></label>
+    <input type="radio" name="cb" id="cb37" value="37" />
+    <label class="dice" for="cb37"></label>
+    <input type="radio" name="cb" id="cb38" value="38" />
+    <label class="dice" for="cb38"></label>
+    <input type="radio" name="cb" id="cb39" value="39" />
+    <label class="dice" for="cb39"></label>
+    <input type="radio" name="cb" id="cb40" value="40" />
+    <label class="dice" for="cb40"></label>
+    <input type="radio" name="cb" id="cb41" value="41" />
+    <label class="dice" for="cb41"></label>
+    <input type="radio" name="cb" id="cb42" value="42" />
+    <label class="dice" for="cb42"></label>
+    <input type="radio" name="cb" id="cb43" value="43" />
+    <label class="dice" for="cb43"></label>
+    <input type="radio" name="cb" id="cb44" value="44" />
+    <label class="dice" for="cb44"></label>
+    <input type="radio" name="cb" id="cb45" value="45" />
+    <label class="dice" for="cb45"></label>
+    <input type="radio" name="cb" id="cb46" value="46" />
+    <label class="dice" for="cb25"></label>
+    <input type="radio" name="cb" id="cb47" value="47" />
+    <label class="dice" for="cb47"></label>
+    <input type="radio" name="cb" id="cb48" value="48" />
+    <label class="dice" for="cb48"></label>
+    <input type="radio" name="cb" id="cb49" value="49" />
+    <label class="dice" for="cb11"></label>
+    <input type="radio" name="cb" id="cb50" value="50" />
+    <label class="dice" for="cb50"></label>
+    <input type="radio" name="cb" id="cb51" value="51" />
+    <label class="dice" for="cb67"></label>
+    <input type="radio" name="cb" id="cb52" value="52" />
+    <label class="dice" for="cb52"></label>
+    <input type="radio" name="cb" id="cb53" value="53" />
+    <label class="dice" for="cb53"></label>
+    <input type="radio" name="cb" id="cb54" value="54" />
+    <label class="dice" for="cb54"></label>
+    <input type="radio" name="cb" id="cb55" value="55" />
+    <label class="dice" for="cb55"></label>
+    <input type="radio" name="cb" id="cb56" value="56" />
+    <label class="dice" for="cb56"></label>
+    <input type="radio" name="cb" id="cb57" value="57" />
+    <label class="dice" for="cb57"></label>
+    <input type="radio" name="cb" id="cb58" value="58" />
+    <label class="dice" for="cb58"></label>
+    <input type="radio" name="cb" id="cb59" value="59" />
+    <label class="dice" for="cb59"></label>
+    <input type="radio" name="cb" id="cb60" value="60" />
+    <label class="dice" for="cb60"></label>
+    <input type="radio" name="cb" id="cb61" value="61" />
+    <label class="dice" for="cb61"></label>
+    <input type="radio" name="cb" id="cb62" value="62" />
+    <label class="dice" for="cb19"></label>
+    <input type="radio" name="cb" id="cb63" value="63" />
+    <label class="dice" for="cb63"></label>
+    <input type="radio" name="cb" id="cb64" value="64" />
+    <label class="dice" for="cb60"></label>
+    <input type="radio" name="cb" id="cb65" value="65" />
+    <label class="dice" for="cb65"></label>
+    <input type="radio" name="cb" id="cb66" value="66" />
+    <label class="dice" for="cb66"></label>
+    <input type="radio" name="cb" id="cb67" value="67" />
+    <label class="dice" for="cb67"></label>
+    <input type="radio" name="cb" id="cb68" value="68" />
+    <label class="dice" for="cb68"></label>
+    <input type="radio" name="cb" id="cb69" value="69" />
+    <label class="dice" for="cb69"></label>
+    <input type="radio" name="cb" id="cb70" value="70" />
+    <label class="dice" for="cb70"></label>
+    <input type="radio" name="cb" id="cb71" value="71" />
+    <label class="dice" for="cb91"></label>
+    <input type="radio" name="cb" id="cb72" value="72" />
+    <label class="dice" for="cb72"></label>
+    <input type="radio" name="cb" id="cb73" value="73" />
+    <label class="dice" for="cb73"></label>
+    <input type="radio" name="cb" id="cb74" value="74" />
+    <label class="dice" for="cb53"></label>
+    <input type="radio" name="cb" id="cb75" value="75" />
+    <label class="dice" for="cb75"></label>
+    <input type="radio" name="cb" id="cb76" value="76" />
+    <label class="dice" for="cb76"></label>
+    <input type="radio" name="cb" id="cb77" value="77" />
+    <label class="dice" for="cb77"></label>
+    <input type="radio" name="cb" id="cb78" value="78" />
+    <label class="dice" for="cb98"></label>
+    <input type="radio" name="cb" id="cb79" value="79" />
+    <label class="dice" for="cb79"></label>
+    <input type="radio" name="cb" id="cb80" value="80" />
+    <label class="dice" for="cb80"></label>
+    <input type="radio" name="cb" id="cb81" value="81" />
+    <label class="dice" for="cb81"></label>
+    <input type="radio" name="cb" id="cb82" value="82" />
+    <label class="dice" for="cb82"></label>
+    <input type="radio" name="cb" id="cb83" value="83" />
+    <label class="dice" for="cb83"></label>
+    <input type="radio" name="cb" id="cb84" value="84" />
+    <label class="dice" for="cb84"></label>
+    <input type="radio" name="cb" id="cb85" value="85" />
+    <label class="dice" for="cb85"></label>
+    <input type="radio" name="cb" id="cb86" value="86" />
+    <label class="dice" for="cb86"></label>
+    <input type="radio" name="cb" id="cb87" value="87" />
+    <label class="dice" for="cb94"></label>
+    <input type="radio" name="cb" id="cb88" value="88" />
+    <label class="dice" for="cb88"></label>
+    <input type="radio" name="cb" id="cb89" value="89" />
+    <label class="dice" for="cb68"></label>
+    <input type="radio" name="cb" id="cb90" value="90" />
+    <label class="dice" for="cb90"></label>
+    <input type="radio" name="cb" id="cb91" value="91" />
+    <label class="dice" for="cb91"></label>
+    <input type="radio" name="cb" id="cb92" value="92" />
+    <label class="dice" for="cb88"></label>
+    <input type="radio" name="cb" id="cb93" value="93" />
+    <label class="dice" for="cb93"></label>
+    <input type="radio" name="cb" id="cb94" value="94" />
+    <label class="dice" for="cb94"></label>
+    <input type="radio" name="cb" id="cb95" value="95" />
+    <label class="dice" for="cb75"></label>
+    <input type="radio" name="cb" id="cb96" value="96" />
+    <label class="dice" for="cb96"></label>
+    <input type="radio" name="cb" id="cb97" value="97" />
+    <label class="dice" for="cb97"></label>
+    <input type="radio" name="cb" id="cb98" value="98" />
+    <label class="dice" for="cb98"></label>
+    <input type="radio" name="cb" id="cb99" value="99" />
+    <label class="dice" for="cb80"></label>
+    <input type="radio" name="cb" id="cb100" value="100" />
+    <label class="dice" for="cb100"></label>
+    <input type="radio" name="cb" id="cb101" value="101" />
+    <label class="dice" for="cb80"></label>
+    <input type="radio" name="cb" id="cb102" value="102" />
+    <label class="dice" for="cb98"></label>
+    <input type="radio" name="cb" id="cb103" value="103" />
+    <label class="dice" for="cb97"></label>
+    <input type="radio" name="cb" id="cb104" value="104" />
+    <label class="dice" for="cb96"></label>
+    <input type="radio" name="cb" id="cb105" value="105" />
+    <label class="dice" for="cb75"></label>
+    <!-- intro message in English and Spanish-->
+    <div id="intro">
+      <div>
+        <label class="switch" for="es">En Español</label>
+        <label class="switch" for="en">In English</label>
+        <h1></h1>
+        <p class="from">
+          <a
+            href="https://en.wikipedia.org/wiki/Snakes_and_Ladders"
+            target="_blank"
+            >Wikipedia:</a
+          >
+        </p>
+        <p class="desc"></p>
+        <p class="credit"></p>
+        <p class="start-button">
+          <label class="start" for="cb0"> </label>
+        </p>
+      </div>
+    </div>
+    <!-- board and piece-->
+    <div id="board">
+      <div id="ficha"></div>
+      <!-- numbered tiles, uncomment if svg completed-->
+    </div>
+    <!--  each val in [100,99,98,97,96,95,94,93,92,91,81,82,83,84,85,86,87,88,89,90,80,79,78,77,76,75,74,73,72,71,61,62,63,64,65,66,67,68,69,70,60,59,58,57,56,55,54,53,52,51,41,42,43,44,45,46,47,48,49,50,40,39,38,37,36,35,34,33,32,31,21,22,23,24,25,26,27,28,29,30,20,19,18,17,16,15,14,13,12,11,1,2,3,4,5,6,7,8,9,10]
+  div(class="tile tile"+val, data-index=val)
+// svg with all ladders and snakes
+svg(viewBox="0 0 600 600", width="600px", height="600px")
+  line(x1=89, y1=574, x2=140, y2=392)
+  line(x1=103, y1=578, x2=153, y2=396)
+
+-->
+    <!-- congratulatory message when reaching end tile-->
+    <div id="finish">
+      <div></div>
+    </div>
+  </body>
+</html>

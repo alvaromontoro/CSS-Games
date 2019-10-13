@@ -1,0 +1,246 @@
+/* Game timer + animation */
+@keyframes timer {
+  0% { --timer: 20; }
+  5% { --timer: 19; }
+  10% { --timer: 18; }
+  15% { --timer: 17; }
+  20% { --timer: 16; }
+  25% { --timer: 15; }
+  30% { --timer: 14; }
+  35% { --timer: 13; }
+  40% { --timer: 12; }
+  45% { --timer: 11; }
+  50% { --timer: 10; }
+  55% { --timer: 9; }
+  60% { --timer: 8; }
+  65% { --timer: 7; }
+  70% { --timer: 6; }
+  75% { --timer: 5; }
+  80% { --timer: 4; }
+  85% { --timer: 3; }
+  90% { --timer: 2; }
+  95% { --timer: 1; }
+  100% { --timer: 0; }
+}
+
+#timer,
+#moles {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  line-height: 1rem;
+  text-align: center;
+  animation: timer 20s linear;
+  mix-blend-mode: difference;
+  font-size: 2rem;
+}
+
+#moles {
+  top: 4.5rem;
+}
+
+/*
+@keyframes timeline {
+  from { width: 100%; background: green; }
+  to { width: 0%; background: red; }
+}
+
+#timer::before {
+  content:"";
+  width: 100%;
+  background: lightgreen;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  animation: timeline 20s linear;
+}
+*/
+
+#timer::after {
+  counter-reset: timer var(--timer);
+  content: counter(timer) ' seconds';
+  font-weight: bold;
+}
+
+/* Board and moles! */
+#perspective {
+  perspective: 1000px;
+  width: 69vmin;
+  height: 69vmin;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  transform: rotateX(60deg);
+  transform-style: preserve-3d;
+}
+
+#board {
+  background: #369;
+  transform-origin: bottom 50%;
+  transform-style: preserve-3d;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  box-shadow: 0 0 0 1vmin black;
+}
+
+#board > div {
+  position: relative;
+  width: 18vmin;
+  height: 18vmin;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin: 2.5vmin;
+  background: brown;
+  box-shadow: inset 0 0 0 1vmin black, inset 0vmin 15vmin 5vmin brown;
+}
+
+/* for funs: this would make it look nice when the mole is over
+#board > div:nth-child(1) {
+box-shadow: inset -1.5vmin -1vmin black, inset 1.5vmin -1vmin black, inset 0 0 0 4in brown;
+}
+*/
+
+@keyframes moleShow {
+  0%, 4.9999%, 10%, 100% { height: 0%;   }
+  5%, 9.9999% { height:100%;  }
+}
+
+/* This is the actual mole... used an SVG, sorry ;) */
+#board label {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 0%;
+  overflow: hidden;
+  transform-origin: bottom center;
+  transform: translateY(-50%) rotateX(-60deg);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='none' stroke='black' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path fill='brown' d='M 4,102 C 13,62 20,5 47,7 73,8 86,47 95,102' /><path d='M 53,62 C 53,62 53,79 53,79' /><path d='M 27,88 C 41,75 68,77 75,88' /><path fill='%23eeee66' d='M 42,82 C 47,80 59,80 62,81 66,82 63,93 63,93 63,93 53,94 53,92 53,90 52,80 52,80 52,80 53,92 53,92 53,92 43,94 42,92 42,90 41,82 41,82 Z' /><path fill='%23ffffee' d='M 50,53 C 67,72 91,63 88,38 84,13 56,11 48,36 44,21 20,24 18,41 16,57 37,71 50,53' /><circle r='2' cx='35' cy='42' fill='%23000' /><circle r='4' cx='65' cy='41' fill='%23000' /><ellipse rx='10' ry='5' cx='52' cy='56' fill='%23000' /></g></svg>");
+  animation: moleShow 20s linear 2;
+  animation-fill-mode: forwards;
+  z-index: 2;
+  transition: all 0.2s;
+}
+
+/* Animate the moles so they show up at different times */
+#board label[for="mole-0"] { animation-delay: -19s; }
+#board label[for="mole-1"] { animation-delay: -18s; }
+#board label[for="mole-2"] { animation-delay: -17s; }
+#board label[for="mole-3"] { animation-delay: -16s; }
+#board label[for="mole-4"] { animation-delay: -16s; }
+#board label[for="mole-5"] { animation-delay: -15s; }
+#board label[for="mole-6"] { animation-delay: -14s; }
+#board label[for="mole-7"] { animation-delay: -13s; }
+#board label[for="mole-8"] { animation-delay: -12s; }
+#board label[for="mole-9"] { animation-delay: -11s; }
+#board label[for="mole-10"] { animation-delay: -10s; }
+#board label[for="mole-11"] { animation-delay: -9s; }
+#board label[for="mole-12"] { animation-delay: -8s; }
+#board label[for="mole-13"] { animation-delay: -7.5s; }
+#board label[for="mole-14"] { animation-delay: -7s; }
+#board label[for="mole-15"] { animation-delay: -6s; }
+#board label[for="mole-16"] { animation-delay: -4s; }
+#board label[for="mole-17"] { animation-delay: -3.5s; }
+#board label[for="mole-18"] { animation-delay: -3s; }
+#board label[for="mole-19"] { animation-delay: -2s; }
+
+/* hide the moles if their checkbox is checked */
+#mole-0:checked ~ #perspective [for="mole-0"],
+#mole-1:checked ~ #perspective [for="mole-1"],
+#mole-2:checked ~ #perspective [for="mole-2"],
+#mole-3:checked ~ #perspective [for="mole-3"],
+#mole-4:checked ~ #perspective [for="mole-4"],
+#mole-5:checked ~ #perspective [for="mole-5"],
+#mole-6:checked ~ #perspective [for="mole-6"],
+#mole-7:checked ~ #perspective [for="mole-7"],
+#mole-8:checked ~ #perspective [for="mole-8"],
+#mole-9:checked ~ #perspective [for="mole-9"],
+#mole-10:checked ~ #perspective [for="mole-10"],
+#mole-11:checked ~ #perspective [for="mole-11"],
+#mole-12:checked ~ #perspective [for="mole-12"],
+#mole-13:checked ~ #perspective [for="mole-13"],
+#mole-14:checked ~ #perspective [for="mole-14"],
+#mole-15:checked ~ #perspective [for="mole-15"],
+#mole-16:checked ~ #perspective [for="mole-16"],
+#mole-17:checked ~ #perspective [for="mole-17"],
+#mole-18:checked ~ #perspective [for="mole-18"],
+#mole-19:checked ~ #perspective [for="mole-19"] { 
+  transform: translateY(-50%) rotateX(-60deg) scale(0);
+}
+
+/* counter for score keeping */
+@import url('https://fonts.googleapis.com/css?family=Molengo&display=swap');
+
+body {
+  reset-counter: correct: 0;
+  font-family: Molengo, arial, sans-serif;
+  font-size: 18px;
+}
+
+body input:checked {
+  counter-increment: correct;
+}
+
+body .number::after {
+  content: counter(correct);
+  font-weight: bold;
+}
+
+/* hide inputs */
+input {
+  position: absolute;
+  top: -1000in;
+  left: -1000in;
+}
+
+/* show results + animation */
+@keyframes showResults {
+  from { 
+    width: 0;
+    height: 0;
+  }
+  to { 
+    width: 100vw;
+    height: 100vh; 
+  }
+}
+#results {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  animation: showResults 0.25s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 21s;
+}
+
+/* decorative */
+#title {
+  transform-origin: top center;
+  color: #eef7ff;
+  transform: rotateX(-60deg) translate(0, 1vmin) ;
+  background: #369;
+  background: linear-gradient(#369, #123);
+  box-shadow: 0 0 0 1vmin black;
+  padding: 2vmin;
+  font-size: 7vmin;
+  text-align: center;
+}
