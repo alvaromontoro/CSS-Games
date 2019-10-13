@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis|Roboto");
+
+body {
+  counter-reset: correct;
+}
+body input.correct:checked {
+  counter-increment: correct;
+}
+body #results #result::before {
+  content: counter(correct);
+}
+
+html,
+body {
+  overflow: hidden;
+  user-select: none;
+  background: linear-gradient(#99ccff, #6699cc);
+  font-family: Dosis, Roboto, sans-serif;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  background: white;
+  border-radius: 3px;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+  -moz-transform: translate(50%, -50%);
+  width: 400px;
+  z-index: 0;
+  opacity: 0;
+  transition: all 1s;
+  box-shadow: 0 1.5em 0.5em -1em rgba(0, 0, 0, 0.25);
+}
+
+#welcome,
+.box:target {
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 1;
+}
+
+#q-0:target ~ #welcome,
+#q-1:target ~ #welcome,
+#q-2:target ~ #welcome,
+#q-3:target ~ #welcome,
+#q-4:target ~ #welcome,
+#results:target ~ #welcome,
+#q-1:target ~ #q-0,
+#q-2:target ~ #q-1,
+#q-3:target ~ #q-2,
+#q-4:target ~ #q-3,
+#results:target ~ #q-4 {
+  transform: translate(-200%, -50%);
+  opacity: 0;
+}
+
+label,
+.box > a {
+  background: linear-gradient(#336699, #003366);
+  width: 49%;
+  margin: 0.5%;
+  margin-bottom: 0.5%;
+  display: block;
+  float: left;
+  border-radius: 2px;
+  padding: 0.33em;
+  box-sizing: border-box;
+  border: 1px solid #003366;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+label:hover {
+  background: linear-gradient(#225588, #002255);
+}
+
+label::before {
+  padding-right: 0.33em;
+  margin-right: 0.33em;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+label:nth-child(2)::before {
+  content: "A";
+}
+label:nth-child(3)::before {
+  content: "B";
+}
+label:nth-child(4)::before {
+  content: "C";
+}
+label:nth-child(5)::before {
+  content: "D";
+}
+
+#a-0-c:checked ~ #q-0 [for="a-0-c"],
+#a-0-i-0:checked ~ #q-0 [for="a-0-i-0"],
+#a-0-i-1:checked ~ #q-0 [for="a-0-i-1"],
+#a-0-i-2:checked ~ #q-0 [for="a-0-i-2"],
+#a-1-c:checked ~ #q-1 [for="a-1-c"],
+#a-1-i-0:checked ~ #q-1 [for="a-1-i-0"],
+#a-1-i-1:checked ~ #q-1 [for="a-1-i-1"],
+#a-1-i-2:checked ~ #q-1 [for="a-1-i-2"],
+#a-2-c:checked ~ #q-2 [for="a-2-c"],
+#a-2-i-0:checked ~ #q-2 [for="a-2-i-0"],
+#a-2-i-1:checked ~ #q-2 [for="a-2-i-1"],
+#a-2-i-2:checked ~ #q-2 [for="a-2-i-2"],
+#a-3-c:checked ~ #q-3 [for="a-3-c"],
+#a-3-i-0:checked ~ #q-3 [for="a-3-i-0"],
+#a-3-i-1:checked ~ #q-3 [for="a-3-i-1"],
+#a-3-i-2:checked ~ #q-3 [for="a-3-i-2"],
+#a-4-c:checked ~ #q-4 [for="a-4-c"],
+#a-4-i-0:checked ~ #q-4 [for="a-4-i-0"],
+#a-4-i-1:checked ~ #q-4 [for="a-4-i-1"],
+#a-4-i-2:checked ~ #q-4 [for="a-4-i-2"] {
+  background: linear-gradient(#ffee66, #ccbb33);
+  border: 1px solid #ccbb33;
+  color: #333333;
+}
+
+.box h2,
+.box .question,
+#results > div.results {
+  margin: 0;
+  padding: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.box > a {
+  float: right;
+  margin-top: 1em;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(#33dd66, #00aa33);
+  border: 1px solid #00aa33;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.box > a:hover {
+  background: linear-gradient(#22cc55, #009922);
+}
+
+#results {
+  text-align: center;
+}
+
+input {
+  position: absolute;
+  top: -1000px;
+}

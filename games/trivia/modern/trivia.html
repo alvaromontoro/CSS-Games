@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Montoro" />
+    <meta
+      name="description"
+      content="Trivia game developed in HTML+CSS (no JS)."
+    />
+    <title>CSS Trivia</title>
+    <link rel="stylesheet" href="./trivia.css" />
+  </head>
+
+  <body>
+    <input type="radio" name="a-0" class="correct" id="a-0-c" /><input
+      type="radio"
+      name="a-0"
+      id="a-0-i-0"
+    /><input type="radio" name="a-0" id="a-0-i-1" /><input
+      type="radio"
+      name="a-0"
+      id="a-0-i-2"
+    />
+    <input type="radio" name="a-1" class="correct" id="a-1-c" /><input
+      type="radio"
+      name="a-1"
+      id="a-1-i-0"
+    /><input type="radio" name="a-1" id="a-1-i-1" /><input
+      type="radio"
+      name="a-1"
+      id="a-1-i-2"
+    />
+    <input type="radio" name="a-2" class="correct" id="a-2-c" /><input
+      type="radio"
+      name="a-2"
+      id="a-2-i-0"
+    /><input type="radio" name="a-2" id="a-2-i-1" /><input
+      type="radio"
+      name="a-2"
+      id="a-2-i-2"
+    />
+    <input type="radio" name="a-3" class="correct" id="a-3-c" /><input
+      type="radio"
+      name="a-3"
+      id="a-3-i-0"
+    /><input type="radio" name="a-3" id="a-3-i-1" /><input
+      type="radio"
+      name="a-3"
+      id="a-3-i-2"
+    />
+    <input type="radio" name="a-4" class="correct" id="a-4-c" /><input
+      type="radio"
+      name="a-4"
+      id="a-4-i-0"
+    /><input type="radio" name="a-4" id="a-4-i-1" /><input
+      type="radio"
+      name="a-4"
+      id="a-4-i-2"
+    />
+
+    <div id="results" class="box">
+      <div class="results"><span id="result"></span> correct answers</div>
+      <p><a href="#">Restart the game</a></p>
+      <div>CSS Trivia developed by Alvaro Montoro</div>
+    </div>
+
+    <div class="options box" id="q-4">
+      <div class="question">
+        How many lines of JavaScript code are there in this web game?
+      </div>
+      <label for="a-4-c">0</label>
+      <label for="a-4-i-0">About 3.50</label>
+      <label for="a-4-i-1">42</label>
+      <label for="a-4-i-2">734</label>
+      <a href="#results">Complete Test</a>
+    </div>
+
+    <div class="options box" id="q-3">
+      <div class="question">
+        Can a trivia game be developed only using HTML and CSS (no JS)?
+      </div>
+      <label for="a-3-c">Yes</label>
+      <label for="a-3-i-0">No</label>
+      <label for="a-3-i-1">Maybe</label>
+      <label for="a-3-i-2">Inconceivable</label>
+      <a href="#q-4">Confirm Answer</a>
+    </div>
+
+    <div class="options box" id="q-2">
+      <div class="question">Which of these selectors is correct?</div>
+      <label for="a-2-i-0">#class</label>
+      <label for="a-2-i-1">.id</label>
+      <label for="a-2-i-2">Both are wrong</label>
+      <label for="a-2-c">Both are correct</label>
+      <a href="#q-3">Confirm Answer</a>
+    </div>
+
+    <div class="options box" id="q-1">
+      <div class="question">What does CSS stand for?</div>
+      <label for="a-1-i-0">CSS Style Sheet</label>
+      <label for="a-1-c">Cascading Style Sheet</label>
+      <label for="a-1-i-1">Casual Style Sheet</label>
+      <label for="a-1-i-2">Classy Style Sheets</label>
+      <a href="#q-2">Confirm Answer</a>
+    </div>
+
+    <div class="options box" id="q-0">
+      <div class="question">What year was CSS first released?</div>
+      <label for="a-0-i-0">1988</label>
+      <label for="a-0-i-1">1992</label>
+      <label for="a-0-c">1996</label>
+      <label for="a-0-i-2">2000</label>
+      <a href="#q-1">Confirm Answer</a>
+    </div>
+
+    <div class="box" id="welcome">
+      <h2>CSS Trivia</h2>
+      <p>
+        Welcome to CSS Trivia! A small Q&A game developed exclusively with HTML
+        and CSS, and not a single line of JavaScript
+      </p>
+      <a href="#q-0">Start Game</a>
+    </div>
+  </body>
+</html>

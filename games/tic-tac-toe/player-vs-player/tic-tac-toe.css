@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css?family=Mandali|Raleway:900&display=swap');
+
+input[type="radio"] {
+  position: absolute;
+  top: -9999em;
+}
+
+html, body {
+  font-family: Mandali, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#board {
+  width: 50vmin;
+  height: 50vmin;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.tile {
+  margin: 5%;
+  position: relative;
+}
+
+.tile label,
+.tile div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.10);
+  font-family: Raleway, Courier, 'Courier New', Sans, sans-serif;
+  font-weight: bolder;
+}
+
+.tile div {
+  display: none;
+  overflow: hidden;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.85)
+}
+
+label[for$='-x'] {
+  z-index: 1;
+}
+
+input:checked ~ #board label[for$='-o'] {
+  z-index: 2;
+}
+
+input:checked ~ input:checked ~ #board label[for$='-x'] {
+  z-index: 3;
+}
+
+input:checked ~ input:checked ~ input:checked ~ #board label[for$='-o'] {
+  z-index: 4;
+}
+
+input:checked ~ input:checked ~ input:checked ~ input:checked ~ #board label[for$='-x'] {
+  z-index: 5;
+}
+
+input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ #board label[for$='-o'] {
+  z-index: 6;
+}
+
+input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ #board label[for$='-x'] {
+  z-index: 7;
+}
+
+input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ #board label[for$='-o'] {
+  z-index: 8;
+}
+
+input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ #board label[for$='-x'] {
+  z-index: 9;
+}
+
+input[id*='-0-']:checked ~ #board label[for*='-0-'],
+input[id*='-1-']:checked ~ #board label[for*='-1-'],
+input[id*='-2-']:checked ~ #board label[for*='-2-'],
+input[id*='-3-']:checked ~ #board label[for*='-3-'],
+input[id*='-4-']:checked ~ #board label[for*='-4-'],
+input[id*='-5-']:checked ~ #board label[for*='-5-'],
+input[id*='-6-']:checked ~ #board label[for*='-6-'],
+input[id*='-7-']:checked ~ #board label[for*='-7-'],
+input[id*='-8-']:checked ~ #board label[for*='-8-'] {
+  display: none;
+}
+
+input[id*='-0-']:checked ~ #board #tile-0 div,
+input[id*='-1-']:checked ~ #board #tile-1 div,
+input[id*='-2-']:checked ~ #board #tile-2 div,
+input[id*='-3-']:checked ~ #board #tile-3 div,
+input[id*='-4-']:checked ~ #board #tile-4 div,
+input[id*='-5-']:checked ~ #board #tile-5 div,
+input[id*='-6-']:checked ~ #board #tile-6 div,
+input[id*='-7-']:checked ~ #board #tile-7 div,
+input[id*='-8-']:checked ~ #board #tile-8 div {
+  display: block;
+}
+
+input[id*='-0-x']:checked ~ #board #tile-0 div::before,
+input[id*='-1-x']:checked ~ #board #tile-1 div::before,
+input[id*='-2-x']:checked ~ #board #tile-2 div::before,
+input[id*='-3-x']:checked ~ #board #tile-3 div::before,
+input[id*='-4-x']:checked ~ #board #tile-4 div::before,
+input[id*='-5-x']:checked ~ #board #tile-5 div::before,
+input[id*='-6-x']:checked ~ #board #tile-6 div::before,
+input[id*='-7-x']:checked ~ #board #tile-7 div::before,
+input[id*='-8-x']:checked ~ #board #tile-8 div::before {
+  content: "X";
+  background: #004974;
+  color: #89dcf6;
+}
+
+input[id*='-0-o']:checked ~ #board #tile-0 div::before,
+input[id*='-1-o']:checked ~ #board #tile-1 div::before,
+input[id*='-2-o']:checked ~ #board #tile-2 div::before,
+input[id*='-3-o']:checked ~ #board #tile-3 div::before,
+input[id*='-4-o']:checked ~ #board #tile-4 div::before,
+input[id*='-5-o']:checked ~ #board #tile-5 div::before,
+input[id*='-6-o']:checked ~ #board #tile-6 div::before,
+input[id*='-7-o']:checked ~ #board #tile-7 div::before,
+input[id*='-8-o']:checked ~ #board #tile-8 div::before {
+  content: "O";
+  background: #a60011;
+  color: #ffc7b5;
+}
+
+.tile label:hover {
+  cursor: pointer;
+  background: rgba(0,0,0,0.25);
+}
+
+.tile label::before,
+.tile div::before {
+  color: #000;
+  position: absolute;
+  text-align:center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 7.5vmin;
+  font-weight: bold;
+}
+
+.tile div::before {
+  padding: 100%;
+}
+
+.tile label[for$='-o']:hover::before {
+  content: "O";
+}
+
+.tile label[for$='-x']:hover::before {
+  content: "X";
+}
+
+#tile-0 {
+  grid-column: 1;
+  grid-row: 1;
+}
+#tile-0 label,
+#tile-0 div {
+  border-radius: 10% 0 0 0;
+}
+#tile-1 {
+  grid-column: 2;
+  grid-row: 1;
+}
+#tile-2 {
+  grid-column: 3;
+  grid-row: 1;
+}
+#tile-2 label,
+#tile-2 div {
+  border-radius: 0 10% 0 0;
+}
+#tile-3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+#tile-4 {
+  grid-column: 2;
+  grid-row: 2;
+}
+#tile-5 {
+  grid-column: 3;
+  grid-row: 2;
+}
+#tile-6 {
+  grid-column: 1;
+  grid-row: 3;
+}
+#tile-6 label,
+#tile-6 div {
+  border-radius: 0 0 0 10%;
+}
+#tile-7 {
+  grid-column: 2;
+  grid-row: 3;
+}
+#tile-8 {
+  grid-column: 3;
+  grid-row: 3;
+}
+#tile-8 label,
+#tile-8 div {
+  border-radius: 0 0 10% 0;
+}
+
+#end {
+  background: rgba(255,255,255,0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+#message {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 2.2rem;
+  font-weight: bold;
+}
+
+#message::before {
+  content: "Tied game!"
+}
+
+#message input {
+  background: #000;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1.75rem;
+  margin: auto auto;
+  margin-top: 2rem;
+}
+
+input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ input:checked ~ #end,
+#cell-0-x:checked ~ #cell-1-x:checked ~ #cell-2-x:checked ~ #end,
+#cell-3-x:checked ~ #cell-4-x:checked ~ #cell-5-x:checked ~ #end,
+#cell-6-x:checked ~ #cell-7-x:checked ~ #cell-8-x:checked ~ #end,
+#cell-0-x:checked ~ #cell-3-x:checked ~ #cell-6-x:checked ~ #end,
+#cell-1-x:checked ~ #cell-4-x:checked ~ #cell-7-x:checked ~ #end,
+#cell-2-x:checked ~ #cell-5-x:checked ~ #cell-8-x:checked ~ #end,
+#cell-0-x:checked ~ #cell-4-x:checked ~ #cell-8-x:checked ~ #end,
+#cell-2-x:checked ~ #cell-4-x:checked ~ #cell-6-x:checked ~ #end,
+#cell-0-o:checked ~ #cell-1-o:checked ~ #cell-2-o:checked ~ #end,
+#cell-3-o:checked ~ #cell-4-o:checked ~ #cell-5-o:checked ~ #end,
+#cell-6-o:checked ~ #cell-7-o:checked ~ #cell-8-o:checked ~ #end,
+#cell-0-o:checked ~ #cell-3-o:checked ~ #cell-6-o:checked ~ #end,
+#cell-1-o:checked ~ #cell-4-o:checked ~ #cell-7-o:checked ~ #end,
+#cell-2-o:checked ~ #cell-5-o:checked ~ #cell-8-o:checked ~ #end,
+#cell-0-o:checked ~ #cell-4-o:checked ~ #cell-8-o:checked ~ #end,
+#cell-2-o:checked ~ #cell-4-o:checked ~ #cell-6-o:checked ~ #end {
+  display: block;
+}
+
+#cell-0-x:checked ~ #cell-1-x:checked ~ #cell-2-x:checked ~ #end #message::before,
+#cell-3-x:checked ~ #cell-4-x:checked ~ #cell-5-x:checked ~ #end #message::before,
+#cell-6-x:checked ~ #cell-7-x:checked ~ #cell-8-x:checked ~ #end #message::before,
+#cell-0-x:checked ~ #cell-3-x:checked ~ #cell-6-x:checked ~ #end #message::before,
+#cell-1-x:checked ~ #cell-4-x:checked ~ #cell-7-x:checked ~ #end #message::before,
+#cell-2-x:checked ~ #cell-5-x:checked ~ #cell-8-x:checked ~ #end #message::before,
+#cell-0-x:checked ~ #cell-4-x:checked ~ #cell-8-x:checked ~ #end #message::before,
+#cell-2-x:checked ~ #cell-4-x:checked ~ #cell-6-x:checked ~ #end #message::before {
+  content: "Player 1 won!";
+}
+
+#cell-0-o:checked ~ #cell-1-o:checked ~ #cell-2-o:checked ~ #end #message::before,
+#cell-3-o:checked ~ #cell-4-o:checked ~ #cell-5-o:checked ~ #end #message::before,
+#cell-6-o:checked ~ #cell-7-o:checked ~ #cell-8-o:checked ~ #end #message::before,
+#cell-0-o:checked ~ #cell-3-o:checked ~ #cell-6-o:checked ~ #end #message::before,
+#cell-1-o:checked ~ #cell-4-o:checked ~ #cell-7-o:checked ~ #end #message::before,
+#cell-2-o:checked ~ #cell-5-o:checked ~ #cell-8-o:checked ~ #end #message::before,
+#cell-0-o:checked ~ #cell-4-o:checked ~ #cell-8-o:checked ~ #end #message::before,
+#cell-2-o:checked ~ #cell-4-o:checked ~ #cell-6-o:checked ~ #end #message::before {
+  content: "Player 2 won!";
+}

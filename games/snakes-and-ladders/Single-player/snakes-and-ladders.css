@@ -1,0 +1,853 @@
+@charset "UTF-8";
+/***** dice animation */
+@keyframes changeOrder {
+  from {
+    z-index: 6;
+  }
+  to {
+    z-index: 1;
+  }
+}
+@-webkit-keyframes changeOrder {
+  from {
+    z-index: 6;
+  }
+  to {
+    z-index: 1;
+  }
+}
+/***** intro message */
+#intro {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+}
+#intro h1 {
+  margin-top: 0;
+}
+#intro p:last-child {
+  margin-bottom: 0;
+}
+#intro > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 80%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  font-family: Arial, Verdana, sans-serif;
+  border-radius: 3px;
+  display: inline-block;
+}
+#intro label.switch {
+  float: right;
+  display: inline-block;
+}
+#intro label.start {
+  display: block;
+  text-align: center;
+  background: #5588bb;
+  color: white;
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/***** language control */
+#en:checked ~ #intro [for="en"] {
+  display: none;
+}
+#en:checked ~ #intro h1::before {
+  content: "Snake and Ladders";
+}
+#en:checked ~ #intro p.from::before {
+  content: "Text from";
+}
+#en:checked ~ #intro p.desc::before {
+  content: "«Snakes and Ladders is an ancient Indian board game regarded today as a worldwide classic. [...] A number of 'ladders' and 'snakes' are pictured on the board, each connecting two specific board squares. The object of the game is to navigate one's game piece, according to die rolls, from the start (bottom square) to the finish (top square), helped or hindered by ladders and snakes respectively.»";
+}
+#en:checked ~ #intro p.credit::before {
+  content: "This version was developed as a fun project using HTML and CSS, without any JavaScript code. Click on the DICE to roll the dice and move your piece.";
+}
+#en:checked ~ #intro p.start-button label::before {
+  content: "START";
+}
+#en:checked ~ .dice::before {
+  content: "DICE";
+}
+#en:checked ~ #finish > div::before {
+  content: "CONGRATULATIONS! YOU WON!";
+}
+
+#es:checked ~ #intro [for="es"] {
+  display: none;
+}
+#es:checked ~ #intro h1::before {
+  content: "Serpientes y Escaleras";
+}
+#es:checked ~ #intro p.from::before {
+  content: "Texto de la";
+}
+#es:checked ~ #intro p.desc::before {
+  content: "«Serpientes y escaleras es un antiguo juego de tablero indio, considerado actualmente como un clásico a nivel mundial. [...] El objetivo del juego es lograr que la ficha del jugador llegue desde el inicio —casillero inferior izquierdo— hasta el final —casillero superior izquierdo—, ayudado por las escaleras y evitando las serpientes.»";
+}
+#es:checked ~ #intro p.credit::before {
+  content: "Esta versión fue desarrollada como un proyecto usando HTML y CSS, sin nada de código JavaScript. Pulsa en el DADO para lanzar el dado y mover la pieza.";
+}
+#es:checked ~ #intro p.start-button label::before {
+  content: "COMENZAR";
+}
+#es:checked ~ .dice::before {
+  content: "DADO";
+}
+#es:checked ~ #finish > div::before {
+  content: "¡ENHORABUENA! ¡GANASTE!";
+}
+
+/***** Ending message */
+#finish {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+#finish > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  font-family: Arial, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+/***** Control of labels and inputs */
+input, label {
+  display: none;
+  user-select: none;
+}
+
+input[name="cb"]:checked ~ #intro {
+  display: none;
+}
+
+#cb100:checked ~ #finish {
+  display: block;
+}
+
+input:checked + label + input + label,
+input:checked + label + input + label + input + label,
+input:checked + label + input + label + input + label + input + label,
+input:checked + label + input + label + input + label + input + label + input + label,
+input:checked + label + input + label + input + label + input + label + input + label + input + label,
+input:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  display: block;
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background: #eeeeee;
+  text-align: center;
+  animation: changeOrder 1.2s infinite;
+  -webkit-animation: changeOrder 1.2s infinite;
+  top: 10px;
+  left: 10px;
+}
+
+input:checked + label + input + label {
+  animation-delay: 0s;
+}
+
+input:checked + label + input + label + input + label {
+  animation-delay: -0.2s;
+}
+
+input:checked + label + input + label + input + label + input + label {
+  animation-delay: -0.4s;
+}
+
+input:checked + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.6s;
+}
+
+input:checked + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.8s;
+}
+
+input:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -1.0s;
+}
+
+label:active {
+  position: static !important;
+  margin-left: 50px !important;
+  background: none !important;
+  font-size: 0;
+}
+label:active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -50px;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+}
+
+#board {
+  position: absolute;
+  overflow: visible;
+  width: 600px;
+  height: 600px;
+  background: url(https://raw.githubusercontent.com/adrianeyre/codewars/master/Ruby/Authored/snakesandladdersboard.jpg);
+  background-size: cover;
+  border: 3px solid black;
+  left: 70px;
+  top: 10px;
+}
+#board #ficha {
+  position: absolute;
+  width: 6px;
+  height: 40px;
+  overflow: visible;
+  bottom: 0;
+  left: -30px;
+  background: red;
+  transition: all 0.5s;
+  transform: translate(25px, -11px);
+  -webkit-transform: translate(25px, -11px);
+  border: 2px solid black;
+  z-index: 3;
+}
+#board #ficha::before, #board #ficha::after {
+  content: "";
+  background: red;
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -4px;
+  left: -7px;
+  border-radius: 100%;
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-bottom: 0;
+}
+#board #ficha::before {
+  top: 30px;
+  width: 40px;
+  left: -17px;
+  border-bottom: 2px solid black;
+  border-top: 1px solid black;
+}
+
+/***** Piece position for each numbered tile. TODO: reduce using SCSS :P */
+input[value="1"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 000px;
+}
+
+input[value="2"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 000px;
+}
+
+input[value="3"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 000px;
+}
+
+input[value="4"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 000px;
+}
+
+input[value="5"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 000px;
+}
+
+input[value="6"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 000px;
+}
+
+input[value="7"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 000px;
+}
+
+input[value="8"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 000px;
+}
+
+input[value="9"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 000px;
+}
+
+input[value="10"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 000px;
+}
+
+input[value="11"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 060px;
+}
+
+input[value="12"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 060px;
+}
+
+input[value="13"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 060px;
+}
+
+input[value="14"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 060px;
+}
+
+input[value="15"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 060px;
+}
+
+input[value="16"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 060px;
+}
+
+input[value="17"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 060px;
+}
+
+input[value="18"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 060px;
+}
+
+input[value="19"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 060px;
+}
+
+input[value="20"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 060px;
+}
+
+input[value="21"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 120px;
+}
+
+input[value="22"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 120px;
+}
+
+input[value="23"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 120px;
+}
+
+input[value="24"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 120px;
+}
+
+input[value="25"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 120px;
+}
+
+input[value="26"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 120px;
+}
+
+input[value="27"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 120px;
+}
+
+input[value="28"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 120px;
+}
+
+input[value="29"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 120px;
+}
+
+input[value="30"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 120px;
+}
+
+input[value="31"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 180px;
+}
+
+input[value="32"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 180px;
+}
+
+input[value="33"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 180px;
+}
+
+input[value="34"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 180px;
+}
+
+input[value="35"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 180px;
+}
+
+input[value="36"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 180px;
+}
+
+input[value="37"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 180px;
+}
+
+input[value="38"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 180px;
+}
+
+input[value="39"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 180px;
+}
+
+input[value="40"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 180px;
+}
+
+input[value="41"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 240px;
+}
+
+input[value="42"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 240px;
+}
+
+input[value="43"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 240px;
+}
+
+input[value="44"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 240px;
+}
+
+input[value="45"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 240px;
+}
+
+input[value="46"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 240px;
+}
+
+input[value="47"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 240px;
+}
+
+input[value="48"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 240px;
+}
+
+input[value="49"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 240px;
+}
+
+input[value="50"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 240px;
+}
+
+input[value="51"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 300px;
+}
+
+input[value="52"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 300px;
+}
+
+input[value="53"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 300px;
+}
+
+input[value="54"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 300px;
+}
+
+input[value="55"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 300px;
+}
+
+input[value="56"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 300px;
+}
+
+input[value="57"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 300px;
+}
+
+input[value="58"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 300px;
+}
+
+input[value="59"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 300px;
+}
+
+input[value="60"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 300px;
+}
+
+input[value="61"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 360px;
+}
+
+input[value="62"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 360px;
+}
+
+input[value="63"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 360px;
+}
+
+input[value="64"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 360px;
+}
+
+input[value="65"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 360px;
+}
+
+input[value="66"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 360px;
+}
+
+input[value="67"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 360px;
+}
+
+input[value="68"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 360px;
+}
+
+input[value="69"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 360px;
+}
+
+input[value="70"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 360px;
+}
+
+input[value="71"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 420px;
+}
+
+input[value="72"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 420px;
+}
+
+input[value="73"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 420px;
+}
+
+input[value="74"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 420px;
+}
+
+input[value="75"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 420px;
+}
+
+input[value="76"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 420px;
+}
+
+input[value="77"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 420px;
+}
+
+input[value="78"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 420px;
+}
+
+input[value="79"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 420px;
+}
+
+input[value="80"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 420px;
+}
+
+input[value="81"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 480px;
+}
+
+input[value="82"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 480px;
+}
+
+input[value="83"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 480px;
+}
+
+input[value="84"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 480px;
+}
+
+input[value="85"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 480px;
+}
+
+input[value="86"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 480px;
+}
+
+input[value="87"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 480px;
+}
+
+input[value="88"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 480px;
+}
+
+input[value="89"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 480px;
+}
+
+input[value="90"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 480px;
+}
+
+input[value="91"]:checked ~ #board > #ficha {
+  left: 540px;
+  bottom: 540px;
+}
+
+input[value="92"]:checked ~ #board > #ficha {
+  left: 480px;
+  bottom: 540px;
+}
+
+input[value="93"]:checked ~ #board > #ficha {
+  left: 420px;
+  bottom: 540px;
+}
+
+input[value="94"]:checked ~ #board > #ficha {
+  left: 360px;
+  bottom: 540px;
+}
+
+input[value="95"]:checked ~ #board > #ficha {
+  left: 300px;
+  bottom: 540px;
+}
+
+input[value="96"]:checked ~ #board > #ficha {
+  left: 240px;
+  bottom: 540px;
+}
+
+input[value="97"]:checked ~ #board > #ficha {
+  left: 180px;
+  bottom: 540px;
+}
+
+input[value="98"]:checked ~ #board > #ficha {
+  left: 120px;
+  bottom: 540px;
+}
+
+input[value="99"]:checked ~ #board > #ficha {
+  left: 060px;
+  bottom: 540px;
+}
+
+input[value="100"]:checked ~ #board > #ficha {
+  left: 000px;
+  bottom: 540px;
+}
+
+/**** the following code is only valid if the tile section is uncommented above; otherwise use the image from codewars *
+svg { 
+  position: absolute; 
+  top:0; 
+  left: 0; 
+  z-index:2; 
+}
+
+svg.ladder line {
+  stroke: #8B4513;
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  background: #9ad0ac;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  float: left;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(0,0,0,1);
+  border-bottom: 1px solid rgba(0,0,0,1);
+  box-sizing: border-box;
+  opacity: 0.75;
+}
+
+.tile10, .tile20, .tile30, .tile40, .tile50, .tile60, .tile70, .tile80, .tile90 {
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.tile11, .tile21, .tile31, .tile41, .tile51, .tile61, .tile71, .tile81, .tile91 {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.tile::before {
+  content: attr(data-index);
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: 12px;
+  font-family: "Comic Sans Ms", "Comic Sans", "Comic", serif;
+}
+
+.tile1::after, .tile100::after {
+  content: "\01F449";
+  font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.tile100::after {
+  content: "\01F3E0";
+}
+
+.tile1, .tile15, .tile24, .tile38, .tile49, .tile55, .tile65, .tile76, .tile86, .tile94 {
+  background: #f198b4;
+}
+
+.tile2, .tile16, .tile23, .tile35, .tile42, .tile56, .tile64, .tile79, .tile87, .tile93 {
+  background: #fef8aa;
+}
+
+.tile3, .tile18, .tile26, .tile33, .tile41, .tile58, .tile68, .tile78, .tile81, .tile96 {
+  background: #f89448;
+}
+
+.tile4, .tile11, .tile29, .tile40, .tile47, .tile51, .tile61, .tile77, .tile88, .tile99 {
+  background: #c297c5;
+}
+
+.tile5, .tile19, .tile27, .tile32, .tile44, .tile59, .tile69, .tile80, .tile89, .tile97 {
+  background: #68caef;
+}
+
+.tile6, .tile20, .tile28, .tile31, .tile45, .tile60, .tile70, .tile75, .tile85, .tile98 {
+  background: #fef471;
+}
+
+.tile7, .tile13, .tile21, .tile36, .tile50, .tile53, .tile63, .tile74, .tile84, .tile91 {
+  background: #b9e6fd;
+}
+
+.tile8, .tile12, .tile30, .tile39, .tile46, .tile52, .tile62, .tile73, .tile90, .tile100 {
+  background: #e5b75f;
+}
+
+.tile9, .tile14, .tile22, .tile37, .tile48, .tile54, .tile66, .tile72, .tile83, .tile96 {
+  background: #f37859;
+}
+*/

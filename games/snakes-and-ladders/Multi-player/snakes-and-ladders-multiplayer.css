@@ -1,0 +1,4600 @@
+@charset "UTF-8";
+/***** dice animation */
+@import url("https://fonts.googleapis.com/css?family=Dosis|Roboto");
+@keyframes changeOrder {
+  from {
+    z-index: 6;
+  }
+  to {
+    z-index: 1;
+  }
+}
+@-webkit-keyframes changeOrder {
+  from {
+    z-index: 6;
+  }
+  to {
+    z-index: 1;
+  }
+}
+input {
+  display: none;
+}
+
+.fx-sound {
+  display: none;
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+}
+
+#play-fx:checked ~ label.dice:active ~ #fx-dice {
+  display: block;
+}
+#play-fx:checked ~ #game label:active ~ .fx-sound {
+  display: block;
+}
+
+body {
+  font-size: 16px;
+  font-family: Dosis, Roboto, Arial, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: rgba(128, 200, 255, 0.8);
+}
+
+.scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 999;
+}
+.scrim .box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 1.5em 0.5em -1em rgba(0, 0, 0, 0.25);
+  width: 70%;
+  max-width: 375px;
+}
+.scrim .box > div {
+  padding: 1rem;
+}
+.scrim .box h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.75rem;
+  text-align: center;
+  height: 2.5rem;
+  line-height: 2.35rem;
+  background: #48c;
+  color: white;
+  border-radius: 3px 3px 0px 0px;
+}
+.scrim .box h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.15rem;
+  font-size: 1.3rem;
+}
+.scrim .box h2:first-child {
+  margin-top: 0;
+}
+.scrim .box p:first-child {
+  margin-top: 0;
+}
+.scrim .box p:last-child {
+  margin-bottom: 0;
+}
+
+.flex {
+  display: flex;
+}
+.flex > label, .flex > div {
+  flex: 1;
+  margin-left: 0.3rem;
+}
+.flex > label:first-child, .flex > div:first-child {
+  margin-left: 0;
+}
+
+/** start screen: configuration **/
+#options {
+  background: rgba(0, 0, 0, 0);
+}
+#options .option-players label, #options label.option-start {
+  display: block;
+  margin-top: 0.5rem;
+  color: white;
+  background: rgba(0, 150, 48, 0.6);
+  text-align: center;
+  padding: 6px;
+  transition: background 0.5s, color 0.5s;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#options .option-players label:hover, #options label.option-start:hover {
+  background: rgba(220, 220, 0, 0.7);
+  color: black;
+}
+#options .option-players label:active, #options label.option-start:active {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+#options .option-players label.option-start, #options label.option-start.option-start {
+  background: #48c;
+  color: white;
+  margin-top: 2rem;
+}
+#options .option-players label.option-start:hover, #options label.option-start.option-start:hover {
+  background: #357bc2;
+}
+#options .option-colors label {
+  opacity: 0.6;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+}
+#options .option-colors label:hover {
+  opacity: 0.8;
+}
+#options .option-colors label span {
+  flex: 1;
+  margin-left: 0.3rem;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 3px;
+  font-size: 0.7rem;
+  border: 2px solid transparent;
+}
+#options .option-colors label span:first-child {
+  flex: 0;
+  margin-left: 0;
+  background: none;
+  font-size: 1rem;
+}
+#options .option-colors label span:first-child::before {
+  content: "\2610";
+}
+#options .option-colors label:nth-child(1) span:nth-child(2) {
+  background: #4a5;
+}
+#options .option-colors label:nth-child(1) span:nth-child(3) {
+  background: #48c;
+}
+#options .option-colors label:nth-child(1) span:nth-child(4) {
+  background: #f55;
+}
+#options .option-colors label:nth-child(1) span:nth-child(5) {
+  background: #dd5;
+}
+#options .option-colors label:nth-child(2) span:nth-child(2) {
+  background: #48c;
+}
+#options .option-colors label:nth-child(2) span:nth-child(3) {
+  background: #f55;
+}
+#options .option-colors label:nth-child(2) span:nth-child(4) {
+  background: #dd5;
+}
+#options .option-colors label:nth-child(2) span:nth-child(5) {
+  background: #4a5;
+}
+#options .option-colors label:nth-child(3) span:nth-child(2) {
+  background: #f55;
+}
+#options .option-colors label:nth-child(3) span:nth-child(3) {
+  background: #dd5;
+}
+#options .option-colors label:nth-child(3) span:nth-child(4) {
+  background: #4a5;
+}
+#options .option-colors label:nth-child(3) span:nth-child(5) {
+  background: #48c;
+}
+#options .option-colors label:nth-child(4) span:nth-child(2) {
+  background: #dd5;
+}
+#options .option-colors label:nth-child(4) span:nth-child(3) {
+  background: #4a5;
+}
+#options .option-colors label:nth-child(4) span:nth-child(4) {
+  background: #48c;
+}
+#options .option-colors label:nth-child(4) span:nth-child(5) {
+  background: #f55;
+}
+#options #activate-fx {
+  cursor: pointer;
+}
+#options #activate-fx::before {
+  content: "\2610\00a0";
+}
+
+#game-time:checked ~ #options,
+[name=show-instructions]:checked ~ #options {
+  display: none;
+}
+
+#play-fx:checked ~ #options #activate-fx::before {
+  content: "☒ ";
+}
+
+#players1:checked ~ #options label[for=players1] {
+  background: #009630;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: white;
+}
+#players1:checked ~ #options label[for^=colors] span:nth-child(3) {
+  display: none;
+}
+#players1:checked ~ #options label[for^=colors] span:nth-child(4) {
+  display: none;
+}
+#players1:checked ~ #options label[for^=colors] span:nth-child(5) {
+  display: none;
+}
+
+#colors1:checked ~ #options label[for=colors1] {
+  opacity: 1;
+  border: 0;
+}
+#colors1:checked ~ #options label[for=colors1] span {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+#colors1:checked ~ #options label[for=colors1] span:first-child {
+  border: 2px solid transparent;
+}
+#colors1:checked ~ #options label[for=colors1] span:first-child::before {
+  content: "\2612";
+}
+
+#players2:checked ~ #options label[for=players2] {
+  background: #009630;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: white;
+}
+#players2:checked ~ #options label[for^=colors] span:nth-child(4) {
+  display: none;
+}
+#players2:checked ~ #options label[for^=colors] span:nth-child(5) {
+  display: none;
+}
+
+#colors2:checked ~ #options label[for=colors2] {
+  opacity: 1;
+  border: 0;
+}
+#colors2:checked ~ #options label[for=colors2] span {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+#colors2:checked ~ #options label[for=colors2] span:first-child {
+  border: 2px solid transparent;
+}
+#colors2:checked ~ #options label[for=colors2] span:first-child::before {
+  content: "\2612";
+}
+
+#players3:checked ~ #options label[for=players3] {
+  background: #009630;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: white;
+}
+#players3:checked ~ #options label[for^=colors] span:nth-child(5) {
+  display: none;
+}
+
+#colors3:checked ~ #options label[for=colors3] {
+  opacity: 1;
+  border: 0;
+}
+#colors3:checked ~ #options label[for=colors3] span {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+#colors3:checked ~ #options label[for=colors3] span:first-child {
+  border: 2px solid transparent;
+}
+#colors3:checked ~ #options label[for=colors3] span:first-child::before {
+  content: "\2612";
+}
+
+#players4:checked ~ #options label[for=players4] {
+  background: #009630;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+#colors4:checked ~ #options label[for=colors4] {
+  opacity: 1;
+  border: 0;
+}
+#colors4:checked ~ #options label[for=colors4] span {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+#colors4:checked ~ #options label[for=colors4] span:first-child {
+  border: 2px solid transparent;
+}
+#colors4:checked ~ #options label[for=colors4] span:first-child::before {
+  content: "\2612";
+}
+
+#colors1:checked ~ #game #piece-player-1 g {
+  fill: #4a5;
+}
+
+#colors1:checked ~ #game #piece-player-2 g {
+  fill: #48c;
+}
+
+#colors1:checked ~ #game #piece-player-3 g {
+  fill: #f55;
+}
+
+#colors1:checked ~ #game #piece-player-4 g {
+  fill: #dd5;
+}
+
+#colors2:checked ~ #game #piece-player-1 g {
+  fill: #48c;
+}
+
+#colors2:checked ~ #game #piece-player-2 g {
+  fill: #f55;
+}
+
+#colors2:checked ~ #game #piece-player-3 g {
+  fill: #dd5;
+}
+
+#colors2:checked ~ #game #piece-player-4 g {
+  fill: #4a5;
+}
+
+#colors3:checked ~ #game #piece-player-1 g {
+  fill: #f55;
+}
+
+#colors3:checked ~ #game #piece-player-2 g {
+  fill: #dd5;
+}
+
+#colors3:checked ~ #game #piece-player-3 g {
+  fill: #4a5;
+}
+
+#colors3:checked ~ #game #piece-player-4 g {
+  fill: #48c;
+}
+
+#colors4:checked ~ #game #piece-player-1 g {
+  fill: #dd5;
+}
+
+#colors4:checked ~ #game #piece-player-2 g {
+  fill: #4a5;
+}
+
+#colors4:checked ~ #game #piece-player-3 g {
+  fill: #48c;
+}
+
+#colors4:checked ~ #game #piece-player-4 g {
+  fill: #f55;
+}
+
+/** info pop-up **/
+#info {
+  display: none;
+}
+#info .box {
+  width: 75%;
+  max-width: none;
+}
+#info .box p:last-child {
+  text-align: right;
+}
+#info .box #close-button {
+  display: inline-block;
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+#info .box #close-button:hover {
+  background: #3d984c;
+}
+
+#show-info:checked ~ #info {
+  display: block;
+}
+
+/** Instructions **/
+#instructions {
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.01);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#instructions #go-to-game {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  z-index: 3;
+  color: white;
+  cursor: pointer;
+}
+#instructions #step {
+  display: none;
+  position: absolute;
+  box-shadow: 0 0 50px calc(200vmax) rgba(0, 0, 0, 0.85), inset 0 0 4px 0 black;
+  transform: translate(-1rem, -1rem);
+  border-radius: 100%;
+  z-index: 1;
+  top: 0;
+  left: 1rem;
+  width: calc(100px + 2rem);
+  height: calc(6rem);
+  transition: all 0.75s;
+}
+#instructions #step div {
+  position: absolute;
+  bottom: -0.5rem;
+  line-height: 1.1rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  left: 1rem;
+  width: 80vmin;
+  transform: translate(0, 100%);
+  -webkit-transform: translate(0, 100%);
+}
+#instructions #step div label {
+  display: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#instructions #step div label:hover {
+  text-decoration: none;
+}
+#instructions #step div label:not([for=game-time])::before {
+  content: "Next ›";
+}
+
+[name=show-instructions]:checked ~ #instructions, [name=show-instructions]:checked ~ #game, [name=show-instructions]:checked ~ #action, [name=show-instructions]:checked ~ #instructions #step {
+  display: block;
+}
+
+#show-instructions-1:checked ~ #instructions label[for=show-instructions-2] {
+  display: inline-block;
+}
+
+#show-instructions-2:checked ~ #instructions label[for=show-instructions-3] {
+  display: inline-block;
+}
+
+#show-instructions-3:checked ~ #instructions label[for=show-instructions-4] {
+  display: inline-block;
+}
+
+#show-instructions-4:checked ~ #instructions label[for=show-instructions-5] {
+  display: inline-block;
+}
+
+#show-instructions-5:checked ~ #instructions label[for=game-time] {
+  display: inline-block;
+}
+
+#show-instructions-1:checked ~ #instructions #step {
+  top: 0;
+  left: 1rem;
+  width: calc(100px + 2rem);
+  height: calc(6rem);
+}
+#show-instructions-1:checked ~ #instructions #step div::before {
+  content: "This area indicates whose turn it is at any given moment.";
+}
+
+#show-instructions-2:checked ~ #instructions #step {
+  top: 6rem;
+  left: 1rem;
+  width: 5rem;
+  height: 5rem;
+}
+#show-instructions-2:checked ~ #instructions #step div::before {
+  content: "The active player clicks here to roll the dice.";
+}
+
+#show-instructions-3:checked ~ #instructions #step {
+  top: 50%;
+  left: 50%;
+  width: 30vw;
+  height: 30vw;
+  max-width: 500px;
+  max-height: 500px;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+#show-instructions-3:checked ~ #instructions #step div {
+  transform: translate(-20vmin, 100%);
+  -webkit-transform: translate(-20vmin, 100%);
+  left: 0;
+}
+#show-instructions-3:checked ~ #instructions #step div::before {
+  content: "The player's piece will advance on the board once the dice is rolled. If the piece falls on a tile with a snake's head, it will fall down to the snake's tail. If it falls on a ladder's bottom, it will go up to the top.";
+}
+
+#show-instructions-4:checked ~ #instructions #step {
+  top: 0;
+  left: calc(100px + 2rem);
+  width: calc(100px + 2rem);
+  height: calc(6rem);
+}
+#show-instructions-4:checked ~ #instructions #step div::before {
+  content: "After that, click on the button to go to the next player's turn.";
+}
+
+#show-instructions-5:checked ~ #instructions #step {
+  top: 0;
+  left: calc(100vw - 100px - 1rem);
+  width: calc(100px + 2rem);
+  height: calc(6rem);
+}
+#show-instructions-5:checked ~ #instructions #step div {
+  left: auto;
+  right: 0rem;
+}
+#show-instructions-5:checked ~ #instructions #step div::before {
+  content: "If you want more information during the game, click on this button.";
+}
+
+#game-time:checked ~ #instructions {
+  display: none;
+}
+
+/** game screen: board, dice, messages **/
+.dice {
+  position: absolute;
+  display: none;
+  visibility: visible;
+  top: 6rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 1.5em 0.5em -1em rgba(0, 0, 0, 0.042);
+  z-index: 1;
+}
+.dice::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#turn1:checked ~ .game-time:checked ~ [name=cb-player1]:checked + label + input + label,
+#turn1:checked ~ .game-time:checked ~ [name=cb-player1]:checked + label + input + label + input + label,
+#turn1:checked ~ .game-time:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label,
+#turn1:checked ~ .game-time:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label,
+#turn1:checked ~ .game-time:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label + input + label,
+#turn1:checked ~ .game-time:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  display: block;
+  left: 1rem;
+  text-align: center;
+  animation: changeOrder 0.6s infinite;
+  -webkit-animation: changeOrder 0.6s infinite;
+}
+
+#turn2:checked ~ .game-time:checked ~ [name=cb-player2]:checked + label + input + label,
+#turn2:checked ~ .game-time:checked ~ [name=cb-player2]:checked + label + input + label + input + label,
+#turn2:checked ~ .game-time:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label,
+#turn2:checked ~ .game-time:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label,
+#turn2:checked ~ .game-time:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label + input + label,
+#turn2:checked ~ .game-time:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  display: block;
+  left: 1rem;
+  text-align: center;
+  animation: changeOrder 0.6s infinite;
+  -webkit-animation: changeOrder 0.6s infinite;
+}
+
+#turn3:checked ~ .game-time:checked ~ [name=cb-player3]:checked + label + input + label,
+#turn3:checked ~ .game-time:checked ~ [name=cb-player3]:checked + label + input + label + input + label,
+#turn3:checked ~ .game-time:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label,
+#turn3:checked ~ .game-time:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label,
+#turn3:checked ~ .game-time:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label + input + label,
+#turn3:checked ~ .game-time:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  display: block;
+  left: 1rem;
+  text-align: center;
+  animation: changeOrder 0.6s infinite;
+  -webkit-animation: changeOrder 0.6s infinite;
+}
+
+#turn4:checked ~ .game-time:checked ~ [name=cb-player4]:checked + label + input + label,
+#turn4:checked ~ .game-time:checked ~ [name=cb-player4]:checked + label + input + label + input + label,
+#turn4:checked ~ .game-time:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label,
+#turn4:checked ~ .game-time:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label,
+#turn4:checked ~ .game-time:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label + input + label,
+#turn4:checked ~ .game-time:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  display: block;
+  left: 1rem;
+  text-align: center;
+  animation: changeOrder 0.6s infinite;
+  -webkit-animation: changeOrder 0.6s infinite;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label {
+  animation-delay: 0s !important;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label {
+  animation-delay: -0.1s !important;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label {
+  animation-delay: -0.2s !important;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.3s !important;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.4s !important;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.5s !important;
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label {
+  animation-delay: 0s !important;
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label {
+  animation-delay: -0.1s !important;
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label {
+  animation-delay: -0.2s !important;
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.3s !important;
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.4s !important;
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.5s !important;
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label {
+  animation-delay: 0s !important;
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label {
+  animation-delay: -0.1s !important;
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label {
+  animation-delay: -0.2s !important;
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.3s !important;
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.4s !important;
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.5s !important;
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label {
+  animation-delay: 0s !important;
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label {
+  animation-delay: -0.1s !important;
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label {
+  animation-delay: -0.2s !important;
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.3s !important;
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.4s !important;
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label {
+  animation-delay: -0.5s !important;
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /></svg>");
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /></svg>");
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn1:checked ~ [name=cb-player1]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='23' cy='50' r='8' /><circle cx='77' cy='50' r='8' /></svg>");
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /></svg>");
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /></svg>");
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn2:checked ~ [name=cb-player2]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='23' cy='50' r='8' /><circle cx='77' cy='50' r='8' /></svg>");
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /></svg>");
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /></svg>");
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn3:checked ~ [name=cb-player3]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='23' cy='50' r='8' /><circle cx='77' cy='50' r='8' /></svg>");
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /></svg>");
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='77' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /></svg>");
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='50' cy='50' r='8' /></svg>");
+}
+
+#turn4:checked ~ [name=cb-player4]:checked + label + input + label + input + label + input + label + input + label + input + label + input + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='23' cy='23' r='8' /><circle cx='77' cy='23' r='8' /><circle cx='77' cy='77' r='8' /><circle cx='23' cy='77' r='8' /><circle cx='23' cy='50' r='8' /><circle cx='77' cy='50' r='8' /></svg>");
+}
+
+label.dice:active {
+  position: static !important;
+  margin-left: 50px !important;
+  background: none !important;
+  font-size: 0;
+}
+label.dice:active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -50px;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+}
+
+#game {
+  display: none;
+}
+#game .tab {
+  position: absolute;
+  top: 0;
+  background: white;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 1.5em 0.5em -1em rgba(0, 0, 0, 0.25);
+  z-index: 9;
+  float: left;
+  margin-left: 1rem;
+}
+#game .tab::before {
+  text-align: center;
+  display: block;
+  padding: 6px 16px;
+  color: white;
+  background: #48c;
+  height: 0.7rem;
+  line-height: 0.7rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+#game .tab::after, #game .tab#player-info span {
+  display: block;
+  text-align: center;
+  padding: 6px 16px;
+  height: 2rem;
+  line-height: 1.9rem;
+  white-space: nowrap;
+}
+#game .tab#player-info {
+  min-width: 100px;
+}
+#game .tab#player-info::before {
+  content: "Turn";
+}
+#game .tab#player-info span {
+  font-weight: bolder;
+}
+#game .tab#player-info span::before {
+  content: "\25CF\00A0";
+}
+#game .tab#player-info span::after {
+  content: " 1";
+  font-weight: bolder;
+}
+#game .tab#dice {
+  cursor: pointer;
+}
+#game .tab#dice::before {
+  content: "Dice";
+}
+#game .tab#dice::after {
+  content: "Roll";
+}
+#game .tab#more-info {
+  cursor: pointer;
+  left: auto;
+  right: 1rem;
+  width: 100px;
+  z-index: 1;
+}
+#game .tab#more-info::before {
+  content: "About";
+}
+#game .tab#more-info::after {
+  content: "More info";
+}
+#game .tab#action {
+  cursor: pointer;
+  left: calc(100px + 1rem);
+  width: 100px;
+}
+#game .tab#action::before {
+  content: "Action";
+}
+#game .tab#action::after {
+  content: "Next player";
+}
+#game .tab#action label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+#game #board {
+  width: 70%;
+  max-width: 500px;
+  border: 3px solid #48c;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background: white;
+  margin-top: 2.5rem;
+  box-shadow: 0 1.5em 0.5em -1em rgba(0, 0, 0, 0.25);
+}
+#game #board .tile {
+  float: left;
+  width: 10%;
+  position: relative;
+  height: 0;
+  padding-top: 10%;
+  box-sizing: border-box;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background: #cee8d7;
+}
+#game #board .tile::before {
+  content: attr(data-index);
+  position: absolute;
+  top: 0rem;
+  left: 0.15rem;
+  font-size: 0.66rem;
+}
+#game #board .tile.tile6::before, #game #board .tile.tile12::before, #game #board .tile.tile18::before, #game #board .tile.tile22::before, #game #board .tile.tile23::before, #game #board .tile.tile28::before, #game #board .tile.tile30::before, #game #board .tile.tile34::before, #game #board .tile.tile36::before, #game #board .tile.tile39::before, #game #board .tile.tile55::before, #game #board .tile.tile79::before {
+  left: auto;
+  right: 0.15rem;
+}
+#game #board .tile.tile52::before {
+  top: auto;
+  bottom: 0rem;
+}
+#game #board .tile.tile76::before {
+  left: 0.6rem;
+}
+#game #board .tile1 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile91 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile10 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile11 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile2 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile92 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile20 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile21 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile3 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile93 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile30 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile31 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile4 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile94 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile40 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile41 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile5 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile95 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile50 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile51 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile6 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile96 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile60 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile61 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile7 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile97 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile70 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile71 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile8 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile98 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile80 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile81 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile9 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile99 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile90 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile91 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile10 {
+  border-bottom: 1px solid transparent;
+}
+#game #board .tile100 {
+  border-top: 1px solid transparent;
+}
+#game #board .tile100 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile101 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#game #board .tile1, #game #board .tile15, #game #board .tile24, #game #board .tile38, #game #board .tile49, #game #board .tile55, #game #board .tile65, #game #board .tile76, #game #board .tile86, #game #board .tile94 {
+  background: #fadbe5;
+}
+#game #board .tile2, #game #board .tile16, #game #board .tile23, #game #board .tile35, #game #board .tile42, #game #board .tile56, #game #board .tile64, #game #board .tile79, #game #board .tile87, #game #board .tile93 {
+  background: #ecf3ff;
+}
+#game #board .tile3, #game #board .tile18, #game #board .tile26, #game #board .tile33, #game #board .tile41, #game #board .tile58, #game #board .tile68, #game #board .tile78, #game #board .tile81, #game #board .tile96 {
+  background: #feeadb;
+}
+#game #board .tile4, #game #board .tile11, #game #board .tile29, #game #board .tile40, #game #board .tile47, #game #board .tile51, #game #board .tile61, #game #board .tile77, #game #board .tile88, #game #board .tile99 {
+  background: #eee2ef;
+}
+#game #board .tile5, #game #board .tile19, #game #board .tile27, #game #board .tile32, #game #board .tile44, #game #board .tile59, #game #board .tile69, #game #board .tile80, #game #board .tile89, #game #board .tile97 {
+  background: #bbe7f8;
+}
+#game #board .tile6, #game #board .tile20, #game #board .tile28, #game #board .tile31, #game #board .tile45, #game #board .tile60, #game #board .tile70, #game #board .tile75, #game #board .tile85, #game #board .tile98 {
+  background: #fffcdb;
+}
+#game #board .tile7, #game #board .tile13, #game #board .tile21, #game #board .tile36, #game #board .tile50, #game #board .tile53, #game #board .tile63, #game #board .tile74, #game #board .tile84, #game #board .tile91 {
+  background: #d2effe;
+}
+#game #board .tile8, #game #board .tile12, #game #board .tile30, #game #board .tile39, #game #board .tile46, #game #board .tile52, #game #board .tile62, #game #board .tile73, #game #board .tile90, #game #board .tile100 {
+  background: #f3ddb2;
+}
+#game #board .tile9, #game #board .tile14, #game #board .tile22, #game #board .tile37, #game #board .tile48, #game #board .tile54, #game #board .tile66, #game #board .tile72, #game #board .tile83, #game #board .tile96 {
+  background: #fac5b8;
+}
+
+#action label {
+  display: none;
+}
+
+#players1:checked ~ #turn1:checked ~ #game-time:checked ~ #game #action {
+  display: none;
+}
+
+#players1:checked ~ #turn1:checked ~ #game #turn-changer1 {
+  display: block;
+}
+
+#players2:checked ~ #turn1:checked ~ #game #turn-changer2 {
+  display: block;
+}
+
+#players3:checked ~ #turn1:checked ~ #game #turn-changer2 {
+  display: block;
+}
+
+#players4:checked ~ #turn1:checked ~ #game #turn-changer2 {
+  display: block;
+}
+
+#players2:checked ~ #turn2:checked ~ #game #turn-changer1 {
+  display: block;
+}
+
+#players3:checked ~ #turn2:checked ~ #game #turn-changer3 {
+  display: block;
+}
+
+#players4:checked ~ #turn2:checked ~ #game #turn-changer3 {
+  display: block;
+}
+
+#players3:checked ~ #turn3:checked ~ #game #turn-changer1 {
+  display: block;
+}
+
+#players4:checked ~ #turn3:checked ~ #game #turn-changer4 {
+  display: block;
+}
+
+#players4:checked ~ #turn4:checked ~ #game #turn-changer1 {
+  display: block;
+}
+
+#turn1:checked ~ #colors1:checked ~ #game #player-info span::before {
+  color: #4a5;
+}
+
+#turn2:checked ~ #colors1:checked ~ #game #player-info span::before {
+  color: #48c;
+}
+
+#turn3:checked ~ #colors1:checked ~ #game #player-info span::before {
+  color: #f55;
+}
+
+#turn4:checked ~ #colors1:checked ~ #game #player-info span::before {
+  color: #dd5;
+}
+
+#turn1:checked ~ #colors2:checked ~ #game #player-info span::before {
+  color: #48c;
+}
+
+#turn2:checked ~ #colors2:checked ~ #game #player-info span::before {
+  color: #f55;
+}
+
+#turn3:checked ~ #colors2:checked ~ #game #player-info span::before {
+  color: #dd5;
+}
+
+#turn4:checked ~ #colors2:checked ~ #game #player-info span::before {
+  color: #4a5;
+}
+
+#turn1:checked ~ #colors3:checked ~ #game #player-info span::before {
+  color: #f55;
+}
+
+#turn2:checked ~ #colors3:checked ~ #game #player-info span::before {
+  color: #dd5;
+}
+
+#turn3:checked ~ #colors3:checked ~ #game #player-info span::before {
+  color: #4a5;
+}
+
+#turn4:checked ~ #colors3:checked ~ #game #player-info span::before {
+  color: #48c;
+}
+
+#turn1:checked ~ #colors4:checked ~ #game #player-info span::before {
+  color: #dd5;
+}
+
+#turn2:checked ~ #colors4:checked ~ #game #player-info span::before {
+  color: #4a5;
+}
+
+#turn3:checked ~ #colors4:checked ~ #game #player-info span::before {
+  color: #48c;
+}
+
+#turn4:checked ~ #colors4:checked ~ #game #player-info span::before {
+  color: #f55;
+}
+
+#turn1:checked ~ #game .tab#player-info span::after {
+  content: " 1";
+}
+
+#turn2:checked ~ #game .tab#player-info span::after {
+  content: " 2";
+}
+
+#turn3:checked ~ #game .tab#player-info span::after {
+  content: " 3";
+}
+
+#turn4:checked ~ #game .tab#player-info span::after {
+  content: " 4";
+}
+
+#game-time:checked ~ #game {
+  display: block;
+}
+
+svg#snakeladders {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+svg#snakeladders g.ladders-big {
+  stroke: #8B4513;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+svg#snakeladders g.ladders-small {
+  stroke: #8B4513;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+svg .snake {
+  stroke: none;
+}
+svg .eye {
+  fill: black;
+  stroke: white;
+  stroke-width: 6;
+}
+svg.piece {
+  position: absolute;
+  width: 8%;
+  bottom: 0;
+  left: 0;
+  transform: translate(-2%, -2%);
+  -webkit-transform: translate(-2%, -2%);
+  transition: bottom 0.5s, left 0.5s;
+}
+svg.piece g {
+  fill: #f55;
+  stroke-width: 4;
+  stroke: rgba(0, 0, 0, 0.3);
+}
+svg.piece#piece-player-1 {
+  transform: translate(-5%, -3%);
+  -webkit-transform: translate(-5%, -3%);
+  z-index: 44;
+}
+svg.piece#piece-player-1 g {
+  fill: #f55;
+}
+svg.piece#piece-player-2 {
+  transform: translate(40%, -40%);
+  -webkit-transform: translate(40%, -40%);
+  z-index: 41;
+}
+svg.piece#piece-player-2 g {
+  fill: #48c;
+}
+svg.piece#piece-player-3 {
+  transform: translate(42%, -7%);
+  -webkit-transform: translate(42%, -7%);
+  z-index: 43;
+}
+svg.piece#piece-player-3 g {
+  fill: #4a5;
+}
+svg.piece#piece-player-4 {
+  transform: translate(-3%, -41%);
+  -webkit-transform: translate(-3%, -41%);
+  z-index: 42;
+}
+svg.piece#piece-player-4 g {
+  fill: #dd5;
+}
+
+#cb-pl1-0:checked ~ #game #piece-player-1 {
+  left: -10%;
+  bottom: 0;
+}
+
+#cb-pl1-1:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 0%;
+}
+
+#cb-pl1-2:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 0%;
+}
+
+#cb-pl1-3:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 0%;
+}
+
+#cb-pl1-4:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 0%;
+}
+
+#cb-pl1-5:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 0%;
+}
+
+#cb-pl1-6:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 0%;
+}
+
+#cb-pl1-7:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 0%;
+}
+
+#cb-pl1-8:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 0%;
+}
+
+#cb-pl1-9:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 0%;
+}
+
+#cb-pl1-10:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 0%;
+}
+
+#cb-pl1-11:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 10%;
+}
+
+#cb-pl1-12:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 10%;
+}
+
+#cb-pl1-13:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 10%;
+}
+
+#cb-pl1-14:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 10%;
+}
+
+#cb-pl1-15:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 10%;
+}
+
+#cb-pl1-16:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 10%;
+}
+
+#cb-pl1-17:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 10%;
+}
+
+#cb-pl1-18:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 10%;
+}
+
+#cb-pl1-19:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 10%;
+}
+
+#cb-pl1-20:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 10%;
+}
+
+#cb-pl1-21:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 20%;
+}
+
+#cb-pl1-22:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 20%;
+}
+
+#cb-pl1-23:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 20%;
+}
+
+#cb-pl1-24:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 20%;
+}
+
+#cb-pl1-25:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 20%;
+}
+
+#cb-pl1-26:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 20%;
+}
+
+#cb-pl1-27:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 20%;
+}
+
+#cb-pl1-28:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 20%;
+}
+
+#cb-pl1-29:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 20%;
+}
+
+#cb-pl1-30:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 20%;
+}
+
+#cb-pl1-31:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 30%;
+}
+
+#cb-pl1-32:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 30%;
+}
+
+#cb-pl1-33:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 30%;
+}
+
+#cb-pl1-34:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 30%;
+}
+
+#cb-pl1-35:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 30%;
+}
+
+#cb-pl1-36:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 30%;
+}
+
+#cb-pl1-37:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 30%;
+}
+
+#cb-pl1-38:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 30%;
+}
+
+#cb-pl1-39:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 30%;
+}
+
+#cb-pl1-40:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 30%;
+}
+
+#cb-pl1-41:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 40%;
+}
+
+#cb-pl1-42:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 40%;
+}
+
+#cb-pl1-43:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 40%;
+}
+
+#cb-pl1-44:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 40%;
+}
+
+#cb-pl1-45:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 40%;
+}
+
+#cb-pl1-46:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 40%;
+}
+
+#cb-pl1-47:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 40%;
+}
+
+#cb-pl1-48:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 40%;
+}
+
+#cb-pl1-49:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 40%;
+}
+
+#cb-pl1-50:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 40%;
+}
+
+#cb-pl1-51:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 50%;
+}
+
+#cb-pl1-52:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 50%;
+}
+
+#cb-pl1-53:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 50%;
+}
+
+#cb-pl1-54:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 50%;
+}
+
+#cb-pl1-55:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 50%;
+}
+
+#cb-pl1-56:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 50%;
+}
+
+#cb-pl1-57:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 50%;
+}
+
+#cb-pl1-58:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 50%;
+}
+
+#cb-pl1-59:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 50%;
+}
+
+#cb-pl1-60:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 50%;
+}
+
+#cb-pl1-61:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 60%;
+}
+
+#cb-pl1-62:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 60%;
+}
+
+#cb-pl1-63:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 60%;
+}
+
+#cb-pl1-64:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 60%;
+}
+
+#cb-pl1-65:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 60%;
+}
+
+#cb-pl1-66:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 60%;
+}
+
+#cb-pl1-67:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 60%;
+}
+
+#cb-pl1-68:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 60%;
+}
+
+#cb-pl1-69:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 60%;
+}
+
+#cb-pl1-70:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 60%;
+}
+
+#cb-pl1-71:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 70%;
+}
+
+#cb-pl1-72:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 70%;
+}
+
+#cb-pl1-73:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 70%;
+}
+
+#cb-pl1-74:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 70%;
+}
+
+#cb-pl1-75:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 70%;
+}
+
+#cb-pl1-76:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 70%;
+}
+
+#cb-pl1-77:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 70%;
+}
+
+#cb-pl1-78:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 70%;
+}
+
+#cb-pl1-79:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 70%;
+}
+
+#cb-pl1-80:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 70%;
+}
+
+#cb-pl1-81:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 80%;
+}
+
+#cb-pl1-82:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 80%;
+}
+
+#cb-pl1-83:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 80%;
+}
+
+#cb-pl1-84:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 80%;
+}
+
+#cb-pl1-85:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 80%;
+}
+
+#cb-pl1-86:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 80%;
+}
+
+#cb-pl1-87:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 80%;
+}
+
+#cb-pl1-88:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 80%;
+}
+
+#cb-pl1-89:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 80%;
+}
+
+#cb-pl1-90:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 80%;
+}
+
+#cb-pl1-91:checked ~ #game #piece-player-1 {
+  left: 90%;
+  bottom: 90%;
+}
+
+#cb-pl1-92:checked ~ #game #piece-player-1 {
+  left: 80%;
+  bottom: 90%;
+}
+
+#cb-pl1-93:checked ~ #game #piece-player-1 {
+  left: 70%;
+  bottom: 90%;
+}
+
+#cb-pl1-94:checked ~ #game #piece-player-1 {
+  left: 60%;
+  bottom: 90%;
+}
+
+#cb-pl1-95:checked ~ #game #piece-player-1 {
+  left: 50%;
+  bottom: 90%;
+}
+
+#cb-pl1-96:checked ~ #game #piece-player-1 {
+  left: 40%;
+  bottom: 90%;
+}
+
+#cb-pl1-97:checked ~ #game #piece-player-1 {
+  left: 30%;
+  bottom: 90%;
+}
+
+#cb-pl1-98:checked ~ #game #piece-player-1 {
+  left: 20%;
+  bottom: 90%;
+}
+
+#cb-pl1-99:checked ~ #game #piece-player-1 {
+  left: 10%;
+  bottom: 90%;
+}
+
+#cb-pl1-100:checked ~ #game #piece-player-1 {
+  left: 0%;
+  bottom: 90%;
+}
+
+#cb-pl1-101:checked ~ #game #piece-player-1 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl1-102:checked ~ #game #piece-player-1 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl1-103:checked ~ #game #piece-player-1 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl1-104:checked ~ #game #piece-player-1 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl1-105:checked ~ #game #piece-player-1 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl1-106:checked ~ #game #piece-player-1 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl2-0:checked ~ #game #piece-player-2 {
+  left: -10%;
+  bottom: 0;
+}
+
+#cb-pl2-1:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 0%;
+}
+
+#cb-pl2-2:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 0%;
+}
+
+#cb-pl2-3:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 0%;
+}
+
+#cb-pl2-4:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 0%;
+}
+
+#cb-pl2-5:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 0%;
+}
+
+#cb-pl2-6:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 0%;
+}
+
+#cb-pl2-7:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 0%;
+}
+
+#cb-pl2-8:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 0%;
+}
+
+#cb-pl2-9:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 0%;
+}
+
+#cb-pl2-10:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 0%;
+}
+
+#cb-pl2-11:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 10%;
+}
+
+#cb-pl2-12:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 10%;
+}
+
+#cb-pl2-13:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 10%;
+}
+
+#cb-pl2-14:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 10%;
+}
+
+#cb-pl2-15:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 10%;
+}
+
+#cb-pl2-16:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 10%;
+}
+
+#cb-pl2-17:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 10%;
+}
+
+#cb-pl2-18:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 10%;
+}
+
+#cb-pl2-19:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 10%;
+}
+
+#cb-pl2-20:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 10%;
+}
+
+#cb-pl2-21:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 20%;
+}
+
+#cb-pl2-22:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 20%;
+}
+
+#cb-pl2-23:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 20%;
+}
+
+#cb-pl2-24:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 20%;
+}
+
+#cb-pl2-25:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 20%;
+}
+
+#cb-pl2-26:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 20%;
+}
+
+#cb-pl2-27:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 20%;
+}
+
+#cb-pl2-28:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 20%;
+}
+
+#cb-pl2-29:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 20%;
+}
+
+#cb-pl2-30:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 20%;
+}
+
+#cb-pl2-31:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 30%;
+}
+
+#cb-pl2-32:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 30%;
+}
+
+#cb-pl2-33:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 30%;
+}
+
+#cb-pl2-34:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 30%;
+}
+
+#cb-pl2-35:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 30%;
+}
+
+#cb-pl2-36:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 30%;
+}
+
+#cb-pl2-37:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 30%;
+}
+
+#cb-pl2-38:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 30%;
+}
+
+#cb-pl2-39:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 30%;
+}
+
+#cb-pl2-40:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 30%;
+}
+
+#cb-pl2-41:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 40%;
+}
+
+#cb-pl2-42:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 40%;
+}
+
+#cb-pl2-43:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 40%;
+}
+
+#cb-pl2-44:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 40%;
+}
+
+#cb-pl2-45:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 40%;
+}
+
+#cb-pl2-46:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 40%;
+}
+
+#cb-pl2-47:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 40%;
+}
+
+#cb-pl2-48:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 40%;
+}
+
+#cb-pl2-49:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 40%;
+}
+
+#cb-pl2-50:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 40%;
+}
+
+#cb-pl2-51:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 50%;
+}
+
+#cb-pl2-52:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 50%;
+}
+
+#cb-pl2-53:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 50%;
+}
+
+#cb-pl2-54:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 50%;
+}
+
+#cb-pl2-55:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 50%;
+}
+
+#cb-pl2-56:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 50%;
+}
+
+#cb-pl2-57:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 50%;
+}
+
+#cb-pl2-58:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 50%;
+}
+
+#cb-pl2-59:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 50%;
+}
+
+#cb-pl2-60:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 50%;
+}
+
+#cb-pl2-61:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 60%;
+}
+
+#cb-pl2-62:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 60%;
+}
+
+#cb-pl2-63:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 60%;
+}
+
+#cb-pl2-64:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 60%;
+}
+
+#cb-pl2-65:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 60%;
+}
+
+#cb-pl2-66:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 60%;
+}
+
+#cb-pl2-67:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 60%;
+}
+
+#cb-pl2-68:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 60%;
+}
+
+#cb-pl2-69:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 60%;
+}
+
+#cb-pl2-70:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 60%;
+}
+
+#cb-pl2-71:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 70%;
+}
+
+#cb-pl2-72:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 70%;
+}
+
+#cb-pl2-73:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 70%;
+}
+
+#cb-pl2-74:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 70%;
+}
+
+#cb-pl2-75:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 70%;
+}
+
+#cb-pl2-76:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 70%;
+}
+
+#cb-pl2-77:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 70%;
+}
+
+#cb-pl2-78:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 70%;
+}
+
+#cb-pl2-79:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 70%;
+}
+
+#cb-pl2-80:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 70%;
+}
+
+#cb-pl2-81:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 80%;
+}
+
+#cb-pl2-82:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 80%;
+}
+
+#cb-pl2-83:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 80%;
+}
+
+#cb-pl2-84:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 80%;
+}
+
+#cb-pl2-85:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 80%;
+}
+
+#cb-pl2-86:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 80%;
+}
+
+#cb-pl2-87:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 80%;
+}
+
+#cb-pl2-88:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 80%;
+}
+
+#cb-pl2-89:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 80%;
+}
+
+#cb-pl2-90:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 80%;
+}
+
+#cb-pl2-91:checked ~ #game #piece-player-2 {
+  left: 90%;
+  bottom: 90%;
+}
+
+#cb-pl2-92:checked ~ #game #piece-player-2 {
+  left: 80%;
+  bottom: 90%;
+}
+
+#cb-pl2-93:checked ~ #game #piece-player-2 {
+  left: 70%;
+  bottom: 90%;
+}
+
+#cb-pl2-94:checked ~ #game #piece-player-2 {
+  left: 60%;
+  bottom: 90%;
+}
+
+#cb-pl2-95:checked ~ #game #piece-player-2 {
+  left: 50%;
+  bottom: 90%;
+}
+
+#cb-pl2-96:checked ~ #game #piece-player-2 {
+  left: 40%;
+  bottom: 90%;
+}
+
+#cb-pl2-97:checked ~ #game #piece-player-2 {
+  left: 30%;
+  bottom: 90%;
+}
+
+#cb-pl2-98:checked ~ #game #piece-player-2 {
+  left: 20%;
+  bottom: 90%;
+}
+
+#cb-pl2-99:checked ~ #game #piece-player-2 {
+  left: 10%;
+  bottom: 90%;
+}
+
+#cb-pl2-100:checked ~ #game #piece-player-2 {
+  left: 0%;
+  bottom: 90%;
+}
+
+#cb-pl2-101:checked ~ #game #piece-player-2 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl2-102:checked ~ #game #piece-player-2 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl2-103:checked ~ #game #piece-player-2 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl2-104:checked ~ #game #piece-player-2 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl2-105:checked ~ #game #piece-player-2 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl2-106:checked ~ #game #piece-player-2 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl3-0:checked ~ #game #piece-player-3 {
+  left: -10%;
+  bottom: 0;
+}
+
+#cb-pl3-1:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 0%;
+}
+
+#cb-pl3-2:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 0%;
+}
+
+#cb-pl3-3:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 0%;
+}
+
+#cb-pl3-4:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 0%;
+}
+
+#cb-pl3-5:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 0%;
+}
+
+#cb-pl3-6:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 0%;
+}
+
+#cb-pl3-7:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 0%;
+}
+
+#cb-pl3-8:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 0%;
+}
+
+#cb-pl3-9:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 0%;
+}
+
+#cb-pl3-10:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 0%;
+}
+
+#cb-pl3-11:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 10%;
+}
+
+#cb-pl3-12:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 10%;
+}
+
+#cb-pl3-13:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 10%;
+}
+
+#cb-pl3-14:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 10%;
+}
+
+#cb-pl3-15:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 10%;
+}
+
+#cb-pl3-16:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 10%;
+}
+
+#cb-pl3-17:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 10%;
+}
+
+#cb-pl3-18:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 10%;
+}
+
+#cb-pl3-19:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 10%;
+}
+
+#cb-pl3-20:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 10%;
+}
+
+#cb-pl3-21:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 20%;
+}
+
+#cb-pl3-22:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 20%;
+}
+
+#cb-pl3-23:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 20%;
+}
+
+#cb-pl3-24:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 20%;
+}
+
+#cb-pl3-25:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 20%;
+}
+
+#cb-pl3-26:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 20%;
+}
+
+#cb-pl3-27:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 20%;
+}
+
+#cb-pl3-28:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 20%;
+}
+
+#cb-pl3-29:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 20%;
+}
+
+#cb-pl3-30:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 20%;
+}
+
+#cb-pl3-31:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 30%;
+}
+
+#cb-pl3-32:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 30%;
+}
+
+#cb-pl3-33:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 30%;
+}
+
+#cb-pl3-34:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 30%;
+}
+
+#cb-pl3-35:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 30%;
+}
+
+#cb-pl3-36:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 30%;
+}
+
+#cb-pl3-37:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 30%;
+}
+
+#cb-pl3-38:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 30%;
+}
+
+#cb-pl3-39:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 30%;
+}
+
+#cb-pl3-40:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 30%;
+}
+
+#cb-pl3-41:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 40%;
+}
+
+#cb-pl3-42:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 40%;
+}
+
+#cb-pl3-43:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 40%;
+}
+
+#cb-pl3-44:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 40%;
+}
+
+#cb-pl3-45:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 40%;
+}
+
+#cb-pl3-46:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 40%;
+}
+
+#cb-pl3-47:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 40%;
+}
+
+#cb-pl3-48:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 40%;
+}
+
+#cb-pl3-49:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 40%;
+}
+
+#cb-pl3-50:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 40%;
+}
+
+#cb-pl3-51:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 50%;
+}
+
+#cb-pl3-52:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 50%;
+}
+
+#cb-pl3-53:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 50%;
+}
+
+#cb-pl3-54:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 50%;
+}
+
+#cb-pl3-55:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 50%;
+}
+
+#cb-pl3-56:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 50%;
+}
+
+#cb-pl3-57:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 50%;
+}
+
+#cb-pl3-58:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 50%;
+}
+
+#cb-pl3-59:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 50%;
+}
+
+#cb-pl3-60:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 50%;
+}
+
+#cb-pl3-61:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 60%;
+}
+
+#cb-pl3-62:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 60%;
+}
+
+#cb-pl3-63:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 60%;
+}
+
+#cb-pl3-64:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 60%;
+}
+
+#cb-pl3-65:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 60%;
+}
+
+#cb-pl3-66:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 60%;
+}
+
+#cb-pl3-67:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 60%;
+}
+
+#cb-pl3-68:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 60%;
+}
+
+#cb-pl3-69:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 60%;
+}
+
+#cb-pl3-70:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 60%;
+}
+
+#cb-pl3-71:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 70%;
+}
+
+#cb-pl3-72:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 70%;
+}
+
+#cb-pl3-73:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 70%;
+}
+
+#cb-pl3-74:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 70%;
+}
+
+#cb-pl3-75:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 70%;
+}
+
+#cb-pl3-76:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 70%;
+}
+
+#cb-pl3-77:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 70%;
+}
+
+#cb-pl3-78:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 70%;
+}
+
+#cb-pl3-79:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 70%;
+}
+
+#cb-pl3-80:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 70%;
+}
+
+#cb-pl3-81:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 80%;
+}
+
+#cb-pl3-82:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 80%;
+}
+
+#cb-pl3-83:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 80%;
+}
+
+#cb-pl3-84:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 80%;
+}
+
+#cb-pl3-85:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 80%;
+}
+
+#cb-pl3-86:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 80%;
+}
+
+#cb-pl3-87:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 80%;
+}
+
+#cb-pl3-88:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 80%;
+}
+
+#cb-pl3-89:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 80%;
+}
+
+#cb-pl3-90:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 80%;
+}
+
+#cb-pl3-91:checked ~ #game #piece-player-3 {
+  left: 90%;
+  bottom: 90%;
+}
+
+#cb-pl3-92:checked ~ #game #piece-player-3 {
+  left: 80%;
+  bottom: 90%;
+}
+
+#cb-pl3-93:checked ~ #game #piece-player-3 {
+  left: 70%;
+  bottom: 90%;
+}
+
+#cb-pl3-94:checked ~ #game #piece-player-3 {
+  left: 60%;
+  bottom: 90%;
+}
+
+#cb-pl3-95:checked ~ #game #piece-player-3 {
+  left: 50%;
+  bottom: 90%;
+}
+
+#cb-pl3-96:checked ~ #game #piece-player-3 {
+  left: 40%;
+  bottom: 90%;
+}
+
+#cb-pl3-97:checked ~ #game #piece-player-3 {
+  left: 30%;
+  bottom: 90%;
+}
+
+#cb-pl3-98:checked ~ #game #piece-player-3 {
+  left: 20%;
+  bottom: 90%;
+}
+
+#cb-pl3-99:checked ~ #game #piece-player-3 {
+  left: 10%;
+  bottom: 90%;
+}
+
+#cb-pl3-100:checked ~ #game #piece-player-3 {
+  left: 0%;
+  bottom: 90%;
+}
+
+#cb-pl3-101:checked ~ #game #piece-player-3 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl3-102:checked ~ #game #piece-player-3 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl3-103:checked ~ #game #piece-player-3 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl3-104:checked ~ #game #piece-player-3 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl3-105:checked ~ #game #piece-player-3 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl3-106:checked ~ #game #piece-player-3 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl4-0:checked ~ #game #piece-player-4 {
+  left: -10%;
+  bottom: 0;
+}
+
+#cb-pl4-1:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 0%;
+}
+
+#cb-pl4-2:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 0%;
+}
+
+#cb-pl4-3:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 0%;
+}
+
+#cb-pl4-4:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 0%;
+}
+
+#cb-pl4-5:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 0%;
+}
+
+#cb-pl4-6:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 0%;
+}
+
+#cb-pl4-7:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 0%;
+}
+
+#cb-pl4-8:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 0%;
+}
+
+#cb-pl4-9:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 0%;
+}
+
+#cb-pl4-10:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 0%;
+}
+
+#cb-pl4-11:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 10%;
+}
+
+#cb-pl4-12:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 10%;
+}
+
+#cb-pl4-13:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 10%;
+}
+
+#cb-pl4-14:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 10%;
+}
+
+#cb-pl4-15:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 10%;
+}
+
+#cb-pl4-16:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 10%;
+}
+
+#cb-pl4-17:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 10%;
+}
+
+#cb-pl4-18:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 10%;
+}
+
+#cb-pl4-19:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 10%;
+}
+
+#cb-pl4-20:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 10%;
+}
+
+#cb-pl4-21:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 20%;
+}
+
+#cb-pl4-22:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 20%;
+}
+
+#cb-pl4-23:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 20%;
+}
+
+#cb-pl4-24:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 20%;
+}
+
+#cb-pl4-25:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 20%;
+}
+
+#cb-pl4-26:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 20%;
+}
+
+#cb-pl4-27:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 20%;
+}
+
+#cb-pl4-28:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 20%;
+}
+
+#cb-pl4-29:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 20%;
+}
+
+#cb-pl4-30:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 20%;
+}
+
+#cb-pl4-31:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 30%;
+}
+
+#cb-pl4-32:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 30%;
+}
+
+#cb-pl4-33:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 30%;
+}
+
+#cb-pl4-34:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 30%;
+}
+
+#cb-pl4-35:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 30%;
+}
+
+#cb-pl4-36:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 30%;
+}
+
+#cb-pl4-37:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 30%;
+}
+
+#cb-pl4-38:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 30%;
+}
+
+#cb-pl4-39:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 30%;
+}
+
+#cb-pl4-40:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 30%;
+}
+
+#cb-pl4-41:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 40%;
+}
+
+#cb-pl4-42:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 40%;
+}
+
+#cb-pl4-43:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 40%;
+}
+
+#cb-pl4-44:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 40%;
+}
+
+#cb-pl4-45:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 40%;
+}
+
+#cb-pl4-46:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 40%;
+}
+
+#cb-pl4-47:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 40%;
+}
+
+#cb-pl4-48:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 40%;
+}
+
+#cb-pl4-49:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 40%;
+}
+
+#cb-pl4-50:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 40%;
+}
+
+#cb-pl4-51:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 50%;
+}
+
+#cb-pl4-52:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 50%;
+}
+
+#cb-pl4-53:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 50%;
+}
+
+#cb-pl4-54:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 50%;
+}
+
+#cb-pl4-55:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 50%;
+}
+
+#cb-pl4-56:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 50%;
+}
+
+#cb-pl4-57:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 50%;
+}
+
+#cb-pl4-58:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 50%;
+}
+
+#cb-pl4-59:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 50%;
+}
+
+#cb-pl4-60:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 50%;
+}
+
+#cb-pl4-61:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 60%;
+}
+
+#cb-pl4-62:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 60%;
+}
+
+#cb-pl4-63:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 60%;
+}
+
+#cb-pl4-64:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 60%;
+}
+
+#cb-pl4-65:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 60%;
+}
+
+#cb-pl4-66:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 60%;
+}
+
+#cb-pl4-67:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 60%;
+}
+
+#cb-pl4-68:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 60%;
+}
+
+#cb-pl4-69:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 60%;
+}
+
+#cb-pl4-70:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 60%;
+}
+
+#cb-pl4-71:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 70%;
+}
+
+#cb-pl4-72:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 70%;
+}
+
+#cb-pl4-73:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 70%;
+}
+
+#cb-pl4-74:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 70%;
+}
+
+#cb-pl4-75:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 70%;
+}
+
+#cb-pl4-76:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 70%;
+}
+
+#cb-pl4-77:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 70%;
+}
+
+#cb-pl4-78:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 70%;
+}
+
+#cb-pl4-79:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 70%;
+}
+
+#cb-pl4-80:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 70%;
+}
+
+#cb-pl4-81:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 80%;
+}
+
+#cb-pl4-82:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 80%;
+}
+
+#cb-pl4-83:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 80%;
+}
+
+#cb-pl4-84:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 80%;
+}
+
+#cb-pl4-85:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 80%;
+}
+
+#cb-pl4-86:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 80%;
+}
+
+#cb-pl4-87:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 80%;
+}
+
+#cb-pl4-88:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 80%;
+}
+
+#cb-pl4-89:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 80%;
+}
+
+#cb-pl4-90:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 80%;
+}
+
+#cb-pl4-91:checked ~ #game #piece-player-4 {
+  left: 90%;
+  bottom: 90%;
+}
+
+#cb-pl4-92:checked ~ #game #piece-player-4 {
+  left: 80%;
+  bottom: 90%;
+}
+
+#cb-pl4-93:checked ~ #game #piece-player-4 {
+  left: 70%;
+  bottom: 90%;
+}
+
+#cb-pl4-94:checked ~ #game #piece-player-4 {
+  left: 60%;
+  bottom: 90%;
+}
+
+#cb-pl4-95:checked ~ #game #piece-player-4 {
+  left: 50%;
+  bottom: 90%;
+}
+
+#cb-pl4-96:checked ~ #game #piece-player-4 {
+  left: 40%;
+  bottom: 90%;
+}
+
+#cb-pl4-97:checked ~ #game #piece-player-4 {
+  left: 30%;
+  bottom: 90%;
+}
+
+#cb-pl4-98:checked ~ #game #piece-player-4 {
+  left: 20%;
+  bottom: 90%;
+}
+
+#cb-pl4-99:checked ~ #game #piece-player-4 {
+  left: 10%;
+  bottom: 90%;
+}
+
+#cb-pl4-100:checked ~ #game #piece-player-4 {
+  left: 0%;
+  bottom: 90%;
+}
+
+#cb-pl4-101:checked ~ #game #piece-player-4 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl4-102:checked ~ #game #piece-player-4 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl4-103:checked ~ #game #piece-player-4 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl4-104:checked ~ #game #piece-player-4 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl4-105:checked ~ #game #piece-player-4 {
+  left: 0;
+  bottom: 90%;
+}
+
+#cb-pl4-106:checked ~ #game #piece-player-4 {
+  left: 0;
+  bottom: 90%;
+}
+
+#players1:checked ~ #game #piece-player-2 {
+  display: none !important;
+}
+
+#players1:checked ~ #game #piece-player-3 {
+  display: none !important;
+}
+
+#players1:checked ~ #game #piece-player-4 {
+  display: none !important;
+}
+
+#players2:checked ~ #game #piece-player-3 {
+  display: none !important;
+}
+
+#players2:checked ~ #game #piece-player-4 {
+  display: none !important;
+}
+
+#players3:checked ~ #game #piece-player-4 {
+  display: none !important;
+}
+
+#snake-popup, #ladder-popup, #home-popup, #congratulations {
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0s;
+}
+#snake-popup label, #ladder-popup label, #home-popup label, #congratulations label {
+  display: none;
+}
+#snake-popup svg, #ladder-popup svg, #home-popup svg, #congratulations svg {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(80%, 0);
+}
+
+.cb[id$='-2']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-2']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-2']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-2']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-7']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-7']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-7']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-7']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-8']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-8']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-8']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-8']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-15']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-15']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-15']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-15']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-21']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-21']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-21']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-21']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-28']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-28']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-28']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-28']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-36']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-36']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-36']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-36']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-51']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-51']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-51']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-51']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-71']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-71']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-71']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-71']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-78']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-78']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-78']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-78']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-87']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-87']:checked ~ #ladder-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-87']:checked ~ #ladder-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-87']:checked ~ #ladder-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-16']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-16']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-16']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-16']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-46']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-46']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-46']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-46']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-49']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-49']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-49']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-49']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-62']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-62']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-62']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-62']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-64']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-64']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-64']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-64']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-74']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-74']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-74']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-74']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-89']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-89']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-89']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-89']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-92']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-92']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-92']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-92']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-95']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-95']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-95']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-95']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-99']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-99']:checked ~ #snake-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-99']:checked ~ #snake-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-99']:checked ~ #snake-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-101']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-101']:checked ~ #home-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-101']:checked ~ #home-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-101']:checked ~ #home-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-102']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-102']:checked ~ #home-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-102']:checked ~ #home-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-102']:checked ~ #home-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-103']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-103']:checked ~ #home-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-103']:checked ~ #home-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-103']:checked ~ #home-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-104']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-104']:checked ~ #home-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-104']:checked ~ #home-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-104']:checked ~ #home-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-105']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-105']:checked ~ #home-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-105']:checked ~ #home-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-105']:checked ~ #home-popup label:hover {
+  background: #3d984c;
+}
+
+.cb[id$='-106']:checked ~ .dice {
+  display: none !important;
+}
+.cb[id$='-106']:checked ~ #home-popup {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+.cb[id$='-106']:checked ~ #home-popup label {
+  background: #4a5;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 1rem;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-top: 1rem;
+}
+.cb[id$='-106']:checked ~ #home-popup label:hover {
+  background: #3d984c;
+}
+
+#cb-pl1-2:checked ~ #ladder-popup #ladder-pl1-2 {
+  display: inline-block;
+}
+
+#cb-pl1-7:checked ~ #ladder-popup #ladder-pl1-7 {
+  display: inline-block;
+}
+
+#cb-pl1-8:checked ~ #ladder-popup #ladder-pl1-8 {
+  display: inline-block;
+}
+
+#cb-pl1-15:checked ~ #ladder-popup #ladder-pl1-15 {
+  display: inline-block;
+}
+
+#cb-pl1-21:checked ~ #ladder-popup #ladder-pl1-21 {
+  display: inline-block;
+}
+
+#cb-pl1-28:checked ~ #ladder-popup #ladder-pl1-28 {
+  display: inline-block;
+}
+
+#cb-pl1-36:checked ~ #ladder-popup #ladder-pl1-36 {
+  display: inline-block;
+}
+
+#cb-pl1-51:checked ~ #ladder-popup #ladder-pl1-51 {
+  display: inline-block;
+}
+
+#cb-pl1-71:checked ~ #ladder-popup #ladder-pl1-71 {
+  display: inline-block;
+}
+
+#cb-pl1-78:checked ~ #ladder-popup #ladder-pl1-78 {
+  display: inline-block;
+}
+
+#cb-pl1-87:checked ~ #ladder-popup #ladder-pl1-87 {
+  display: inline-block;
+}
+
+#cb-pl1-16:checked ~ #snake-popup #snake-pl1-16 {
+  display: inline-block;
+}
+
+#cb-pl1-46:checked ~ #snake-popup #snake-pl1-46 {
+  display: inline-block;
+}
+
+#cb-pl1-49:checked ~ #snake-popup #snake-pl1-49 {
+  display: inline-block;
+}
+
+#cb-pl1-62:checked ~ #snake-popup #snake-pl1-62 {
+  display: inline-block;
+}
+
+#cb-pl1-64:checked ~ #snake-popup #snake-pl1-64 {
+  display: inline-block;
+}
+
+#cb-pl1-74:checked ~ #snake-popup #snake-pl1-74 {
+  display: inline-block;
+}
+
+#cb-pl1-89:checked ~ #snake-popup #snake-pl1-89 {
+  display: inline-block;
+}
+
+#cb-pl1-92:checked ~ #snake-popup #snake-pl1-92 {
+  display: inline-block;
+}
+
+#cb-pl1-95:checked ~ #snake-popup #snake-pl1-95 {
+  display: inline-block;
+}
+
+#cb-pl1-99:checked ~ #snake-popup #snake-pl1-99 {
+  display: inline-block;
+}
+
+#cb-pl1-101:checked ~ #home-popup #home-pl1-101 {
+  display: inline-block;
+}
+
+#cb-pl1-102:checked ~ #home-popup #home-pl1-102 {
+  display: inline-block;
+}
+
+#cb-pl1-103:checked ~ #home-popup #home-pl1-103 {
+  display: inline-block;
+}
+
+#cb-pl1-104:checked ~ #home-popup #home-pl1-104 {
+  display: inline-block;
+}
+
+#cb-pl1-105:checked ~ #home-popup #home-pl1-105 {
+  display: inline-block;
+}
+
+#cb-pl1-106:checked ~ #home-popup #home-pl1-106 {
+  display: inline-block;
+}
+
+#cb-pl2-2:checked ~ #ladder-popup #ladder-pl2-2 {
+  display: inline-block;
+}
+
+#cb-pl2-7:checked ~ #ladder-popup #ladder-pl2-7 {
+  display: inline-block;
+}
+
+#cb-pl2-8:checked ~ #ladder-popup #ladder-pl2-8 {
+  display: inline-block;
+}
+
+#cb-pl2-15:checked ~ #ladder-popup #ladder-pl2-15 {
+  display: inline-block;
+}
+
+#cb-pl2-21:checked ~ #ladder-popup #ladder-pl2-21 {
+  display: inline-block;
+}
+
+#cb-pl2-28:checked ~ #ladder-popup #ladder-pl2-28 {
+  display: inline-block;
+}
+
+#cb-pl2-36:checked ~ #ladder-popup #ladder-pl2-36 {
+  display: inline-block;
+}
+
+#cb-pl2-51:checked ~ #ladder-popup #ladder-pl2-51 {
+  display: inline-block;
+}
+
+#cb-pl2-71:checked ~ #ladder-popup #ladder-pl2-71 {
+  display: inline-block;
+}
+
+#cb-pl2-78:checked ~ #ladder-popup #ladder-pl2-78 {
+  display: inline-block;
+}
+
+#cb-pl2-87:checked ~ #ladder-popup #ladder-pl2-87 {
+  display: inline-block;
+}
+
+#cb-pl2-16:checked ~ #snake-popup #snake-pl2-16 {
+  display: inline-block;
+}
+
+#cb-pl2-46:checked ~ #snake-popup #snake-pl2-46 {
+  display: inline-block;
+}
+
+#cb-pl2-49:checked ~ #snake-popup #snake-pl2-49 {
+  display: inline-block;
+}
+
+#cb-pl2-62:checked ~ #snake-popup #snake-pl2-62 {
+  display: inline-block;
+}
+
+#cb-pl2-64:checked ~ #snake-popup #snake-pl2-64 {
+  display: inline-block;
+}
+
+#cb-pl2-74:checked ~ #snake-popup #snake-pl2-74 {
+  display: inline-block;
+}
+
+#cb-pl2-89:checked ~ #snake-popup #snake-pl2-89 {
+  display: inline-block;
+}
+
+#cb-pl2-92:checked ~ #snake-popup #snake-pl2-92 {
+  display: inline-block;
+}
+
+#cb-pl2-95:checked ~ #snake-popup #snake-pl2-95 {
+  display: inline-block;
+}
+
+#cb-pl2-99:checked ~ #snake-popup #snake-pl2-99 {
+  display: inline-block;
+}
+
+#cb-pl2-101:checked ~ #home-popup #home-pl2-101 {
+  display: inline-block;
+}
+
+#cb-pl2-102:checked ~ #home-popup #home-pl2-102 {
+  display: inline-block;
+}
+
+#cb-pl2-103:checked ~ #home-popup #home-pl2-103 {
+  display: inline-block;
+}
+
+#cb-pl2-104:checked ~ #home-popup #home-pl2-104 {
+  display: inline-block;
+}
+
+#cb-pl2-105:checked ~ #home-popup #home-pl2-105 {
+  display: inline-block;
+}
+
+#cb-pl2-106:checked ~ #home-popup #home-pl2-106 {
+  display: inline-block;
+}
+
+#cb-pl3-2:checked ~ #ladder-popup #ladder-pl3-2 {
+  display: inline-block;
+}
+
+#cb-pl3-7:checked ~ #ladder-popup #ladder-pl3-7 {
+  display: inline-block;
+}
+
+#cb-pl3-8:checked ~ #ladder-popup #ladder-pl3-8 {
+  display: inline-block;
+}
+
+#cb-pl3-15:checked ~ #ladder-popup #ladder-pl3-15 {
+  display: inline-block;
+}
+
+#cb-pl3-21:checked ~ #ladder-popup #ladder-pl3-21 {
+  display: inline-block;
+}
+
+#cb-pl3-28:checked ~ #ladder-popup #ladder-pl3-28 {
+  display: inline-block;
+}
+
+#cb-pl3-36:checked ~ #ladder-popup #ladder-pl3-36 {
+  display: inline-block;
+}
+
+#cb-pl3-51:checked ~ #ladder-popup #ladder-pl3-51 {
+  display: inline-block;
+}
+
+#cb-pl3-71:checked ~ #ladder-popup #ladder-pl3-71 {
+  display: inline-block;
+}
+
+#cb-pl3-78:checked ~ #ladder-popup #ladder-pl3-78 {
+  display: inline-block;
+}
+
+#cb-pl3-87:checked ~ #ladder-popup #ladder-pl3-87 {
+  display: inline-block;
+}
+
+#cb-pl3-16:checked ~ #snake-popup #snake-pl3-16 {
+  display: inline-block;
+}
+
+#cb-pl3-46:checked ~ #snake-popup #snake-pl3-46 {
+  display: inline-block;
+}
+
+#cb-pl3-49:checked ~ #snake-popup #snake-pl3-49 {
+  display: inline-block;
+}
+
+#cb-pl3-62:checked ~ #snake-popup #snake-pl3-62 {
+  display: inline-block;
+}
+
+#cb-pl3-64:checked ~ #snake-popup #snake-pl3-64 {
+  display: inline-block;
+}
+
+#cb-pl3-74:checked ~ #snake-popup #snake-pl3-74 {
+  display: inline-block;
+}
+
+#cb-pl3-89:checked ~ #snake-popup #snake-pl3-89 {
+  display: inline-block;
+}
+
+#cb-pl3-92:checked ~ #snake-popup #snake-pl3-92 {
+  display: inline-block;
+}
+
+#cb-pl3-95:checked ~ #snake-popup #snake-pl3-95 {
+  display: inline-block;
+}
+
+#cb-pl3-99:checked ~ #snake-popup #snake-pl3-99 {
+  display: inline-block;
+}
+
+#cb-pl3-101:checked ~ #home-popup #home-pl3-101 {
+  display: inline-block;
+}
+
+#cb-pl3-102:checked ~ #home-popup #home-pl3-102 {
+  display: inline-block;
+}
+
+#cb-pl3-103:checked ~ #home-popup #home-pl3-103 {
+  display: inline-block;
+}
+
+#cb-pl3-104:checked ~ #home-popup #home-pl3-104 {
+  display: inline-block;
+}
+
+#cb-pl3-105:checked ~ #home-popup #home-pl3-105 {
+  display: inline-block;
+}
+
+#cb-pl3-106:checked ~ #home-popup #home-pl3-106 {
+  display: inline-block;
+}
+
+#cb-pl4-2:checked ~ #ladder-popup #ladder-pl4-2 {
+  display: inline-block;
+}
+
+#cb-pl4-7:checked ~ #ladder-popup #ladder-pl4-7 {
+  display: inline-block;
+}
+
+#cb-pl4-8:checked ~ #ladder-popup #ladder-pl4-8 {
+  display: inline-block;
+}
+
+#cb-pl4-15:checked ~ #ladder-popup #ladder-pl4-15 {
+  display: inline-block;
+}
+
+#cb-pl4-21:checked ~ #ladder-popup #ladder-pl4-21 {
+  display: inline-block;
+}
+
+#cb-pl4-28:checked ~ #ladder-popup #ladder-pl4-28 {
+  display: inline-block;
+}
+
+#cb-pl4-36:checked ~ #ladder-popup #ladder-pl4-36 {
+  display: inline-block;
+}
+
+#cb-pl4-51:checked ~ #ladder-popup #ladder-pl4-51 {
+  display: inline-block;
+}
+
+#cb-pl4-71:checked ~ #ladder-popup #ladder-pl4-71 {
+  display: inline-block;
+}
+
+#cb-pl4-78:checked ~ #ladder-popup #ladder-pl4-78 {
+  display: inline-block;
+}
+
+#cb-pl4-87:checked ~ #ladder-popup #ladder-pl4-87 {
+  display: inline-block;
+}
+
+#cb-pl4-16:checked ~ #snake-popup #snake-pl4-16 {
+  display: inline-block;
+}
+
+#cb-pl4-46:checked ~ #snake-popup #snake-pl4-46 {
+  display: inline-block;
+}
+
+#cb-pl4-49:checked ~ #snake-popup #snake-pl4-49 {
+  display: inline-block;
+}
+
+#cb-pl4-62:checked ~ #snake-popup #snake-pl4-62 {
+  display: inline-block;
+}
+
+#cb-pl4-64:checked ~ #snake-popup #snake-pl4-64 {
+  display: inline-block;
+}
+
+#cb-pl4-74:checked ~ #snake-popup #snake-pl4-74 {
+  display: inline-block;
+}
+
+#cb-pl4-89:checked ~ #snake-popup #snake-pl4-89 {
+  display: inline-block;
+}
+
+#cb-pl4-92:checked ~ #snake-popup #snake-pl4-92 {
+  display: inline-block;
+}
+
+#cb-pl4-95:checked ~ #snake-popup #snake-pl4-95 {
+  display: inline-block;
+}
+
+#cb-pl4-99:checked ~ #snake-popup #snake-pl4-99 {
+  display: inline-block;
+}
+
+#cb-pl4-101:checked ~ #home-popup #home-pl4-101 {
+  display: inline-block;
+}
+
+#cb-pl4-102:checked ~ #home-popup #home-pl4-102 {
+  display: inline-block;
+}
+
+#cb-pl4-103:checked ~ #home-popup #home-pl4-103 {
+  display: inline-block;
+}
+
+#cb-pl4-104:checked ~ #home-popup #home-pl4-104 {
+  display: inline-block;
+}
+
+#cb-pl4-105:checked ~ #home-popup #home-pl4-105 {
+  display: inline-block;
+}
+
+#cb-pl4-106:checked ~ #home-popup #home-pl4-106 {
+  display: inline-block;
+}
+
+.cb[id$='-100']:checked ~ #congratulations {
+  opacity: 1;
+  z-index: 99999;
+  transition: opacity 0.15s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+
+@media (max-width: 400px) {
+  #game #board .tile::before {
+    font-size: 0.4rem;
+  }
+  #game .tab::before {
+    font-size: 0.65rem;
+  }
+  #game .tab::after, #game .tab#player-info span {
+    font-size: 0.9rem;
+    height: 1.5rem;
+    line-height: 1.4rem;
+  }
+}

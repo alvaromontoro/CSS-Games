@@ -1,0 +1,679 @@
+@import url('https://fonts.googleapis.com/css?family=Kreon:400,700');
+
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #034;
+  background-image: radial-gradient(#034 5%, #012 100%);
+  background-size: cover;
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  z-index: 0;
+  color: #bcd;
+  top: 10px;
+  left: 10px;
+  font-size: 5vmin;
+  margin-top: 0;
+  font-family: Kreon, arial, sans-serif;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+}
+
+label, input#reset {
+  font-family: Kreon, arial, sans-serif;
+  display: inline-block;
+  width: 80%;
+  margin: 0;
+  margin-top: 1.5vmin;
+  cursor: pointer;
+  color: rgba(150,0,0,0.7);
+  border: 0;
+  padding: 0;
+  font-size: 3vmin;
+  background: transparent;
+  outline: none;
+}
+
+label::after, input#reset {
+  content: " \203A";
+}
+
+
+
+#magician {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30vmin;
+  height: 50vmin;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#magician div {
+  position: absolute;
+}
+
+#head {
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  height: 30%;
+}
+
+#neck {
+  bottom: -10%;
+  height: 30%;
+  left: 50%;
+  width: 12%;
+  background: #eaa;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+#face {
+  width: 50%;
+  height: 80%;
+  top: 0;
+  left: 25%;
+  background: #eaa;
+  border-radius: 5px 5px 35px 35px;
+  overflow: hidden;
+  box-shadow: inset 0.75vmin -0.25vmin 0 rgba(80,0,0,0.2);
+  /*transform: perspective(200px) rotateX(40deg);
+  -webkit-transform: perspective(200px) rotateX(40deg);*/
+}
+
+#hair {
+  width: 100%;
+  height: 40%;
+  border-radius: 100%;
+  background: #621;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+}
+
+#hair::before, #hair::after {
+  content:"";
+  width: 20%;
+  height: 100%;
+  background: #510;
+  position: absolute;
+  border-radius: 100%;
+  top: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+
+#hair::after {
+  right: 0;
+  background: #621;
+  transform: translate(50%, 0);
+  -webkit-transform: translate(50%, 0);
+}
+
+@keyframes blink {
+  0% { height: 7%; }
+  50% { height: 7%; }
+  51% { height: 0%; }
+  52% { height: 7%; }
+  100% { height: 7%; }
+}
+
+@-webkit-keyframes blink {
+  0% { height: 7%; }
+  50% { height: 7%; }
+  51% { height: 0%; }
+  52% { height: 7%; }
+  100% { height: 7%; }
+}
+
+#eyes {
+  top: 40%;
+  left: 50%;
+  height: 7%;
+  width: 25%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  animation: blink 8s infinite;
+  -webkit-animation: blink 8s infinite;
+  z-index: 8;
+}
+
+#eyes::before, #eyes::after {
+  content: "";
+  background: rgba(0,0,0,0.8);
+  position: absolute;
+  display: block;
+  width: 25%;
+  height: 100%;
+  border-radius: 100px;
+}
+
+#eyes::after {
+  right: 0;
+}
+
+#hat {
+  top: -55%;
+  width: 80%;
+  left: 10%;
+  height: 65%;
+}
+
+#cover {
+  bottom: 0;
+  height: 10%;
+  width: 100%;
+  background: #111;
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: inset 2vmin 0 0 rgba(0,0,0,1);
+}
+
+#tophat {
+  bottom: 0;
+  height: 100%;
+  width: 68%;
+  background: #111;
+  left: 16%;
+  box-shadow: inset 1vmin 0 0 rgba(0,0,0,0.2), inset 0 -2vmin 0 #e44/*rgba(195,0,195, 0.5)*/;
+  transform: perspective(300px) rotateX(-30deg);
+  -webkit-transform: perspective(300px) rotateX(-30deg);
+}
+
+#mouth {
+  top: 75%;
+  left: 50%;
+  width: 30%;
+  height: 10%;
+  background: rgba(200,0,0,0.6);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 0 0 300% 300%;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.8);
+}
+
+#body {
+  top: 37%;
+  width: 140%;
+  left: -20%;
+  height: 35%;
+  overflow: hidden;
+}
+
+#arms {
+  width: 100%;
+  height: 300%;
+  border-radius: 100% 100% 0 0;
+  box-shadow: inset 1vmin 0vmin 0 rgba(0,0,0,0.8), inset 3vmin 0 0 #111, inset -3vmin 0 0 #111, inset 0 3vmin 0 #111, inset 1.5vmin 2.5vmin 0 #111, inset -1.5vmin 2.5vmin 0 #111;
+  background: transparent;
+}
+
+#chest {
+  top: 10%;
+  left: 35%;
+  width: 30%;
+  height: 100%;
+  background: #111;
+  box-shadow: inset 1vmin 0 0 rgba(0,0,0,0.8);
+}
+
+#hands {
+  top: 71%;
+  left: 50%;
+  height: 10%;
+  width: 140%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+#hands::before, #hands::after {
+  content: "";
+  background: #eaa;
+  position: absolute;
+  display: block;
+  width: 12.5%;
+  height: 100%;
+  border-radius: 100px;
+  box-shadow: inset 1vmin 0 0 rgba(80,0,0,0.2);
+}
+
+#hands::after {
+  right: 0;
+  box-shadow: inset 1vmin 0 0 rgba(80,0,0,0.2);
+}
+
+#wand {
+  width: 1vmin;
+  height: 13vmin;
+  background: #111;
+  box-shadow: inset 0.3vmin 0 0 rgba(0,0,0,0.2), inset 0 2vmin 0 white;
+  top: 45%;
+  left: -28%;
+  z-index: 3;
+  border-radius: 2vmin 2vmin;
+  transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+}
+
+#jacket {
+  top: 72%;
+  left: -20%;
+  width: 140%;
+  height: 25%;
+}
+
+#tail {
+  top: 0;
+  left: 35%;
+  width: 30%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#tail::before, #tail::after {
+  content: "";
+  top: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 200%;
+  border-radius: 0 0 100% 0;
+  background: #111;
+  background-image: linear-gradient(#181818, #080808);
+  -webkit-background-image: linear-gradient(#181818, #080808);
+  transform: translate(-50%, -35%);
+  -webkit-transform: translate(-50%, -35%);
+  box-shadow: inset 7.3vmin 0 0 rgba(0,0,0,0.8);
+}
+
+#tail::after {
+  right: 0;
+  border-radius: 0 0 0 100%;
+  transform: translate(50%, -35%);
+  -webkit-transform: translate(50%, -35%);
+  box-shadow: inset 1vmin 0 0 rgba(0,0,0,0.8);
+}
+
+#bowtie { 
+  z-index: 5;
+  width: 7.5%;
+  height: 5%;
+  background: red;
+  left: 50%;
+  top: 39%;
+  border-radius: 1vmin;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background: #e44;
+  box-shadow: inset 0 0 0 4vmin rgba(0,0,0,0.2);
+}
+
+#bowtie::before, #bowtie::after {
+  width: 4.5vmin;
+  height: 100%;
+  content:"";
+  position: absolute;
+  left: -4vmin;
+  display: block;
+  border-radius: 0% 100% 100% 0;
+  background: #e44;
+  z-index: -1;
+  box-shadow: inset -0.5vmin 0 0 rgba(0,0,0,0.2);
+}
+
+#bowtie::after {
+  left: auto;
+  right: -4vmin;
+  border-radius: 100% 0 0 100%;
+  box-shadow: inset 0.5vmin 0 0 rgba(0,0,0,0.2);
+}
+
+#shirt {
+  width: 18%;
+  height: 20%;
+  top: 50%;
+  left: 50%;
+  background: #ddd;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 0 0 200% 200%;
+  box-shadow: -1.5vmin 0 0 black, 1.5vmin 0 0 black;
+}
+
+#shirt::before, #shirt::after,
+#jacket::before, #jacket::after {
+  content:"";
+  width: 1vmin;
+  height: 1vmin;
+  display: block;
+  background: rgba(0,0,0,0.8);
+  border-radius: 100%;
+  top: 35%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+#shirt::after {
+  top: 70%;
+}
+
+#jacket::before {
+  top: -40%;
+}
+
+#jacket::after {
+  top: -20%;
+}
+
+#pants {
+  top: 71%;
+  left: 50%;
+  width: 33%;
+  height: 41%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  box-shadow: inset 0 4vmin 0 #111;
+}
+
+#pants::before, #pants::after {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background: #111;
+  box-shadow: inset 1vmin -0.5vmin 0 rgba(0,0,0,0.8), 0.5vmin 3vmin 0 -0.5vmin rgba(0,0,0,0.8);
+}
+
+#pants::after {
+  right: 0;
+  box-shadow: inset 0 -0.5vmin 0 rgba(0,0,0,0.8), inset -2vmin 4vmin 0 #111, inset 1vmin 0 0 rgba(0,0,0,0.8), -0.5vmin 3vmin 0 -0.5vmin rgba(0,0,0,0.8);
+}
+
+#shoes {
+  top: 112%;
+  left: 50%;
+  width: 66%;
+  height: 6%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+
+#shoes::before, #shoes::after {
+  width: 9vmin;
+  height: 100%;
+  content:"";
+  position: absolute;
+  display: block;
+  border-radius: 100% 0 0% 0;
+  background: #050505;
+  z-index: -1;
+  box-shadow: inset -0.5vmin 0 0 rgba(0,0,0,0.2);
+}
+
+#shoes::after {
+  right: 0;
+  border-radius: 0 100% 0 0;
+}
+
+.bubble {
+  border-radius: 10px;
+  padding: 1vmin;
+  background: #dd5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  color: black;
+  font-size: 3vmin;
+  font-family: Kreon, arial, sans-serif;
+  display: none;
+}
+
+.bubble::after {
+  content: "";
+  width: 6vmin;
+  height: 6vmin;
+  display: block;
+  position: absolute;
+  bottom:-3vmin;
+  right: 0;
+  border-radius: 100%;
+  box-shadow: inset 1.5vmin 0 0 #dd5;
+}
+
+.bubble.right::after {
+  right: auto;
+  left: 0;
+  box-shadow: inset -1.5vmin 0 0 #dd5;
+}
+
+.bubble.right label,
+.bubble.right input {
+  text-align: right;
+  width: 100%;
+}
+
+#bubble-1 {
+  transform: translate(-49vmin, -32vmin);
+  -webkit-transform: translate(-49vmin, -32vmin);
+  width: 35vmin;
+}
+
+#bubble-2 {
+  transform: translate(10vmin, -34vmin);
+  -webkit-transform: translate(10vmin, -34vmin);
+  width: 37vmin;
+}
+
+#bubble-3 {
+  transform: translate(-49vmin, -32vmin);
+  -webkit-transform: translate(-49vmin, -32vmin);
+  width: 35vmin;
+}
+
+#bubble-4 {
+  transform: translate(10vmin, -34vmin);
+  -webkit-transform: translate(10vmin, -34vmin);
+  width: 37vmin;
+}
+
+#step-1:checked ~ #bubble-1,
+#step-2:checked ~ #bubble-2,
+#step-3:checked ~ #bubble-3,
+#step-4:checked ~ #bubble-4 { 
+  display: block; 
+}
+
+input[name=step] { 
+  position: absolute;
+  top: -200vmax;
+  left: -200vmax;
+  display: none;
+}
+
+.cards {
+  position: absolute;
+  width: 90vmin;
+  height: 20vmin;
+  top: 60%;
+  left: 200vmax;
+  z-index: 200;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  display: flex;
+  display: -webkit-flex;
+  transition: left 2s;
+}
+
+#cards-2 {
+  width: 74.5vmin;
+}
+
+.card {
+  position: relative;
+  flex:1;
+  margin-left: 3vmin;
+  background: #eee;
+  border-radius: 1vmin;
+  box-shadow: inset 0 0 0 2vmin #eee, inset 0 0 0 2.1vmin #444;
+}
+
+.card .let {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: arial, verdana, sans-serif;
+}
+
+.card.red .let,
+.card.red .sym {
+  color: #e44;
+}
+
+.card .let::before,
+.card .let::after,
+.card .sym::before,
+.card .sym::after {
+  content: attr(data-val);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 1.75vmin;
+  font-weight: bold;
+  margin-top: 0.75vmin;
+  margin-left: 0.5vmin;
+}
+
+.card .let::after,
+.card .sym::after{
+  transform: rotateX(-180deg) rotateY(180deg);
+  margin-left: -0.4vmin;
+  margin-top: -0.75vmin;
+}
+
+.card .sym::before {
+  margin-top: 2.5vmin;
+}
+
+.card .sym::after {
+  margin-top: -2.5vmin;
+}
+
+.card .sym.big::before,
+.card .sym.big::after {
+  font-size: 4.5vmin;
+  margin-top: 1.5vmin;
+  margin-left: 2.2vmin;
+}
+
+.card .sym.big::after {
+  margin-top: -1.5vmin;
+  margin-left: -2.2vmin;
+}
+
+.card .figure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+}
+
+.card.red .figure {
+  background: #e44;
+}
+
+.card .figure.person::before,
+.card .figure.person::after {
+  content:"";
+  position: absolute;
+  top: 32%;
+  left: 47%;
+  height:1vmin;
+  width: 3vmin;
+  box-shadow: inset 0.4vmin 0 0 #444, inset 1vmin 0 0 #eee, inset -0.6vmin 0 0 #eee, inset -1vmin 0 0 #444;
+}
+
+.card .figure.person::after {
+  top: auto;
+  left: auto;
+  bottom: 32%;
+  right: 47%;
+  height: 1vmin;
+  box-shadow: inset -0.4vmin 0 0 #444, inset -1vmin 0 0 #eee, inset 0.6vmin 0 0 #eee, inset 1vmin 0 0 #444;
+}
+
+.card .figure.hands {
+  background: none;
+}
+
+.card .figure.hands::before,
+.card .figure.hands::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3vmin;
+  height: 3vmin;
+  border-radius: 100%;
+  background-color: #e44;
+  top: 30%;
+  left: 20%;
+}
+
+.card .figure.hands::after {
+  bottom: 30%;
+  right: 20%;
+  left: auto;
+  top: auto;
+}
+
+.card.red .figure.hands::before, 
+.card.red .figure.hands::after {
+  background-color: #111;
+}
+
+.figure.king {
+  clip-path: polygon(20% 50%, 60% 15%, 60% 25%, 70% 15%, 70% 25%, 80% 15%, 80% 50%, 40% 85%, 40% 75%, 30% 85%, 30% 75%, 20% 85%); 
+  -webkit-clip-path: polygon(20% 50%, 60% 15%, 60% 25%, 70% 15%, 70% 25%, 80% 15%, 80% 50%, 40% 85%, 40% 75%, 30% 85%, 30% 75%, 20% 85%);
+}
+
+.card .figure.person {
+    box-shadow: inset 0 3.6vmin 0 rgba(255,0,0,0.5), inset 0 -3.6vmin 0 rgba(255,0,0,0.5), inset 0 5.5vmin 0 #dd5, inset 0 -5.5vmin 0 #dd5, inset 0 9vmin 0 #eaa, inset 0 -9vmin 0 #eaa;
+}
+
+.card.red .figure.person {
+  box-shadow: inset 0 3.6vmin 0 rgba(255,0,0,0.5), inset 0 -3.6vmin 0 rgba(255,0,0,0.5), inset 0 5.5vmin 0 #dd5, inset 0 -5.5vmin 0 #dd5, inset 0 9vmin 0 #eaa, inset 0 -9vmin 0 #eaa;
+}
+
+.figure.queen {
+  clip-path: polygon(20% 50%, 50% 27%, 50% 15%, 58% 25%, 65% 15%, 72% 25%, 80% 15%, 80% 50%, 50% 73%, 50% 85%, 42% 75%, 35% 85%, 28% 75%, 20% 85%);
+  -webkit-clip-path: polygon(20% 50%, 50% 27%, 50% 15%, 58% 25%, 65% 15%, 72% 25%, 80% 15%, 80% 50%, 50% 73%, 50% 85%, 42% 75%, 35% 85%, 28% 75%, 20% 85%); 
+}
+
+.figure.jack {
+  clip-path: polygon(20% 50%, 50% 27%, 50% 20%, 60% 15%, 70% 15%, 80% 20%, 80% 50%, 50% 73%, 50% 80%, 40% 85%, 30% 85%, 20% 80%); 
+  -webkit-clip-path: polygon(20% 50%, 50% 27%, 50% 20%, 60% 15%, 70% 15%, 80% 20%, 80% 50%, 50% 73%, 50% 80%, 40% 85%, 30% 85%, 20% 80%); 
+}
+
+.card:nth-child(1) {
+  margin-left:0;
+}
+
+#step-2:checked ~ #cards-1 {
+  left: 50%;
+}
+
+#step-4:checked ~ #cards-2 {
+  left: 50%;
+}
