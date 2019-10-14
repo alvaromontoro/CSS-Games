@@ -26,23 +26,30 @@
 #timer,
 #moles {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  line-height: 1rem;
+  top: 0;
+  left: 0;
+  line-height: 3rem;
+  height: 3rem;
   text-align: center;
   animation: timer 20s linear;
   mix-blend-mode: difference;
   font-size: 2rem;
+  width: 100%;
+  color: white;
+  background: black;
 }
 
 #moles {
-  top: 4.5rem;
+  top: 3rem;
+  color: black;
+  background: white;
 }
 
-/*
+
 @keyframes timeline {
-  from { width: 100%; background: green; }
-  to { width: 0%; background: red; }
+  0% { width: 100%; background: green; }
+  50% { width: 50%; brackground: orange; }
+  100% { width: 0%; background: red; }
 }
 
 #timer::before {
@@ -55,12 +62,13 @@
   left: 0;
   z-index: -1;
   animation: timeline 20s linear;
+  animation-fill-mode: forwards;
 }
-*/
+
 
 #timer::after {
   counter-reset: timer var(--timer);
-  content: counter(timer) ' seconds';
+  content: counter(timer);
   font-weight: bold;
 }
 
