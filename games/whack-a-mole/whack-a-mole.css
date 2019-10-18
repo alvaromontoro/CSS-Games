@@ -191,7 +191,7 @@ box-shadow: inset -1.5vmin -1vmin black, inset 1.5vmin -1vmin black, inset 0 0 0
 @import url('https://fonts.googleapis.com/css?family=Molengo&display=swap');
 
 body {
-  reset-counter: correct: 0;
+  counter-reset: correct 0;
   font-family: Molengo, arial, sans-serif;
   font-size: 18px;
 }
