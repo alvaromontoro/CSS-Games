@@ -1,0 +1,220 @@
+html, body {
+  background: lightskyblue;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Verdana, sans-serif;
+}
+
+#ground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80vmin;
+  height: 80vmin;
+  background: green;
+  overflow: hidden;
+}
+
+#road {
+  width: 30vmin;
+  height: 100%;
+  background: #333;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 15vmin);
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@keyframes moveLines {
+  from { transform: translate(0, 0); }
+  to { transform: translate(0, 70%); }
+}
+
+#road::before {
+  content: "";
+  position: absolute;
+  height: 1000%;
+  top: -900%;
+  width: calc(50% - 5px);
+  border-right: 10px dashed yellow;
+  pointer-events: none;
+  animation: moveLines 20s linear infinite;
+}
+
+.car {
+  position: absolute;
+  width: 6vmin; /* 8vmin total */
+  height: 8vmin; /* 15vmin total */
+  background: #eee;
+  border-radius: 0.75vmin;
+  top: 67.5vmin;
+  left: 12vmin;
+  box-shadow: 0 -1vmin lightskyblue, 0 -1.1vmin black, 0 1vmin lightskyblue,0 1.1vmin black, 0 -4.5vmin 0 1vmin #ccc, 0 2.5vmin 0 1vmin #ccc, 0 0 0 1vmin #ccc, 4vmin -4.5vmin 0 -2.2vmin #080808, -4vmin -4.5vmin 0 -2.2vmin, 4vmin 3.5vmin 0 -2.2vmin #080808, -4vmin 3.5vmin 0 -2.2vmin, 2vmin -7.8vmin 0 -2.2vmin white, -2vmin -7.8vmin 0 -2.2vmin white, 2vmin 5.9vmin 0 -2.2vmin red, -2vmin 5.9vmin 0 -2.2vmin red;
+  pointer-events: none;
+  transition: all 0.5s;
+}
+
+.car.red {
+  background: #700;
+  box-shadow: 0 -1vmin lightskyblue, 0 -1.1vmin black, 0 1vmin lightskyblue,0 1.1vmin black, 0 -4.5vmin 0 1vmin #900, 0 2.5vmin 0 1vmin #900, 0 0 0 1vmin #900, 4vmin -4.5vmin 0 -2.2vmin #080808, -4vmin -4.5vmin 0 -2.2vmin, 4vmin 3.5vmin 0 -2.2vmin #080808, -4vmin 3.5vmin 0 -2.2vmin, 2vmin -7.8vmin 0 -2.2vmin white, -2vmin -7.8vmin 0 -2.2vmin white, 2vmin 5.9vmin 0 -2.2vmin red, -2vmin 5.9vmin 0 -2.2vmin red;
+}
+
+#section-0:hover ~ #car {
+  top: 7.5vmin;
+  left: 2vmin;
+}
+
+#section-1:hover ~ #car {
+  top: 7.5vmin;
+  left: 12vmin;
+}
+
+#section-2:hover ~ #car {
+  top: 7.5vmin;
+  left: 22vmin;
+}
+
+#section-3:hover ~ #car {
+  top: 27.5vmin;
+  left: 2vmin;
+}
+
+#section-4:hover ~ #car {
+  top: 27.5vmin;
+  left: 12vmin;
+}
+
+#section-5:hover ~ #car {
+  top: 27.5vmin;
+  left: 22vmin;
+}
+
+#section-6:hover ~ #car {
+  top: 47.5vmin;
+  left: 2vmin;
+}
+
+#section-7:hover ~ #car {
+  top: 47.5vmin;
+  left: 12vmin;
+}
+
+#section-8:hover ~ #car {
+  top: 47.5vmin;
+  left: 22vmin;
+}
+
+#section-9:hover ~ #car {
+  top: 67.5vmin;
+  left: 2vmin;
+}
+
+#section-10:hover ~ #car {
+  top: 67.5vmin;
+  left: 12vmin;
+}
+
+#section-11:hover ~ #car {
+  top: 67.5vmin;
+  left: 22vmin;
+}
+
+@keyframes obstacleMove {
+  from { top: -100vmin; }
+  to { top: 200vmin; }
+}
+
+.obstacle {
+  position: absolute;
+  animation: obstacleMove 10s infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  width: 10vmin;
+  height: 20vmin;
+}
+
+.obstacle .car {
+  top: 7.5vmin;
+  left: 2vmin;
+}
+
+#obstacle-0 { 
+  animation-duration: 30s;
+  animation-delay: 0s;
+}
+
+#obstacle-1 { 
+  left: 10vmin;
+  animation-duration: 40s;
+  animation-delay: 0s;
+}
+
+#obstacle-2 {
+  left: 20vmin;
+  animation-duration: 20s;
+  animation-delay: 0s;
+}
+
+#obstacle-3 {
+  left: 0vmin;
+  animation-duration: 30s;
+  animation-delay: -10s;
+}
+
+#obstacle-4 {
+  left: 10vmin;
+  animation-duration: 30s;
+  animation-delay: -3s;
+}
+
+#obstacle-5 {
+  left: 20vmin;
+  animation-duration: 50s;
+  animation-delay: -20s;
+}
+
+#obstacle-6 {
+  left: 0vmin;
+  animation-duration: 40s;
+  animation-delay: -15s;
+}
+
+#obstacle-7 {
+  left: 10vmin;
+  animation-duration: 50s;
+  animation-delay: -35s;
+}
+
+#obstacle-8 {
+  left: 20vmin;
+  animation-duration: 25s;
+  animation-delay: 0s;
+}
+
+#game-over {
+  position: absolute;
+  top: 0;
+  left: -25vmin;
+  width: 80vmin;
+  height: 100%;
+  background: rgba(255,255,255,0.9);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3vmin;
+  box-sizing: border-box;
+  text-align: center;
+  display: none;
+}
+
+#ground:hover #road:not(:hover) #game-over,
+.obstacle:hover ~ #game-over,
+#game-over:hover {
+  display: flex;
+}
