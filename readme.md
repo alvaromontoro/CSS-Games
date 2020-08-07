@@ -15,6 +15,7 @@ The code is in those folders, the links below are to live demos on CodePen. You 
 - [Connect Four](https://codepen.io/alvaromontoro/full/rrPZwX)
 - [Driving Game](https://codepen.io/alvaromontoro/full/eYYzzWg)
 - [Mastermind](https://codepen.io/alvaromontoro/full/YzwbgwE)
+- [Plankman](https://codepen.io/alvaromontoro/full/XWdrQOg)
 - [Rock-Paper-Scissors](https://codepen.io/alvaromontoro/full/BaaBYyz)
 - [Simon](https://codepen.io/alvaromontoro/full/BGNaYo)
 - Snakes and Ladders:
