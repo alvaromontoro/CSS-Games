@@ -13,4 +13,4 @@ Driving is a racing game in which you need to avoid all the obstacles (aka other
 
 ## Screenshot
 
-![Screenshot of the CSS Driving game](https://github.com/alvaromontoro/CSS-Games/blob/master/games/driving/driving.jpg?raw=true)
+![Screenshot of the CSS Driving game](https://github.com/alvaromontoro/CSS-Games/blob/master/games/driving/driving/driving.jpg?raw=true)
