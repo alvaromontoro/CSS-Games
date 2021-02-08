@@ -13,7 +13,9 @@ The code is in those folders, the links below are to live demos on CodePen. You 
 ### Games
 
 - [Connect Four](https://codepen.io/alvaromontoro/full/rrPZwX)
-- [Driving Game](https://codepen.io/alvaromontoro/full/eYYzzWg)
+- Driving games:
+  - [Race Car](https://codepen.io/alvaromontoro/full/eYYzzWg)
+  - [No-HTML Race Car](https://codepen.io/alvaromontoro/full/PoGJjQe)
 - [Mastermind](https://codepen.io/alvaromontoro/full/YzwbgwE)
 - [Plankman](https://codepen.io/alvaromontoro/full/XWdrQOg)
 - [Rock-Paper-Scissors](https://codepen.io/alvaromontoro/full/BaaBYyz)
