@@ -10,9 +10,9 @@ Plankman is a pirate version of the classic game Hangman, in which a player need
 | Genre | Logic |
 | Players | 1 |
 | HTML Lines | 190 |
-| CSS Lines | 2188 |
+| CSS Lines | 2,188 |
 | Demo | [CodePen](https://codepen.io/alvaromontoro/full/XWdrQOg) |
 
 ## Screenshot
 
-![Screenshot of the Mastermind game](https://github.com/alvaromontoro/CSS-Games/blob/master/games/plankman/plankman.jpg?raw=true)
+![Screenshot of the Plankman game](https://github.com/alvaromontoro/CSS-Games/blob/master/games/plankman/plankman.jpg?raw=true)

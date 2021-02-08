@@ -8,7 +8,7 @@ Connect Four is a two-player game, in which the players pick a color and then al
 | Genre | Board game |
 | Players | 2 |
 | HTML Lines | 355 (52 Pug) |
-| CSS Lines | 2624 (400 SCSS) |
+| CSS Lines | 2,624 (400 SCSS) |
 | Demo | [CodePen](https://codepen.io/alvaromontoro/full/rrPZwX) |
 
 ## Screenshot

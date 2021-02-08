@@ -7,8 +7,8 @@ Mastermind is a code-breaking game for two people (although this CSS version is 
 | Title | Mastermind |
 | Genre | Logic |
 | Players | 1 |
-| HTML Lines | 1230 |
-| CSS Lines | 6571 |
+| HTML Lines | 1,230 (91 Pug) |
+| CSS Lines | 6,571 (555 SCSS) |
 | Demo | [CodePen](https://codepen.io/alvaromontoro/full/YzwbgwE) |
 
 ## Screenshot
